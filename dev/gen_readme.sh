@@ -38,4 +38,10 @@ page.write_text(html.replace(marker, block + marker, 1))
 screens.unlink()
 PY
 fi
+# Numeric entities preserve accented text when the store parses an HTML fragment.
+python3 - <<'PYHTML'
+from pathlib import Path
+page = Path("static/description/index.html")
+page.write_bytes(page.read_text().encode("ascii", "xmlcharrefreplace"))
+PYHTML
 echo "README.rst and static/description/index.html written"
