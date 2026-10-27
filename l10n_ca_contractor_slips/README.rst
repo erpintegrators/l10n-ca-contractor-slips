@@ -4,6 +4,8 @@ T4A and T5018 Slips
 
 License: LGPL-3
 
+**ERP Integrators** \| by **Solvync Inc.**
+
 Prepare T4A box 048 and T5018 contractor tax slips in Odoo 20, using the
 vendor payments recorded in your accounting. Review each contractor's
 total, trace the bills and payments behind it, and create a CRA XML file

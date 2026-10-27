@@ -1,5 +1,7 @@
 # T4A and T5018 Slips
 
+**ERP Integrators** | by **Solvync Inc.**
+
 T4A box 048 and T5018 slips for Odoo 20 Community and Enterprise, calculated from the vendor
 payments you actually made, with the CRA XML file validated against CRA's published schemas,
 customized PDF slips, email and portal delivery, and amended returns.
