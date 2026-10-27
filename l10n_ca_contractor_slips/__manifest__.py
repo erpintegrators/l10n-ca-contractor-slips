@@ -3,7 +3,7 @@
 {
     "name": "T4A and T5018 Slips",
     "summary": "T4A box 048 and T5018 slips from vendor payments, with CRA XML, PDF slips and portal delivery",
-    "version": "20.0.0.1.0",
+    "version": "20.0.0.1.1",
     "category": "Accounting/Localizations/Reporting",
     "author": "Solvync Inc.",
     "website": "https://solvync.com",

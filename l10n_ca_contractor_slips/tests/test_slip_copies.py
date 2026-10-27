@@ -31,7 +31,7 @@ class TestSlipCopies(L10nCaSlipsCommon):
             "Payer's name", "Payer's program account number", "Social insurance number",
             "Recipient's program account number", "Fees for services", "Recipient's name and address",
             "Box 048, Fees for services: Report this amount as business or professional income.",
-            "See the privacy notice on your return.", "T4A (26)", "2,150.00",
+            "See the privacy notice on your return.", "T4A (25)", "2,150.00",
         ):
             self.assertIn(text, html)
         self.assertNotIn("web.external_layout", html)
