@@ -53,6 +53,14 @@ Printed slips carry the National Flag of Canada, drawn from public-domain geomet
 slips you print yourself. Neither is Solvync's work, the LGPL licence covers Solvync's own code and
 text only, and their presence on a slip says nothing about CRA approval of this module.
 
+## Publisher and project links
+
+Published through [ERP Integrators](https://erpintegrators.com), a Solvync Inc. brand.
+The module is developed and maintained by [Solvync](https://solvync.com).
+For setup questions or a defect report, email [info@erpintegrators.com](mailto:info@erpintegrators.com).
+Include your Odoo version and the steps to reproduce the issue. Remove SINs and other personal
+data from screenshots and logs before sharing them.
+
 ## Development
 
 The tests need CRA's schema package, which `dev/fetch_schemas.sh` downloads:

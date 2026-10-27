@@ -1,5 +1,8 @@
-This module prepares Canada Revenue Agency information returns for the people and businesses
-you pay as contractors:
+Prepare T4A box 048 and T5018 contractor tax slips in Odoo 20, using the vendor payments
+recorded in your accounting. Review each contractor's total, trace the bills and payments behind
+it, and create a CRA XML file for your business to review and upload.
+
+The module covers two Canadian contractor reporting workflows:
 
 - **T4A, box 048**: fees for services paid to self-employed people and businesses,
   before GST/HST and PST, for each recipient paid more than $500 in the calendar year.
@@ -10,7 +13,8 @@ you pay as contractors:
 
 Amounts come from what you actually paid. The module reads posted vendor bills and the cash
 matched to them, so a bill dated in December and paid in January counts in January, a refund
-lowers the total, and goods on the same bill are left out. A credit note applied to a bill
+lowers the total. T4A leaves goods out; T5018 follows the selected mixed-bill setting.
+A credit note applied to a bill
 counts as settling both, each at its own mix of services and goods. Foreign-currency bills count
 the Canadian dollars actually paid, and an early payment discount reduces only the bill that
 earned it. Every amount on a slip links back to the bills and payments behind it.

@@ -2,11 +2,12 @@
 # License LGPL-3.0 (https://www.gnu.org/licenses/lgpl-3.0).
 {
     "name": "T4A and T5018 Slips",
-    "summary": "T4A box 048 and T5018 slips from vendor payments, with CRA XML, PDF slips and portal delivery",
-    "version": "20.0.0.1.1",
+    "summary": "T4A box 048 and T5018 contractor tax slips for Odoo, with payment traces, CRA XML and recipient PDFs",
+    "version": "20.0.0.1.2",
     "category": "Accounting/Localizations/Reporting",
     "author": "Solvync Inc.",
-    "website": "https://solvync.com",
+    "website": "https://erpintegrators.com",
+    "support": "info@erpintegrators.com",
     "license": "LGPL-3",
     "images": ["static/description/banner.png"],
     "countries": ["ca"],
