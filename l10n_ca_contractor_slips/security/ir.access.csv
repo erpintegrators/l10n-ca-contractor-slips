@@ -1,0 +1,12 @@
+id,name,model_id,group_id/id,operation,domain
+access_l10n_ca_slip_return_manager,Slip returns: accounting administrators,l10n.ca.slip.return,account.group_account_manager,crud,
+access_l10n_ca_slip_return_readonly,Slip returns: read-only accountants,l10n.ca.slip.return,account.group_account_readonly,r,
+access_l10n_ca_slip_manager,Slips: accounting administrators,l10n.ca.slip,account.group_account_manager,crud,
+access_l10n_ca_slip_readonly,Slips: read-only accountants,l10n.ca.slip,account.group_account_readonly,r,
+access_l10n_ca_slip_portal,Slips: portal users see their own final slips,l10n.ca.slip,base.group_portal,r,"[('partner_id', '=', user.commercial_partner_id.id), ('state', 'in', ('final', 'filed')), ('rpt_tcd', 'in', ('O', 'A', 'C')), ('superseded', '=', False)]"
+access_l10n_ca_slip_line_manager,Slip payments: accounting administrators,l10n.ca.slip.line,account.group_account_manager,crud,
+access_l10n_ca_slip_line_readonly,Slip payments: read-only accountants,l10n.ca.slip.line,account.group_account_readonly,r,
+l10n_ca_slip_return_comp_rule,Slip returns: own companies,l10n.ca.slip.return,,crud,"[('company_id', 'in', company_ids)]"
+l10n_ca_slip_comp_rule,"Slips: read in own companies, or a portal user's own slips",l10n.ca.slip,,r,"['|', ('company_id', 'in', company_ids), ('partner_id', '=', user.commercial_partner_id.id if user.share else False)]"
+l10n_ca_slip_comp_rule_write,Slips: change in own companies only,l10n.ca.slip,,cud,"[('company_id', 'in', company_ids)]"
+l10n_ca_slip_line_comp_rule,Slip payments: own companies,l10n.ca.slip.line,,crud,"[('company_id', 'in', company_ids)]"

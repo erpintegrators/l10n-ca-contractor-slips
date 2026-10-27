@@ -1,0 +1,12 @@
+<?xml version="1.0" encoding="utf-8"?>
+<odoo noupdate="1">
+    <record id="portal_entry_tax_slips" model="portal.entry">
+        <field name="name">Tax slips</field>
+        <field name="description">View and download the T4A and T5018 slips we issued to you</field>
+        <field name="url">/my/slips</field>
+        <field name="image" type="bytes" file="l10n_ca_contractor_slips/static/src/img/slip.svg"/>
+        <field name="placeholder_count">l10n_ca_slip_count</field>
+        <field name="category">vendor_category</field>
+        <field name="sequence" eval="125"/>
+    </record>
+</odoo>

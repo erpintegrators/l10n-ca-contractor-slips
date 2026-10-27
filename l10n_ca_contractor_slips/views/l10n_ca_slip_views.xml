@@ -1,0 +1,148 @@
+<?xml version="1.0" encoding="utf-8"?>
+<odoo>
+    <record id="view_l10n_ca_slip_list" model="ir.ui.view">
+        <field name="name">l10n.ca.slip.list</field>
+        <field name="model">l10n.ca.slip</field>
+        <field name="arch" type="xml">
+            <list string="Slips" create="False">
+                <field name="partner_id"/>
+                <field name="slip_type" optional="show"/>
+                <field name="year" optional="show" options="{'enable_formatting': false}"/>
+                <field name="recipient_type" optional="hide"/>
+                <field name="computed_base" optional="hide" sum="Total"/>
+                <field name="adjustment_base" optional="hide" sum="Total"/>
+                <field name="amount_base" optional="show" sum="Total"/>
+                <field name="amount_incl" optional="show" sum="Total"/>
+                <field name="amount_reported" sum="Total"/>
+                <field name="rpt_tcd" optional="show"/>
+                <field name="is_cancelled" optional="hide"/>
+                <field name="sent_date" optional="hide"/>
+                <field name="email_state" optional="show" widget="badge"
+                       decoration-success="email_state == 'sent'" decoration-danger="email_state == 'exception'"/>
+                <field name="warning_message" column_invisible="True"/>
+                <field name="currency_id" column_invisible="True"/>
+                <field name="state" widget="badge" decoration-success="state == 'filed'" decoration-info="state == 'final'"/>
+            </list>
+        </field>
+    </record>
+
+    <record id="view_l10n_ca_slip_form" model="ir.ui.view">
+        <field name="name">l10n.ca.slip.form</field>
+        <field name="model">l10n.ca.slip</field>
+        <field name="arch" type="xml">
+            <form string="Slip" create="False">
+                <header>
+                    <field name="state" widget="statusbar"/>
+                </header>
+                <sheet>
+                    <div class="alert alert-warning mb-3" role="alert" invisible="not warning_message"
+                         groups="account.group_account_readonly,account.group_account_manager">
+                        <field name="warning_message"/>
+                    </div>
+                    <div class="alert alert-danger mb-3" role="alert" invisible="email_state != 'exception'"
+                         groups="account.group_account_readonly,account.group_account_manager">
+                        The slip email failed: <field name="email_failure" class="d-inline"/>
+                    </div>
+                    <div class="oe_title">
+                        <h1><field name="partner_id" readonly="True"/></h1>
+                    </div>
+                    <group>
+                        <group string="Slip">
+                            <field name="return_id" readonly="True"/>
+                            <field name="slip_type"/>
+                            <field name="year" options="{'enable_formatting': false}"/>
+                            <field name="rpt_tcd"/>
+                            <field name="origin_slip_id" invisible="not origin_slip_id"/>
+                            <field name="is_cancelled" invisible="report_type != 'A'" readonly="state != 'draft'"/>
+                            <field name="report_type" invisible="True"/>
+                            <field name="sent_date" invisible="not sent_date"/>
+                            <field name="email_state" invisible="not email_state"/>
+                        </group>
+                        <group string="Amounts">
+                            <field name="currency_id" invisible="True"/>
+                            <field name="computed_base"/>
+                            <field name="computed_incl"/>
+                            <field name="adjustment_base" readonly="state != 'draft'"/>
+                            <field name="adjustment_incl" readonly="state != 'draft'"/>
+                            <field name="adjustment_reason" readonly="state != 'draft'"
+                                   required="adjustment_base or adjustment_incl"/>
+                            <field name="amount_base"/>
+                            <field name="amount_incl"/>
+                            <field name="amount_reported" class="fw-bold"/>
+                        </group>
+                    </group>
+                    <notebook>
+                        <page string="Payments" name="payments">
+                            <field name="line_ids" readonly="True">
+                                <list>
+                                    <field name="date"/>
+                                    <field name="move_id"/>
+                                    <field name="payment_move_id" optional="show"/>
+                                    <field name="payment_id" optional="hide"/>
+                                    <field name="source"/>
+                                    <field name="cash" sum="Total"/>
+                                    <field name="amount_base" sum="Total"/>
+                                    <field name="amount_incl" sum="Total"/>
+                                    <field name="currency_id" column_invisible="True"/>
+                                </list>
+                            </field>
+                        </page>
+                        <page string="Recipient on the slip" name="recipient">
+                            <p class="text-muted">These come from the contact and refresh on each recalculation. Correct the contact, then recalculate.</p>
+                            <group>
+                                <group>
+                                    <field name="recipient_type" readonly="1"/>
+                                    <field name="surname" invisible="recipient_type != '1'" readonly="1"/>
+                                    <field name="given_name" invisible="recipient_type != '1'" readonly="1"/>
+                                    <field name="initial" invisible="recipient_type != '1'" readonly="1"/>
+                                    <field name="corp_name" invisible="recipient_type == '1'" readonly="1"/>
+                                    <field name="sin" password="True" invisible="recipient_type != '1'" readonly="1"/>
+                                    <field name="recipient_bn" readonly="1"/>
+                                </group>
+                                <group>
+                                    <field name="street" readonly="1"/>
+                                    <field name="street2" readonly="1"/>
+                                    <field name="city" readonly="1"/>
+                                    <field name="state_code" readonly="1"/>
+                                    <field name="zip" readonly="1"/>
+                                    <field name="country_code" readonly="1"/>
+                                </group>
+                            </group>
+                        </page>
+                    </notebook>
+                </sheet>
+                <chatter/>
+            </form>
+        </field>
+    </record>
+
+    <record id="view_l10n_ca_slip_search" model="ir.ui.view">
+        <field name="name">l10n.ca.slip.search</field>
+        <field name="model">l10n.ca.slip</field>
+        <field name="arch" type="xml">
+            <search>
+                <field name="partner_id"/>
+                <field name="return_id"/>
+                <filter string="T4A" name="t4a" domain="[('slip_type', '=', 't4a')]"/>
+                <filter string="T5018" name="t5018" domain="[('slip_type', '=', 't5018')]"/>
+                <separator/>
+                <filter string="Draft" name="draft" domain="[('state', '=', 'draft')]"/>
+                <filter string="Filed" name="filed" domain="[('state', '=', 'filed')]"/>
+                <filter string="Email failed" name="email_failed" domain="[('mail_id.state', '=', 'exception')]"
+                        groups="account.group_account_manager"/>
+                <filter string="Adjusted" name="adjusted" domain="['|', ('adjustment_base', '!=', 0), ('adjustment_incl', '!=', 0)]"/>
+                <group>
+                    <filter string="Year" name="group_year" context="{'group_by': 'year'}"/>
+                    <filter string="Slip type" name="group_type" context="{'group_by': 'slip_type'}"/>
+                </group>
+            </search>
+        </field>
+    </record>
+
+    <record id="action_l10n_ca_slip" model="ir.actions.act_window">
+        <field name="name">Slips</field>
+        <field name="res_model">l10n.ca.slip</field>
+        <field name="view_mode">list,form</field>
+        <field name="search_view_id" ref="view_l10n_ca_slip_search"/>
+    </record>
+</odoo>

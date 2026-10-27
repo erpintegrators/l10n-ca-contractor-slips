@@ -1,0 +1,33 @@
+# Copyright 2026 Solvync Inc.
+# License LGPL-3.0 (https://www.gnu.org/licenses/lgpl-3.0).
+{
+    "name": "T4A and T5018 Slips",
+    "summary": "T4A box 048 and T5018 slips from vendor payments, with CRA XML, PDF slips and portal delivery",
+    "version": "20.0.0.1.0",
+    "category": "Accounting/Localizations/Reporting",
+    "author": "Solvync Inc.",
+    "website": "https://solvync.com",
+    "license": "LGPL-3",
+    "images": ["static/description/banner.png"],
+    "countries": ["ca"],
+    "depends": ["l10n_ca", "portal"],
+    "data": [
+        "security/ir.access.csv",
+        "data/account_account_tag_data.xml",
+        "data/ir_sequence_data.xml",
+        "data/ir_cron_data.xml",
+        "report/l10n_ca_slip_templates.xml",
+        "report/l10n_ca_slip_reports.xml",
+        "data/mail_template_data.xml",
+        "data/portal_entry_data.xml",
+        "views/res_config_settings_views.xml",
+        "views/res_partner_views.xml",
+        "views/account_move_views.xml",
+        "views/l10n_ca_slip_views.xml",
+        "views/l10n_ca_slip_return_views.xml",
+        "views/l10n_ca_slip_menus.xml",
+        "views/portal_templates.xml",
+    ],
+    "development_status": "Beta",
+    "uninstall_hook": "uninstall_hook",
+}

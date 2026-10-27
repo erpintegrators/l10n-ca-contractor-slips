@@ -1,0 +1,9 @@
+<?xml version="1.0" encoding="utf-8"?>
+<odoo>
+    <menuitem id="menu_l10n_ca_slip_return"
+              name="Contractor Slips (T4A, T5018)"
+              parent="account.menu_finance_reports"
+              action="action_l10n_ca_slip_return"
+              groups="account.group_account_manager,account.group_account_readonly"
+              sequence="90"/>
+</odoo>
