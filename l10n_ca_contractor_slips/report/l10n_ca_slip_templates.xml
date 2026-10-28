@@ -197,7 +197,7 @@
                             <p>Payer's name: The name of the contractor who made payments to subcontractors. Payer's program account number: Do not enter your business number on the copies you give to the subcontractors.</p>
                             <p>This slip is issued to subcontractors in the construction industry. For information on how to report your business income, including the income declared on this slip, go to canada.ca/en/services/taxes, see Guide T4002, Self-employed Business, Professional, Commission, Farming, and Fishing Income, or call 1-800-959-5525. The payer has sent a copy of this slip to the Canada Revenue Agency.</p>
                         </div>
-                        <p class="o_notes" t-if="cancelled" style="border-top: 0;">This slip cancels the slip previously issued to you for this period. The payer has told the Canada Revenue Agency.</p>
+                        <p class="o_notes" t-if="cancelled" style="border-top: 0;">This slip cancels the slip previously issued to you for this period. Contact the payer if you need a replacement slip.</p>
 
                         <table class="o_footer">
                             <tr>

@@ -1,3 +1,5 @@
+# Copyright 2026 Solvync Inc.
+# License LGPL-3.0 (https://www.gnu.org/licenses/lgpl-3.0).
 # Seed a demo database with a Canadian company, contractors, bills and payments for 2026.
 # Run with: odoo shell -d <db> < dev/seed_demo.py
 from odoo import Command

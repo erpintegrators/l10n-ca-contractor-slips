@@ -10,3 +10,4 @@ l10n_ca_slip_return_comp_rule,Slip returns: own companies,l10n.ca.slip.return,,c
 l10n_ca_slip_comp_rule,"Slips: read in own companies, or a portal user's own slips",l10n.ca.slip,,r,"['|', ('company_id', 'in', company_ids), ('partner_id', '=', user.commercial_partner_id.id if user.share else False)]"
 l10n_ca_slip_comp_rule_write,Slips: change in own companies only,l10n.ca.slip,,cud,"[('company_id', 'in', company_ids)]"
 l10n_ca_slip_line_comp_rule,Slip payments: own companies,l10n.ca.slip.line,,crud,"[('company_id', 'in', company_ids)]"
+l10n_ca_slip_attachment_rule,Contractor slip files: paying company accounting administrators,ir.attachment,,crud,"['|', ('l10n_ca_slip_company_id', '=', False), ('l10n_ca_slip_company_id', 'in', user.company_ids.ids)] if user.has_group('account.group_account_manager') else [('l10n_ca_slip_company_id', '=', False)]"

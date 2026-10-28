@@ -16,7 +16,7 @@ class TestDeliveryAndSnapshots(L10nCaSlipsCommon):
         super().setUpClass()
         cls.auditor = cls.env["res.users"].create({
             "name": "Auditor", "login": "auditor.r3",
-            "group_ids": [Command.set([cls.env.ref("base.group_user").id, cls.env.ref("account.group_account_readonly").id])],
+            "group_ids": [Command.set([cls.env.ref("base.group_user").id, cls.env.ref("account.group_account_readonly").id, cls.env.ref("base.group_allow_export").id])],
             "company_ids": [Command.set(cls.company.ids)], "company_id": cls.company.id,
         })
 
@@ -66,6 +66,87 @@ class TestDeliveryAndSnapshots(L10nCaSlipsCommon):
         self.assertEqual(len(mail.attachment_ids), 1)
         with self.assertRaises(AccessError):
             mail.attachment_ids.with_user(self.auditor).check_access("read")
+
+    def _private_files(self):
+        self.contractor_a.write({"email": "alex@example.com", "l10n_ca_slip_email_consent": True})
+        self._pay(self._fee_bill(self.contractor_a, "2026-03-01", 900.0), "2026-03-10")
+        slip_return = self._return()
+        self._finalize(slip_return)
+        self._send(slip_return)
+        xml = self.env["ir.attachment"].sudo().search([
+            ("res_model", "=", slip_return._name), ("res_id", "=", slip_return.id), ("res_field", "=", "xml_file"),
+        ])
+        files = xml | slip_return.slip_ids.sudo().mail_id.attachment_ids
+        self.assertEqual(len(files), 2)
+        self.assertEqual(files.mapped("l10n_ca_slip_company_id"), self.company)
+        return files
+
+    def test_private_xml_and_pdf_refuse_read_search_and_export(self):
+        files = self._private_files().with_user(self.auditor)
+        self.assertFalse(files.search([("id", "in", files.ids)]))
+        with self.assertRaises(AccessError):
+            files.read(["raw"])
+        with self.assertRaises(AccessError):
+            files.export_data(["raw"])
+
+    def test_private_files_refuse_another_company_administrator(self):
+        files = self._private_files()
+        other = self.setup_other_company(name="Other payer")["company"]
+        user = self._user("other.files", ["base.group_user", "account.group_account_manager"], companies=other)
+        with self.assertRaises(AccessError):
+            files.with_user(user).read(["raw"])
+
+    def test_payer_administrator_reads_private_files(self):
+        files = self._private_files()
+        self.assertTrue(self.env.user.has_group("account.group_account_manager"))
+        self.assertTrue(all(row["raw"] for row in files.with_user(self.env.user).read(["raw"])))
+
+    def test_private_file_restrictions_cannot_be_removed(self):
+        files = self._private_files()
+        user = self._user("payer.files", ["base.group_user", "account.group_account_manager"])
+        for values in ({"l10n_ca_slip_company_id": False}, {"public": True}, {"access_token": "direct-assignment"}):
+            with self.assertRaises(AccessError):
+                files.with_user(user).write(values)
+        with self.assertRaises(UserError):
+            files.with_user(user).generate_access_token()
+
+    def test_legacy_public_tokens_never_bypass_private_file_access(self):
+        files = self._private_files()
+        files.sudo().write({"public": True, "access_token": "legacy-slip-token"})
+        other = self.setup_other_company(name="Other private file payer")["company"]
+        foreign = self._user("foreign.legacy", ["base.group_user", "account.group_account_manager"], companies=other)
+        for user in (self.auditor, foreign, self.env.ref("base.public_user")):
+            for attachment in files.with_user(user):
+                for token in (None, "legacy-slip-token"):
+                    with self.assertRaises(AccessError):
+                        attachment._can_return_content(access_token=token)
+        for attachment in files.with_user(self.env.user):
+            self.assertTrue(attachment._can_return_content(access_token="legacy-slip-token"))
+
+    def test_upgrade_revokes_links_preserves_xml_and_queued_pdf(self):
+        files = self._private_files()
+        original = {attachment.id: attachment.raw for attachment in files.sudo()}
+        files.sudo().write({"l10n_ca_slip_company_id": False, "public": True, "access_token": "old-link"})
+        self.env["ir.attachment"]._l10n_ca_secure_existing_files()
+        self.assertEqual(files.sudo().mapped("l10n_ca_slip_company_id"), self.company)
+        self.assertFalse(any(files.sudo().mapped("public")))
+        self.assertFalse(any(files.sudo().mapped("access_token")))
+        self.assertEqual({attachment.id: attachment.raw for attachment in files.sudo()}, original)
+        self.env["ir.attachment"]._l10n_ca_secure_existing_files()
+        self.assertEqual({attachment.id: attachment.raw for attachment in files.sudo()}, original)
+
+    def test_unmarked_legacy_xml_refuses_public_shortcuts(self):
+        files = self._private_files()
+        xml = files.filtered(lambda attachment: attachment.res_field == "xml_file")
+        xml.sudo().write({"l10n_ca_slip_company_id": False, "public": True, "access_token": "unmarked-xml"})
+        attachment = xml.with_user(self.env.ref("base.public_user"))
+        with self.assertRaises(AccessError):
+            attachment._can_return_content(access_token="unmarked-xml")
+
+    def test_unrelated_attachment_public_link_still_works(self):
+        attachment = self.env["ir.attachment"].sudo().create({"name": "Public guide", "raw": b"Public text", "public": True})
+        attachment = attachment.with_user(self.env.ref("base.public_user"))
+        self.assertTrue(attachment._can_return_content())
 
     # Branches respect the user's companies
 

@@ -436,6 +436,10 @@ class L10nCaSlip(models.Model):
             "partner_cc_ids": [fields.Command.clear()],
             "attachments": [(f"{self._get_report_base_filename()}.pdf", pdf)],
         })
+        self.env["mail.mail"].sudo().browse(mail_id).attachment_ids.write({
+            "l10n_ca_slip_company_id": self.company_id.id,
+            "public": False, "access_token": False,
+        })
         previous = self.sudo().mail_id
         self.sudo().write({
             "sent_date": fields.Datetime.now(), "mail_id": mail_id, "send_requested_uid": False, "send_to_email": False,
