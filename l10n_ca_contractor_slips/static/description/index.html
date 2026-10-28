@@ -2,7 +2,7 @@
 <h1 itemprop="name" id="t4a-and-t5018-slips">T4A and T5018 Slips</h1>
 <section class="mb-4">
 <h2>Release details</h2>
-<p>Version <span itemprop="softwareVersion">19.0.1</span>, free beta.</p>
+<p>Version <span itemprop="softwareVersion">19.0.1.1</span>, free beta.</p>
 <p itemprop="softwareRequirements">Requires Odoo 19 Community or Enterprise, on Odoo.sh or your own server. Odoo Online is not supported.</p>
 <p><span itemprop="offers" itemscope="" itemtype="https://schema.org/Offer">Module price: <span itemprop="price">0</span> (free).</span> Hosting, Odoo subscriptions and separately agreed services are excluded.</p>
 <p>Published by ERPintegrators.com, by <span itemprop="publisher" itemscope="" itemtype="https://schema.org/Organization"><span itemprop="name">Solvync Inc.</span></span>. Check every slip against your records before filing.</p>
@@ -283,6 +283,12 @@ schema package on an internal web server.</p></li>
 option in the print dialog turned off: CRA's rules for slips you print
 yourself set their size and text size.</p></li>
 </ol>
+<p>Stored CRA XML and queued slip PDFs are private to the paying
+company's accounting administrators. Public attachment flags and
+download tokens do not grant access to these files. Upgrading the module
+revokes legacy public links and restores payer restrictions while
+retaining the file bytes. Recipients use their own slip portal, which
+applies the recipient and masking rules.</p>
 <h2 id="usage">Usage</h2>
 <ol type="1">
 <li>Go to <strong>Accounting &gt; Reporting &gt; Contractor Slips (T4A,

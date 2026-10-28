@@ -1,5 +1,10 @@
 <?xml version="1.0" encoding="utf-8"?>
 <odoo noupdate="1">
+    <record id="l10n_ca_slip_attachment_rule" model="ir.rule">
+        <field name="name">Contractor slip files: paying company's accounting administrators</field>
+        <field name="model_id" ref="base.model_ir_attachment"/>
+        <field name="domain_force">['|', ('l10n_ca_slip_company_id', '=', False), ('l10n_ca_slip_company_id', 'in', user.company_ids.ids)] if user.has_group('account.group_account_manager') else [('l10n_ca_slip_company_id', '=', False)]</field>
+    </record>
     <record id="l10n_ca_slip_return_comp_rule" model="ir.rule">
         <field name="name">Slip returns: own companies</field>
         <field name="model_id" ref="model_l10n_ca_slip_return"/>

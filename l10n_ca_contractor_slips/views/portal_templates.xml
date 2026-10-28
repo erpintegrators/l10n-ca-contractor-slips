@@ -66,7 +66,7 @@
                         <strong t-out="slip.amount_reported" t-options="{'widget': 'monetary', 'display_currency': slip.currency_id}"/></p>
                     <p class="mb-1" t-else="">Box 22, construction subcontractor payments:
                         <strong t-out="slip.amount_reported" t-options="{'widget': 'monetary', 'display_currency': slip.currency_id}"/></p>
-                    <p class="alert alert-warning" t-if="slip.rpt_tcd == 'C'">This slip was cancelled. The payer has told the Canada Revenue Agency; do not use it on your tax return.</p>
+                    <p class="alert alert-warning" t-if="slip.rpt_tcd == 'C'">This slip was cancelled. Do not use it on your tax return. Contact the payer if you need a replacement slip.</p>
                     <p class="text-muted small">The PDF shows the boxes that apply to you. Keep it for your tax return. If you would rather have paper copies, ask the payer and they will mail them.</p>
                     <a class="btn btn-primary" t-att-href="slip.get_portal_url(report_type='pdf', download=True)">
                         <i class="fa fa-download me-1"/>Download PDF</a>

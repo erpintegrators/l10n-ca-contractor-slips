@@ -234,6 +234,13 @@ normal user settings.
    in the print dialog turned off: CRA's rules for slips you print
    yourself set their size and text size.
 
+Stored CRA XML and queued slip PDFs are private to the paying company's
+accounting administrators. Public attachment flags and download tokens
+do not grant access to these files. Upgrading the module revokes legacy
+public links and restores payer restrictions while retaining the file
+bytes. Recipients use their own slip portal, which applies the recipient
+and masking rules.
+
 Usage
 -----
 
