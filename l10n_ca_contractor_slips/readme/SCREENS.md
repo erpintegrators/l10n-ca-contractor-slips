@@ -26,8 +26,7 @@ The accounting and filing limits below apply to both Community and Enterprise.
 
 <img width="720" height="450" src="t4a-t5018-odoo-19-walkthrough.gif" alt="Odoo 19 T5018 walkthrough: calculate three slips, inspect the amount and payment trace, finalize and download the CRA XML file" />
 
-This 16-second walkthrough uses a camera and cursor over reproduced Odoo screens. Calculate
-slips, review the contractor's amount and matched bills, finalize, then download the CRA file.
+This 16-second T5018 walkthrough shows how to calculate slips, review the contractor's amount and matched bills, finalize, then download the CRA file.
 Review the file and upload it to CRA separately using your own authorized account. Downloading
 the XML does not file the return or establish CRA acceptance.
 
