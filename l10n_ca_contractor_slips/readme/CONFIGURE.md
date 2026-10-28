@@ -88,6 +88,17 @@ to see SINs. Keep the restriction enabled. Uninstall leaves this security settin
    ahead of time, use **Download CRA schemas** in the same settings block. A server without internet
    access can point the system parameter `l10n_ca_contractor_slips.cra_schema_url` at a copy of
    CRA's schema package on an internal web server.
+
+   The default is CRA's **2026 submission package** until 10 January 2027, then the
+   **2027 package from 11 January 2027**, using Eastern time. The filing service date determines
+   the package, independently of the tax year on the return. The draft return displays the
+   default package year. CRA's electronic filing service closes on 22 December 2026 and reopens
+   on 11 January 2027; the module displays a notice during that period. Preparation is possible
+   during the closure, but wait for the service to reopen before uploading. A custom schema
+   mirror overrides the automatic package selection; its administrator must maintain it.
+   Existing final and filed XML files are preserved. Check CRA's
+   [current XML specifications](https://www.canada.ca/en/revenue-agency/services/e-services/filing-information-returns-electronically-t4-t5-other-types-returns-overview/xml-specs.html)
+   before submitting.
 5. Print slips at actual size, with any "fit to page" or scaling option in the print dialog turned
    off: CRA's rules for slips you print yourself set their size and text size.
 

@@ -37,7 +37,8 @@ From there you can:
 - review and adjust slips (each adjustment needs a reason and is
   logged),
 - finalize the return, which produces the CRA XML file and checks it
-  against CRA's published 2027 schemas before you upload it,
+  against CRA's published 2026 schemas now, with the 2027 package
+  selected from 11 January 2027,
 - print customized slips laid out to follow CRA's rules for slips you
   print yourself (Information Circular IC97-2R20), two copies per sheet,
   email them to recipients who agreed to electronic slips, and let
@@ -60,8 +61,8 @@ Revenue Agency (CRA). It gives no tax, accounting or legal advice;
 decide what is reportable with your accountant.
 
 You remain responsible for every slip, the file you upload, deadlines,
-delivery to recipients, and any CRA penalty or interest. This is a beta
-release, so check each slip against your records before filing.
+delivery to recipients, and any CRA penalty or interest. Check each slip
+against your records before filing.
 
 Schema validation checks the file's format only. It cannot tell you
 whether amounts or identifiers are correct, or whether CRA will accept
@@ -70,10 +71,10 @@ the return.
 Solvync Inc. has no affiliation with CRA, and CRA has not endorsed this
 module.
 
-This free software is licensed under the GNU Lesser General Public
-License, version 3. To the extent the law allows, it is provided as is,
-without warranty of any kind, including as to accuracy, and Solvync Inc.
-is not liable for any loss arising from its use.
+This software is licensed under the GNU Lesser General Public License,
+version 3. To the extent the law allows, it is provided as is, without
+warranty of any kind, including as to accuracy, and Solvync Inc. is not
+liable for any loss arising from its use.
 
 Privacy
 -------
@@ -240,6 +241,20 @@ Uninstall leaves this security setting enabled.
    the same settings block. A server without internet access can point
    the system parameter ``l10n_ca_contractor_slips.cra_schema_url`` at a
    copy of CRA's schema package on an internal web server.
+
+   The default is CRA's **2026 submission package** until 10 January
+   2027, then the **2027 package from 11 January 2027**, using Eastern
+   time. The filing service date determines the package, independently
+   of the tax year on the return. The draft return displays the default
+   package year. CRA's electronic filing service closes on 22 December
+   2026 and reopens on 11 January 2027; the module displays a notice
+   during that period. Preparation is possible during the closure, but
+   wait for the service to reopen before uploading. A custom schema
+   mirror overrides the automatic package selection; its administrator
+   must maintain it. Existing final and filed XML files are preserved.
+   Check CRA's `current XML
+   specifications <https://www.canada.ca/en/revenue-agency/services/e-services/filing-information-returns-electronically-t4-t5-other-types-returns-overview/xml-specs.html>`__
+   before submitting.
 
 5. Print slips at actual size, with any "fit to page" or scaling option
    in the print dialog turned off: CRA's rules for slips you print

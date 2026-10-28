@@ -26,3 +26,4 @@ from . import test_t4a_engine
 from . import test_t5018_engine
 from . import test_workflow_guards
 from . import test_xml_downloads
+from . import test_submission_formats

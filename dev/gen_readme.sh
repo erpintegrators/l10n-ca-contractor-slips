@@ -51,7 +51,7 @@ html = page.read_text()
 html = html.replace('<h1 id="t4a-and-t5018-slips">', '<h1 itemprop="name" id="t4a-and-t5018-slips">', 1)
 facts = f'''<section class="mb-4">
 <h2>Release details</h2>
-<p>Version <span itemprop="softwareVersion">{escape(version)}</span>, free beta.</p>
+<p>Version <span itemprop="softwareVersion">{escape(version)}</span>, stable release.</p>
 <p>Server operating system: <span itemprop="operatingSystem">Linux</span>.</p>
 <p itemprop="softwareRequirements">Requires Odoo {escape(major)} Community or Enterprise, on Odoo.sh or your own server. Odoo Online is not supported.</p>
 <p><span itemprop="offers" itemscope="" itemtype="https://schema.org/Offer">Module price: <span itemprop="price">0</span> <span itemprop="priceCurrency">CAD</span> (free).</span> Hosting, Odoo subscriptions and separately agreed services are excluded.</p>

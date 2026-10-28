@@ -22,13 +22,16 @@ PRINTED_SIN = "130 692 544"
 MASKED_SIN = "*** *** 544"
 
 
-def cra_schema_zip_path():
+def cra_schema_zip_path(year="2026"):
     """The CRA schema package is downloaded by CI (and by dev/fetch_schemas.sh locally) next to
     the module, never committed."""
-    if os.environ.get("L10N_CA_SLIPS_XSD_ZIP"):
+    if os.environ.get(f"L10N_CA_SLIPS_XSD_{year}_ZIP"):
+        return os.environ[f"L10N_CA_SLIPS_XSD_{year}_ZIP"]
+    if year == "2026" and os.environ.get("L10N_CA_SLIPS_XSD_ZIP"):
         return os.environ["L10N_CA_SLIPS_XSD_ZIP"]
     repo = os.path.dirname(get_module_path("l10n_ca_contractor_slips"))
-    return os.path.join(repo, ".cra", "zip", "xmlschm1-27-1.zip")
+    filename = "xmlschm1-26-3.zip" if year == "2026" else "xmlschm1-27-1.zip"
+    return os.path.join(repo, ".cra", "zip", filename)
 
 
 class FakeResponse:
@@ -208,7 +211,7 @@ class L10nCaSlipsCommon(AccountTestInvoicingCommon):
         return slip_return.slip_ids.filtered(lambda s: s.partner_id == partner)
 
     def _load_schemas(self):
-        path = cra_schema_zip_path()
+        path = cra_schema_zip_path(self.env["l10n.ca.slip.return"]._l10n_ca_schema_year())
         if not os.path.exists(path):
             message = f"CRA schema package not found at {path}; run dev/fetch_schemas.sh"
             if os.environ.get("L10N_CA_SLIPS_REQUIRE_SCHEMAS"):

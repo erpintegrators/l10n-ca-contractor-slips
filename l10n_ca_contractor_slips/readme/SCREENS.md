@@ -56,14 +56,17 @@ Use Odoo 17 Community or Enterprise on Odoo.sh or your own server. Odoo Online d
 allow installation of this custom Python module. The accounting workflow uses Canadian
 localization and the setup described below.
 
-### What does the beta cost?
+### What does the module cost?
 
-The module is free under LGPL-3. Hosting, Odoo subscriptions and any separately agreed
-implementation or support services are outside that price. Check each slip against your
-records before filing. Your business remains responsible for the return and recipient delivery.
+The Odoo Apps price is **US$199** for this Odoo version. The LGPL-3 license remains in place,
+and the source repository is public. Hosting and Odoo subscriptions are separate. Bug fixes and
+configuration advice follow the Odoo Apps support terms; installation, customization and other
+services are quoted separately. Check each slip against your records before filing. Your business
+remains responsible for the return and recipient delivery.
 
 ### Who should maintain the annual filing setup?
 
 Assign an owner to check the current CRA schema, form requirements and your reporting
 settings before each filing season. Read the known issues and roadmap before choosing a
-filing workflow. Current CRA interpretation questions remain part of the beta review.
+filing workflow. Solvync Inc. maintains the module; your filing owner checks the reporting
+treatment and submission requirements for your business.
