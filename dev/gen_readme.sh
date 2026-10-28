@@ -54,7 +54,7 @@ facts = f'''<section class="mb-4">
 <p>Version <span itemprop="softwareVersion">{escape(version)}</span>, stable release.</p>
 <p>Server operating system: <span itemprop="operatingSystem">Linux</span>.</p>
 <p itemprop="softwareRequirements">Requires Odoo {escape(major)} Community or Enterprise, on Odoo.sh or your own server. Odoo Online is not supported.</p>
-<p><span itemprop="offers" itemscope="" itemtype="https://schema.org/Offer">Module price: <span itemprop="price">0</span> <span itemprop="priceCurrency">CAD</span> (free).</span> Hosting, Odoo subscriptions and separately agreed services are excluded.</p>
+<p><span itemprop="offers" itemscope="" itemtype="https://schema.org/Offer">Module price: US$<span itemprop="price">199</span> <span itemprop="priceCurrency">USD</span>.</span> Hosting, Odoo subscriptions and separately agreed services are excluded.</p>
 <p>Published by ERPintegrators.com, by <span itemprop="publisher" itemscope="" itemtype="https://schema.org/Organization"><span itemprop="name">Solvync Inc.</span></span>. Check every slip against your records before filing.</p>
 </section>
 '''
