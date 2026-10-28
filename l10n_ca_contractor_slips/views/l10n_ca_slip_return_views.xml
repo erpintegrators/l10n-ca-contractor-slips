@@ -1,0 +1,160 @@
+<?xml version="1.0" encoding="utf-8"?>
+<odoo>
+    <record id="view_l10n_ca_slip_return_list" model="ir.ui.view">
+        <field name="name">l10n.ca.slip.return.list</field>
+        <field name="model">l10n.ca.slip.return</field>
+        <field name="arch" type="xml">
+            <list string="Slip returns">
+                <field name="name"/>
+                <field name="slip_type"/>
+                <field name="year" options="{'enable_formatting': false}"/>
+                <field name="date_from" optional="hide"/>
+                <field name="date_to" optional="hide"/>
+                <field name="report_type"/>
+                <field name="slip_count"/>
+                <field name="total_reported"/>
+                <field name="filed_date" optional="show"/>
+                <field name="company_id" groups="base.group_multi_company" optional="show"/>
+                <field name="currency_id" column_invisible="True"/>
+                <field name="state" widget="badge" decoration-success="state == 'filed'" decoration-info="state == 'final'"/>
+            </list>
+        </field>
+    </record>
+
+    <record id="view_l10n_ca_slip_return_form" model="ir.ui.view">
+        <field name="name">l10n.ca.slip.return.form</field>
+        <field name="model">l10n.ca.slip.return</field>
+        <field name="arch" type="xml">
+            <form string="Slip return">
+                <header>
+                    <button name="action_compute" type="object" string="Calculate slips" class="btn-primary"
+                            invisible="state != 'draft' or slip_count" groups="account.group_account_manager"/>
+                    <button name="action_compute" type="object" string="Recalculate"
+                            invisible="state != 'draft' or not slip_count" groups="account.group_account_manager"/>
+                    <button name="action_finalize" type="object" string="Finalize" class="btn-primary"
+                            invisible="state != 'draft' or not slip_count" groups="account.group_account_manager"/>
+                    <button name="action_download_xml" type="object" string="Download CRA file" class="btn-primary"
+                            invisible="state != 'final'" groups="account.group_account_manager"/>
+                    <button name="action_download_xml" type="object" string="Download CRA file"
+                            invisible="state != 'filed'" groups="account.group_account_manager"/>
+                    <button name="action_mark_filed" type="object" string="Mark as filed" invisible="state != 'final'"
+                            confirm="Mark this return as filed with CRA? Its slips will be locked."
+                            groups="account.group_account_manager"/>
+                    <button name="action_print_slips" type="object" string="Print slips" invisible="state == 'draft'"
+                            groups="account.group_account_manager"/>
+                    <button name="action_print_duplicates" type="object" string="Print duplicates" invisible="state == 'draft'"
+                            groups="account.group_account_manager"/>
+                    <button name="action_send_slips" type="object" string="Email slips" invisible="state == 'draft'"
+                            groups="account.group_account_manager"/>
+                    <button name="action_reset_to_draft" type="object" string="Back to draft" invisible="state != 'final'"
+                            groups="account.group_account_manager"/>
+                    <button name="action_create_amendment" type="object" string="Amend"
+                            invisible="state != 'filed' or amendment_ids" groups="account.group_account_manager"/>
+                    <field name="state" widget="statusbar"/>
+                </header>
+                <sheet>
+                    <div class="oe_button_box" name="button_box">
+                        <button name="%(action_l10n_ca_slip)d" type="action" class="oe_stat_button" icon="fa-book"
+                                context="{'search_default_return_id': id}">
+                            <field name="slip_count" widget="statinfo" string="Slips"/>
+                        </button>
+                    </div>
+                    <div class="alert alert-warning mb-3" role="alert" invisible="not warning_message">
+                        <field name="warning_message"/>
+                    </div>
+                    <div class="oe_title">
+                        <h1><field name="name" readonly="True"/></h1>
+                    </div>
+                    <group>
+                        <group>
+                            <field name="slip_type" readonly="state != 'draft' or slip_count or report_type == 'A'"/>
+                            <field name="year" readonly="state != 'draft' or slip_count or report_type == 'A'" options="{'enable_formatting': false}"/>
+                            <label for="date_from" string="Period"/>
+                            <div class="o_row">
+                                <field name="date_from" readonly="state != 'draft' or report_type == 'A' or slip_type == 't4a'"/>
+                                <span>to</span>
+                                <field name="date_to" readonly="state != 'draft' or report_type == 'A' or slip_type == 't4a'"/>
+                            </div>
+                            <field name="due_date"/>
+                            <field name="report_type"/>
+                            <field name="origin_id" invisible="not origin_id"/>
+                        </group>
+                        <group>
+                            <field name="company_id" groups="base.group_multi_company"/>
+                            <field name="currency_id" invisible="True"/>
+                            <field name="exported_slip_count" string="Slips in the file"/>
+                            <field name="total_reported"/>
+                            <field name="sbmt_ref_id" invisible="not sbmt_ref_id"/>
+                            <field name="xml_filename" invisible="1"/>
+                            <field name="xml_file" filename="xml_filename" invisible="not has_xml_file"/>
+                            <field name="has_xml_file" invisible="1"/>
+                            <field name="filed_date" invisible="not filed_date"/>
+                            <field name="cra_confirmation" invisible="state != 'filed'"/>
+                        </group>
+                    </group>
+                    <field name="amendment_note" invisible="report_type != 'A'" readonly="state != 'draft'"
+                           placeholder="For each slip, name the recipient and say what changed and why."/>
+                    <notebook>
+                        <page string="Slips" name="slips">
+                            <field name="slip_ids" readonly="state != 'draft'" context="{'list_view_ref': 'l10n_ca_contractor_slips.view_l10n_ca_slip_list'}">
+                                <list create="False" editable="bottom" decoration-warning="warning_message">
+                                    <field name="partner_id" readonly="True"/>
+                                    <field name="recipient_type" optional="hide" readonly="True"/>
+                                    <field name="surname" optional="show" readonly="True"/>
+                                    <field name="given_name" optional="show" readonly="True"/>
+                                    <field name="computed_base" readonly="True" sum="Total" column_invisible="parent.slip_type == 't5018'"/>
+                                    <field name="computed_incl" readonly="True" sum="Total" column_invisible="parent.slip_type != 't5018'"/>
+                                    <field name="adjustment_base" optional="show" sum="Total" column_invisible="parent.slip_type == 't5018'"/>
+                                    <field name="adjustment_incl" optional="show" sum="Total" column_invisible="parent.slip_type != 't5018'"/>
+                                    <field name="adjustment_reason" optional="show" required="adjustment_base or adjustment_incl"/>
+                                    <field name="amount_reported" sum="Total"/>
+                                    <field name="is_cancelled" column_invisible="parent.report_type != 'A'"/>
+                                    <field name="rpt_tcd" optional="show"/>
+                                    <field name="warning_message" column_invisible="True"/>
+                                    <field name="currency_id" column_invisible="True"/>
+                                    <button name="action_open_slip" type="object" icon="fa-arrow-right" title="Open slip"/>
+                                </list>
+                            </field>
+                        </page>
+                        <page string="Amendments" name="amendments" invisible="not amendment_ids">
+                            <field name="amendment_ids" readonly="True"/>
+                        </page>
+                    </notebook>
+                </sheet>
+                <chatter/>
+            </form>
+        </field>
+    </record>
+
+    <record id="view_l10n_ca_slip_return_search" model="ir.ui.view">
+        <field name="name">l10n.ca.slip.return.search</field>
+        <field name="model">l10n.ca.slip.return</field>
+        <field name="arch" type="xml">
+            <search>
+                <field name="name"/>
+                <field name="year"/>
+                <filter string="T4A" name="t4a" domain="[('slip_type', '=', 't4a')]"/>
+                <filter string="T5018" name="t5018" domain="[('slip_type', '=', 't5018')]"/>
+                <separator/>
+                <filter string="Draft" name="draft" domain="[('state', '=', 'draft')]"/>
+                <filter string="Final" name="final" domain="[('state', '=', 'final')]"/>
+                <filter string="Filed" name="filed" domain="[('state', '=', 'filed')]"/>
+                <group>
+                    <filter string="Year" name="group_year" context="{'group_by': 'year'}"/>
+                </group>
+            </search>
+        </field>
+    </record>
+
+    <record id="action_l10n_ca_slip_return" model="ir.actions.act_window">
+        <field name="name">Contractor slips (T4A, T5018)</field>
+        <field name="res_model">l10n.ca.slip.return</field>
+        <field name="view_mode">list,form</field>
+        <field name="search_view_id" ref="view_l10n_ca_slip_return_search"/>
+        <field name="help" type="html">
+            <p class="o_view_nocontent_smiling_face">Prepare your T4A or T5018 return</p>
+            <p>Flag contractors on their contact (Invoicing tab), tag the expense accounts you pay them from,
+               then create a return for the year. Slips are calculated from what you actually paid.</p>
+        </field>
+    </record>
+</odoo>
