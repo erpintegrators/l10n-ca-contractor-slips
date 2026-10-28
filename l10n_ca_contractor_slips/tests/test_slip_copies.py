@@ -123,6 +123,7 @@ class TestSlipCopies(L10nCaSlipsCommon):
         arch = self.env.ref("l10n_ca_contractor_slips.portal_slip_page").arch_db
         self.assertIn("If you would rather have paper copies", arch)
         self.assertIn("This slip was cancelled", arch)
+        self.assertNotIn("payer has told", arch)
 
     def test_sole_proprietor_with_a_business_number_needs_no_sin_warning(self):
         self.contractor_c.vat = "897012340RT0001"

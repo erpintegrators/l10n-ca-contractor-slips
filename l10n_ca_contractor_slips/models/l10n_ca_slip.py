@@ -324,17 +324,17 @@ class L10nCaSlip(models.Model):
 
     @api.model
     def _cron_send_pending(self):
-        """Render and email queued slips in batches, committing after each batch. Failed emails are
-        deleted, with their PDF, after a month: the slip keeps the failure in its messages."""
+        """Prepare one bounded batch and report progress to Odoo 18's scheduler.
+
+        The scheduler commits each batch and continues while work remains.
+        Failed emails and their PDFs are deleted after a month.
+        """
         self._purge_failed_emails()
-        while True:
-            slips = self.sudo().search([("send_requested_uid", "!=", False)], limit=SEND_BATCH)
-            if not slips:
-                return
-            slips._send_pending()
-            remaining = self.sudo().search_count([("send_requested_uid", "!=", False)])
-            if self.env["ir.cron"]._commit_progress(len(slips), remaining=remaining) <= 0:
-                return
+        pending = [("send_requested_uid", "!=", False)]
+        slips = self.sudo().search(pending, limit=SEND_BATCH)
+        slips._send_pending()
+        remaining = self.sudo().search_count(pending)
+        self.env["ir.cron"]._notify_progress(done=len(slips), remaining=remaining)
 
     @api.model
     def _purge_failed_emails(self):

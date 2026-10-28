@@ -2864,8 +2864,8 @@ msgstr ""
 #. module: l10n_ca_contractor_slips
 #: model_terms:ir.ui.view,arch_db:l10n_ca_contractor_slips.report_l10n_ca_slip_document
 msgid ""
-"This slip cancels the slip previously issued to you for this period. The "
-"payer has told the Canada Revenue Agency."
+"This slip cancels the slip previously issued to you for this period. Contact "
+"the payer if you need a replacement slip."
 msgstr ""
 
 #. module: l10n_ca_contractor_slips
@@ -2882,8 +2882,8 @@ msgstr ""
 #. module: l10n_ca_contractor_slips
 #: model_terms:ir.ui.view,arch_db:l10n_ca_contractor_slips.portal_slip_page
 msgid ""
-"This slip was cancelled. The payer has told the Canada Revenue Agency; do "
-"not use it on your tax return."
+"This slip was cancelled. Do not use it on your tax return. Contact the payer "
+"if you need a replacement slip."
 msgstr ""
 
 #. module: l10n_ca_contractor_slips

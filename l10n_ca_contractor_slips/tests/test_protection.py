@@ -1,11 +1,14 @@
 # Copyright 2026 Solvync Inc.
 # License LGPL-3.0 (https://www.gnu.org/licenses/lgpl-3.0).
 """What keeps SINs private and filed returns intact."""
+from unittest.mock import patch
+
 from odoo import Command
 from odoo.exceptions import AccessError, UserError
 from odoo.tests import tagged
 
 from .. import uninstall_hook
+from ..models import l10n_ca_slip
 from .common import OTHER_SIN, VALID_SIN, L10nCaSlipsCommon
 
 
@@ -100,6 +103,29 @@ class TestProtection(L10nCaSlipsCommon):
         slip = slip_return.slip_ids
         self.assertEqual(slip.sudo().send_requested_uid, self.env.user)
         self.assertEqual(slip.sudo().send_to_email, self.contractor_a.email_formatted)
+        cron.ir_actions_server_id.run()
+        self.assertFalse(slip.sudo().send_requested_uid)
+        self.assertEqual(slip.sudo().mail_id.state, "outgoing")
+        self.assertEqual(len(self._slip_mail(self.contractor_a)), 1)
+
+    def test_cron_reports_bounded_batches_without_sending_twice(self):
+        self.contractor_b.write({"email": "bailey@example.com", "l10n_ca_slip_email_consent": True})
+        self._pay(self._fee_bill(self.contractor_b, "2026-05-01", 620.0), "2026-05-10")
+        slip_return = self._final()
+        slip_return.action_send_slips()
+        cron, progress = self.env.ref("l10n_ca_contractor_slips.ir_cron_send_slips")._add_progress()
+        with patch.object(l10n_ca_slip, "SEND_BATCH", 1):
+            cron.ir_actions_server_id.run()
+            self.assertEqual(len(slip_return.slip_ids.filtered("send_requested_uid")), 1)
+            self.assertEqual(len(slip_return.slip_ids.mapped("mail_id")), 1)
+            self.assertEqual((progress.done, progress.remaining), (1, 1))
+            cron.ir_actions_server_id.run()
+            self.assertFalse(slip_return.slip_ids.filtered("send_requested_uid"))
+            self.assertEqual(len(slip_return.slip_ids.mapped("mail_id")), 2)
+            self.assertEqual((progress.done, progress.remaining), (1, 0))
+            cron.ir_actions_server_id.run()
+            self.assertEqual(len(slip_return.slip_ids.mapped("mail_id")), 2)
+            self.assertEqual((progress.done, progress.remaining), (0, 0))
 
     # Bills keep the slip their vendor sets
 
