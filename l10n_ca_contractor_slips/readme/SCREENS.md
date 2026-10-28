@@ -1,27 +1,35 @@
 ## Review the contractor reporting workflow
 
-These screens show staged T5018 and T4A records in Odoo 17 Enterprise. Names, amounts and
-records are demo data. The example 2026 period is still open; review the warning before filing.
-Each image focuses on one part of the workflow. The accounting and filing limits below apply
-to both editions.
+These screens show fictional T5018 records in Odoo 17 Community. The closed 2025 calendar
+return has three slips totalling CAD34,650. The example uses the 2026 XML submission format.
+The accounting and filing limits below apply to both Community and Enterprise.
 
 <div class="row">
 <div class="col-12 col-lg-6 mb-4">
-<img width="1200" height="1200" src="screenshots/01-reporting-period.png" alt="T5018 return in Odoo showing the reporting period, four slips and a total reported of 43,554 Canadian dollars" />
+<img width="1200" height="1200" src="screenshots/01-reporting-period.png" alt="T5018 return in Odoo 17 showing the closed 2025 calendar period, three slips and CAD34,650 reported" />
 </div>
 <div class="col-12 col-lg-6 mb-4">
-<img width="1200" height="1200" src="screenshots/02-reported-amount.png" alt="A contractor's T5018 slip showing 24,000 dollars before tax and 25,200 dollars reported with tax" />
+<img width="1200" height="1200" src="screenshots/02-reported-amount.png" alt="T5018 example: Cedarline Framing Ltd., CAD24,000 before tax and CAD25,200 reported with tax" />
 </div>
 <div class="col-12 col-lg-6 mb-4">
-<img width="1200" height="1200" src="screenshots/03-payment-trace.png" alt="The payment trace on an Odoo contractor slip, with the paid date and the vendor bill it settled" />
+<img width="1200" height="1200" src="screenshots/03-payment-trace.png" alt="Two dated matched vendor bills supporting Cedarline Framing Ltd. T5018 payments" />
 </div>
 <div class="col-12 col-lg-6 mb-4">
-<img width="1200" height="1200" src="screenshots/04-cra-xml.png" alt="A finalized T5018 return with Download CRA file and its generated XML attachment, prepared for the buyer to upload" />
+<img width="1200" height="1200" src="screenshots/04-cra-xml.png" alt="Finalized T5018 return with Download CRA file, ready for review and separate upload to CRA" />
 </div>
 <div class="col-12 col-lg-6 mb-4">
-<img width="1200" height="1200" src="screenshots/05-recipient-portal.png" alt="The contractor portal listing a T4A for 2026, the recipient's amount of 2,150 dollars and a PDF download link" />
+<img width="1200" height="1200" src="screenshots/05-recipient-portal.png" alt="Recipient portal showing the contractor's own 2025 T5018 slip, CAD25,200 reported and a PDF download" />
 </div>
 </div>
+
+### Watch the workflow in Odoo 17
+
+<img width="720" height="450" src="t4a-t5018-odoo-17-walkthrough.gif" alt="Odoo 17 T5018 walkthrough: calculate three slips, inspect the amount and payment trace, finalize and download the CRA XML file" />
+
+This 16-second walkthrough uses a camera and cursor over reproduced Odoo screens. Calculate
+slips, review the contractor's amount and matched bills, finalize, then download the CRA file.
+Review the file and upload it to CRA separately using your own authorized account. Downloading
+the XML does not file the return or establish CRA acceptance.
 
 ## Questions about T4A and T5018 in Odoo
 
