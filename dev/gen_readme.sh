@@ -38,6 +38,29 @@ page.write_text(html.replace(marker, block + marker, 1))
 screens.unlink()
 PY
 fi
+# Keep visible release facts and their microdata in the generated store description.
+python3 - <<'PYSCHEMA'
+import ast
+from html import escape
+from pathlib import Path
+manifest = ast.literal_eval(Path("__manifest__.py").read_text())
+version = manifest["version"]
+major = version.split(".")[0]
+page = Path("static/description/index.html")
+html = page.read_text()
+html = html.replace('<h1 id="t4a-and-t5018-slips">', '<h1 itemprop="name" id="t4a-and-t5018-slips">', 1)
+facts = f'''<section class="mb-4">
+<h2>Release details</h2>
+<p>Version <span itemprop="softwareVersion">{escape(version)}</span>, free beta.</p>
+<p itemprop="softwareRequirements">Requires Odoo {escape(major)} Community or Enterprise, on Odoo.sh or your own server. Odoo Online is not supported.</p>
+<p><span itemprop="offers" itemscope="" itemtype="https://schema.org/Offer">Module price: <span itemprop="price">0</span> (free).</span> Hosting, Odoo subscriptions and separately agreed services are excluded.</p>
+<p>Published by ERPintegrators.com, by <span itemprop="publisher" itemscope="" itemtype="https://schema.org/Organization"><span itemprop="name">Solvync Inc.</span></span>. Check every slip against your records before filing.</p>
+</section>
+'''
+heading_end = html.index("</h1>") + len("</h1>")
+html = html[:heading_end] + "\n" + facts + html[heading_end:]
+page.write_text('<div itemscope="" itemtype="https://schema.org/SoftwareApplication">\n' + html + "\n</div>\n")
+PYSCHEMA
 # Numeric entities preserve accented text when the store parses an HTML fragment.
 python3 - <<'PYHTML'
 from pathlib import Path
