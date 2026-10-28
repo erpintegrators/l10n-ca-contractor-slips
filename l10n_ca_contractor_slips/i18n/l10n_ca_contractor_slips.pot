@@ -1,0 +1,3124 @@
+# Translation of Odoo Server.
+# This file contains the translation of the following modules:
+# 	* l10n_ca_contractor_slips
+#
+msgid ""
+msgstr ""
+"Project-Id-Version: Odoo Server 18.0\n"
+"Report-Msgid-Bugs-To: \n"
+"POT-Creation-Date: 2026-10-27 12:03+0000\n"
+"PO-Revision-Date: 2026-10-27 12:03+0000\n"
+"Last-Translator: \n"
+"Language-Team: \n"
+"MIME-Version: 1.0\n"
+"Content-Type: text/plain; charset=UTF-8\n"
+"Content-Transfer-Encoding: \n"
+"Plural-Forms: \n"
+
+#. module: l10n_ca_contractor_slips
+#. odoo-python
+#: code:addons/l10n_ca_contractor_slips/models/l10n_ca_slip_return.py:0
+msgid " (amended)"
+msgstr ""
+
+#. module: l10n_ca_contractor_slips
+#. odoo-python
+#: code:addons/l10n_ca_contractor_slips/models/l10n_ca_slip_engine.py:0
+msgid ""
+"%(amount)s paid in the period is not matched to a posted bill and is left "
+"out. Match it to its bills and recalculate."
+msgstr ""
+
+#. module: l10n_ca_contractor_slips
+#. odoo-python
+#: code:addons/l10n_ca_contractor_slips/models/l10n_ca_slip_engine.py:0
+msgid ""
+"%(amount)s paid in the period settles journal entries (%(entries)s) and is "
+"left out, because a journal entry does not say what the money paid for. If "
+"it paid for services, record them as a bill on a tagged account, or adjust "
+"the slip."
+msgstr ""
+
+#. module: l10n_ca_contractor_slips
+#. odoo-python
+#: code:addons/l10n_ca_contractor_slips/models/l10n_ca_slip_engine.py:0
+msgid ""
+"%(amount)s paid on %(date)s went to %(account)s, which is not tagged for "
+"%(slip)s. If it releases a holdback, tag that account so it counts."
+msgstr ""
+
+#. module: l10n_ca_contractor_slips
+#. odoo-python
+#: code:addons/l10n_ca_contractor_slips/models/l10n_ca_slip_engine.py:0
+msgid ""
+"%(bill)s bills %(amount)s to %(account)s, which is not tagged for %(slip)s. "
+"If it releases a holdback, tag that account so it counts."
+msgstr ""
+
+#. module: l10n_ca_contractor_slips
+#. odoo-python
+#: code:addons/l10n_ca_contractor_slips/models/l10n_ca_slip_engine.py:0
+msgid ""
+"%(bill)s holds back %(amount)s on %(account)s, which is not tagged for "
+"%(slip)s. Tag the holdback account so the release counts when it is paid."
+msgstr ""
+
+#. module: l10n_ca_contractor_slips
+#. odoo-python
+#: code:addons/l10n_ca_contractor_slips/models/l10n_ca_slip_engine.py:0
+msgid ""
+"%(bill)s was paid in the period, but none of its lines is on an account "
+"tagged for %(slip)s or holds a product, so it is left out. If it paid for "
+"services, tag the account and recalculate."
+msgstr ""
+
+#. module: l10n_ca_contractor_slips
+#. odoo-python
+#: code:addons/l10n_ca_contractor_slips/models/l10n_ca_slip_return.py:0
+msgid "%(count)s already emailed were skipped."
+msgstr ""
+
+#. module: l10n_ca_contractor_slips
+#. odoo-python
+#: code:addons/l10n_ca_contractor_slips/models/l10n_ca_slip_return.py:0
+msgid ""
+"%(count)s recipient(s) gave consent but have an email address that is not "
+"valid: %(names)s. Correct it, or give them their slips another way."
+msgstr ""
+
+#. module: l10n_ca_contractor_slips
+#. odoo-python
+#: code:addons/l10n_ca_contractor_slips/models/l10n_ca_slip_return.py:0
+msgid ""
+"%(count)s recipient(s) have a portal login they have never used, so they are"
+" listed for paper."
+msgstr ""
+
+#. module: l10n_ca_contractor_slips
+#. odoo-python
+#: code:addons/l10n_ca_contractor_slips/models/l10n_ca_slip_return.py:0
+msgid ""
+"%(count)s recipient(s) without email consent have a portal account and can "
+"download their slip there."
+msgstr ""
+
+#. module: l10n_ca_contractor_slips
+#. odoo-python
+#: code:addons/l10n_ca_contractor_slips/models/l10n_ca_slip_return.py:0
+msgid "%(count)s slip email(s) queued; they go out within a few minutes."
+msgstr ""
+
+#. module: l10n_ca_contractor_slips
+#. odoo-python
+#: code:addons/l10n_ca_contractor_slips/models/l10n_ca_slip_engine.py:0
+msgid ""
+"%(credit)s was refunded in cash and holds only goods, but is not linked to "
+"the bill it corrects, so box 22 is not reduced. Adjust the slip if that bill"
+" was reported in full."
+msgstr ""
+
+#. module: l10n_ca_contractor_slips
+#. odoo-python
+#: code:addons/l10n_ca_contractor_slips/wizard/base_partner_merge.py:0
+msgid ""
+"%(names)s each have a slip on %(slip_return)s, which is final or filed. "
+"Merging would delete one of them. Cancel the duplicate slip in an amendment "
+"first, or keep both contacts."
+msgstr ""
+
+#. module: l10n_ca_contractor_slips
+#. odoo-python
+#: code:addons/l10n_ca_contractor_slips/wizard/base_partner_merge.py:0
+msgid ""
+"%(names)s have final or filed slips with different SINs or business numbers,"
+" so they look like different people. Keep both contacts."
+msgstr ""
+
+#. module: l10n_ca_contractor_slips
+#. odoo-python
+#: code:addons/l10n_ca_contractor_slips/wizard/base_partner_merge.py:0
+msgid ""
+"%(names)s merged into %(kept)s. Their slips on this return now belong to "
+"%(kept)s."
+msgstr ""
+
+#. module: l10n_ca_contractor_slips
+#. odoo-python
+#: code:addons/l10n_ca_contractor_slips/models/l10n_ca_slip_return.py:0
+msgid ""
+"%(other)s already covers part of this period (%(start)s to %(end)s). CRA "
+"expects the same reporting period every year unless it authorizes a change "
+"in writing."
+msgstr ""
+
+#. module: l10n_ca_contractor_slips
+#. odoo-python
+#: code:addons/l10n_ca_contractor_slips/models/l10n_ca_slip_return.py:0
+msgid ""
+"%(partner)s has an address outside Canada and was left out: fees paid to "
+"non-residents for services in Canada go on the T4A-NR. If %(partner)s is a "
+"resident of Canada, correct the address and recalculate."
+msgstr ""
+
+#. module: l10n_ca_contractor_slips
+#. odoo-python
+#: code:addons/l10n_ca_contractor_slips/models/l10n_ca_slip_return.py:0
+msgid ""
+"%(partner)s is flagged for this slip only while working in %(branch)s. Flag "
+"the contact while working in %(main)s so its payments count."
+msgstr ""
+
+#. module: l10n_ca_contractor_slips
+#. odoo-python
+#: code:addons/l10n_ca_contractor_slips/models/l10n_ca_slip_return.py:0
+msgid ""
+"%(partner)s is reported on %(other)s, and bills paid in this period use "
+"accounts tagged for this slip: %(bills)s. Check which slip those payments "
+"belong on."
+msgstr ""
+
+#. module: l10n_ca_contractor_slips
+#. odoo-python
+#: code:addons/l10n_ca_contractor_slips/models/l10n_ca_slip_return.py:0
+msgid ""
+"%(partner)s now qualifies but is not on the filed return. Report the slip in"
+" a new original return for the same year."
+msgstr ""
+
+#. module: l10n_ca_contractor_slips
+#. odoo-python
+#: code:addons/l10n_ca_contractor_slips/models/l10n_ca_slip_return.py:0
+msgid ""
+"%(partner)s was paid %(amount)s on accounts tagged for this slip, but the "
+"contact is not set to %(slip)s. Set Canadian slip on the contact and "
+"recalculate, or set those bills to Not reported."
+msgstr ""
+
+#. module: l10n_ca_contractor_slips
+#. odoo-python
+#: code:addons/l10n_ca_contractor_slips/models/l10n_ca_slip_return.py:0
+msgid ""
+"%(partner)s: the slip for this period was cancelled in %(cancelled_in)s "
+"(%(note)s). If those payments were not fees for services, set the bills to "
+"Not reported and recalculate. File the slip again here only if it was "
+"cancelled to correct the SIN or business number."
+msgstr ""
+
+#. module: l10n_ca_contractor_slips
+#. odoo-python
+#: code:addons/l10n_ca_contractor_slips/models/l10n_ca_slip.py:0
+msgid "%(recipient)s: %(reason)s"
+msgstr ""
+
+#. module: l10n_ca_contractor_slips
+#. odoo-python
+#: code:addons/l10n_ca_contractor_slips/models/res_company.py:0
+msgid ""
+"%(value)s is not a 15-character CRA account such as "
+"123456789%(program)s0001."
+msgstr ""
+
+#. module: l10n_ca_contractor_slips
+#. odoo-python
+#: code:addons/l10n_ca_contractor_slips/models/res_company.py:0
+msgid ""
+"%(value)s uses program %(used)s; this filing needs a %(program)s account."
+msgstr ""
+
+#. module: l10n_ca_contractor_slips
+#. odoo-python
+#: code:addons/l10n_ca_contractor_slips/models/l10n_ca_slip.py:0
+msgid ""
+"%s can no longer send slips. Ask an accounting administrator to click Email "
+"slips again."
+msgstr ""
+
+#. module: l10n_ca_contractor_slips
+#. odoo-python
+#: code:addons/l10n_ca_contractor_slips/models/res_company.py:0
+msgid "%s has an invalid business number check digit."
+msgstr ""
+
+#. module: l10n_ca_contractor_slips
+#. odoo-python
+#: code:addons/l10n_ca_contractor_slips/models/l10n_ca_slip_return.py:0
+msgid ""
+"%s is already reported on another final or filed return for this period."
+msgstr ""
+
+#. module: l10n_ca_contractor_slips
+#. odoo-python
+#: code:addons/l10n_ca_contractor_slips/models/l10n_ca_slip.py:0
+msgid "%s is not a Canadian postal code (A1A 1A1)."
+msgstr ""
+
+#. module: l10n_ca_contractor_slips
+#. odoo-python
+#: code:addons/l10n_ca_contractor_slips/models/res_company.py:0
+msgid "%s is not a valid business number or 15-character CRA account."
+msgstr ""
+
+#. module: l10n_ca_contractor_slips
+#. odoo-python
+#: code:addons/l10n_ca_contractor_slips/models/res_company.py:0
+msgid "(empty)"
+msgstr ""
+
+#. module: l10n_ca_contractor_slips
+#: model_terms:ir.ui.view,arch_db:l10n_ca_contractor_slips.res_config_settings_view_form
+msgid "123456789RP0001"
+msgstr ""
+
+#. module: l10n_ca_contractor_slips
+#: model_terms:ir.ui.view,arch_db:l10n_ca_contractor_slips.res_config_settings_view_form
+msgid "123456789RZ0001"
+msgstr ""
+
+#. module: l10n_ca_contractor_slips
+#: model:mail.template,body_html:l10n_ca_contractor_slips.mail_template_l10n_ca_slip
+msgid ""
+"<div style=\"margin: 0px; padding: 0px;\">\n"
+"    <p style=\"margin: 0px; padding: 0px; font-size: 13px;\">\n"
+"        Hello <t t-out=\"object.partner_id.name or ''\">Brandon Freeman</t>,\n"
+"        <br/><br/>\n"
+"        <t t-if=\"object.rpt_tcd == 'C'\">\n"
+"            The <t t-out=\"(object.slip_type or '').upper()\">T4A</t> slip for <t t-out=\"object.year\">2026</t> that\n"
+"            <t t-out=\"object.company_id.name or ''\">YourCompany</t> issued to you has been cancelled.\n"
+"            The attached copy is marked cancelled. Do not use the earlier\n"
+"            slip on your tax return.\n"
+"        </t>\n"
+"        <t t-else=\"\">\n"
+"            Your <t t-out=\"(object.slip_type or '').upper()\">T4A</t> slip for <t t-out=\"object.year\">2026</t> is attached.\n"
+"            It reports <strong t-out=\"format_amount(object.amount_reported, object.currency_id)\">$1,000.00</strong>\n"
+"            paid to you by <t t-out=\"object.company_id.name or ''\">YourCompany</t>.\n"
+"            <t t-if=\"object.rpt_tcd == 'A'\">It replaces the slip issued to you earlier for the same period.</t>\n"
+"        </t>\n"
+"        <br/><br/>\n"
+"        If you would rather receive paper copies, reply to this email and we will mail them.\n"
+"        If anything on the slip looks wrong, tell us and we will correct it.\n"
+"        <br/><br/>\n"
+"        <t t-out=\"object.company_id.name or ''\">YourCompany</t>\n"
+"    </p>\n"
+"</div>\n"
+"        "
+msgstr ""
+
+#. module: l10n_ca_contractor_slips
+#: model_terms:ir.ui.view,arch_db:l10n_ca_contractor_slips.portal_slip_page
+msgid "<i class=\"oi me-1\" data-icon=\"download\"/>Download PDF"
+msgstr ""
+
+#. module: l10n_ca_contractor_slips
+#: model_terms:ir.ui.view,arch_db:l10n_ca_contractor_slips.report_l10n_ca_slip_document
+msgid "<span class=\"o_no\">012</span>Social insurance number"
+msgstr ""
+
+#. module: l10n_ca_contractor_slips
+#: model_terms:ir.ui.view,arch_db:l10n_ca_contractor_slips.report_l10n_ca_slip_document
+msgid "<span class=\"o_no\">013</span>Recipient's program account number"
+msgstr ""
+
+#. module: l10n_ca_contractor_slips
+#: model_terms:ir.ui.view,arch_db:l10n_ca_contractor_slips.report_l10n_ca_slip_document
+msgid "<span class=\"o_no\">022</span>Income tax deducted"
+msgstr ""
+
+#. module: l10n_ca_contractor_slips
+#: model_terms:ir.ui.view,arch_db:l10n_ca_contractor_slips.report_l10n_ca_slip_document
+msgid "<span class=\"o_no\">048</span>Fees for services"
+msgstr ""
+
+#. module: l10n_ca_contractor_slips
+#: model_terms:ir.ui.view,arch_db:l10n_ca_contractor_slips.report_l10n_ca_slip_document
+msgid "<span class=\"o_no\">061</span>Payer's program account number"
+msgstr ""
+
+#. module: l10n_ca_contractor_slips
+#: model_terms:ir.ui.view,arch_db:l10n_ca_contractor_slips.report_l10n_ca_slip_document
+msgid "<span class=\"o_no\">20</span>For the period ending"
+msgstr ""
+
+#. module: l10n_ca_contractor_slips
+#: model_terms:ir.ui.view,arch_db:l10n_ca_contractor_slips.report_l10n_ca_slip_document
+msgid "<span class=\"o_no\">22</span>Construction subcontractor payments"
+msgstr ""
+
+#. module: l10n_ca_contractor_slips
+#: model_terms:ir.ui.view,arch_db:l10n_ca_contractor_slips.report_l10n_ca_slip_document
+msgid "<span class=\"o_no\">24</span>Recipient's program account number"
+msgstr ""
+
+#. module: l10n_ca_contractor_slips
+#: model_terms:ir.ui.view,arch_db:l10n_ca_contractor_slips.report_l10n_ca_slip_document
+msgid ""
+"<span style=\"display: inline-block; vertical-align: middle;\">Canada "
+"Revenue Agency<br/>Agence du revenu du Canada</span>"
+msgstr ""
+
+#. module: l10n_ca_contractor_slips
+#: model_terms:ir.ui.view,arch_db:l10n_ca_contractor_slips.view_l10n_ca_slip_return_form
+msgid "<span>to</span>"
+msgstr ""
+
+#. module: l10n_ca_contractor_slips
+#: model:ir.module.module,description:base.module_l10n_ca_contractor_slips
+msgid ""
+"===================\n"
+"T4A and T5018 Slips\n"
+"===================\n"
+"\n"
+"License: LGPL-3\n"
+"\n"
+"This module prepares Canada Revenue Agency information returns for the\n"
+"people and businesses you pay as contractors:\n"
+"\n"
+"- **T4A, box 048**: fees for services paid to self-employed people and\n"
+"  businesses, before GST/HST and PST, for each recipient paid more than\n"
+"  $500 in the calendar year.\n"
+"- **T5018**: payments to construction subcontractors, GST/HST and PST\n"
+"  included, for the reporting period (calendar or fiscal year). By\n"
+"  default a slip is issued when the services part, tax included, reaches\n"
+"  $500 (Form T5018SUM); a setting applies the slip page's test of more\n"
+"  than $500 before tax instead.\n"
+"\n"
+"Amounts come from what you actually paid. The module reads posted vendor\n"
+"bills and the cash matched to them, so a bill dated in December and paid\n"
+"in January counts in January, a refund lowers the total, and goods on\n"
+"the same bill are left out. A credit note applied to a bill counts as\n"
+"settling both, each at its own mix of services and goods.\n"
+"Foreign-currency bills count the Canadian dollars actually paid, and an\n"
+"early payment discount reduces only the bill that earned it. Every\n"
+"amount on a slip links back to the bills and payments behind it.\n"
+"\n"
+"From there you can:\n"
+"\n"
+"- review and adjust slips (each adjustment needs a reason and is\n"
+"  logged),\n"
+"- finalize the return, which produces the CRA XML file and checks it\n"
+"  against CRA's published 2027 schemas before you upload it,\n"
+"- print customized slips laid out to follow CRA's rules for slips you\n"
+"  print yourself (Information Circular IC97-2R20), two copies per sheet,\n"
+"  email them to recipients who agreed to electronic slips, and let\n"
+"  recipients download their own slip from the portal,\n"
+"- amend a filed return or cancel a slip, with the report codes CRA\n"
+"  expects, and give recipients a copy marked amended or cancelled.\n"
+"\n"
+"It runs on Odoo Community and Enterprise, on Odoo.sh or your own server,\n"
+"and uses standard Odoo records throughout: contacts, the Tax ID field,\n"
+"account tags, vendor bills, payments and bank reconciliation. Odoo\n"
+"Online databases cannot install modules from the app store. The module\n"
+"downloads CRA's public XML schemas from canada.ca the first time you\n"
+"finalize a return.\n"
+"\n"
+"Before you file\n"
+"---------------\n"
+"\n"
+"This module helps you prepare T4A and T5018 returns for the Canada\n"
+"Revenue Agency (CRA). It gives no tax, accounting or legal advice;\n"
+"decide what is reportable with your accountant.\n"
+"\n"
+"You remain responsible for every slip, the file you upload, deadlines,\n"
+"delivery to recipients, and any CRA penalty or interest. This is a beta\n"
+"release, so check each slip against your records before filing.\n"
+"\n"
+"Schema validation checks the file's format only. It cannot tell you\n"
+"whether amounts or identifiers are correct, or whether CRA will accept\n"
+"the return.\n"
+"\n"
+"Solvync Inc. has no affiliation with CRA, and CRA has not endorsed this\n"
+"module.\n"
+"\n"
+"This free software is licensed under the GNU Lesser General Public\n"
+"License, version 3. To the extent the law allows, it is provided as is,\n"
+"without warranty of any kind, including as to accuracy, and Solvync Inc.\n"
+"is not liable for any loss arising from its use.\n"
+"\n"
+"Privacy\n"
+"-------\n"
+"\n"
+"The business using this module is accountable for the personal\n"
+"information in it under PIPEDA or its provincial equivalent. Solvync\n"
+"receives none of it. The only outside call the module makes downloads\n"
+"CRA's public schemas from canada.ca, and it sends no data.\n"
+"\n"
+"SINs are collected under section 237 of the Income Tax Act and used for\n"
+"these slips only. Odoo stores them in the database and its backups\n"
+"without encryption, so give accounting administrators two-step login and\n"
+"mask SINs in any copy made for support. Each SIN sits on the contact,\n"
+"kept for the main company that collected it, on every slip that reported\n"
+"it and in the CRA file stored with each return. Clearing it from the\n"
+"contact leaves those copies, and the module cannot yet remove SINs from\n"
+"final or filed returns, so agree with your accountant how you will\n"
+"destroy them once each return's six-year record period ends. CRA\n"
+"requires the recipient's consent before slips are emailed, and emailed\n"
+"slips carry the full SIN over ordinary email. Odoo deletes the emailed\n"
+"copy once it is sent; a failed email keeps its PDF until the slip is\n"
+"emailed again, for at most 30 days. Keep Odoo's *Restrict Template\n"
+"Rendering* setting on, as it is by default, and give the email template\n"
+"editing right only to people who may see SINs. An exposed SIN will\n"
+"usually meet the real risk of significant harm test, which brings duties\n"
+"to report and notify (PIPEDA section 10.1; Alberta PIPA section 34.1).\n"
+"\n"
+"Uninstalling the module deletes every return, slip and CRA file it\n"
+"holds, any slip email still waiting, and the SINs, slip settings and\n"
+"email consents stored on contacts. Download the CRA files, keep the PDFs\n"
+"you need and export your consent records first. The T4A and T5018 tags\n"
+"are removed from your accounts as well.\n"
+"\n"
+"**Table of contents**\n"
+"\n"
+".. contents::\n"
+"   :local:\n"
+"\n"
+"Configuration\n"
+"-------------\n"
+"\n"
+"Work in the main company for all of the steps below. Returns belong to\n"
+"the main company, cover every branch, and read their settings, each\n"
+"contact's slip type and each contact's email consent from there. In a\n"
+"database with several businesses, each main company files its own\n"
+"returns, with its own program accounts, slip types and email consent.\n"
+"Odoo shows the settings to administrators only.\n"
+"\n"
+"1. In **Accounting > Configuration > Settings** (**Invoicing** on Odoo\n"
+"   Community), under *Canadian Contractor Slips*, enter:\n"
+"\n"
+"   - the payer's **RP** program account (T4A) and **RZ** program account\n"
+"     (T5018), for example 123456789RP0001;\n"
+"   - how you sign in to CRA's Internet File Transfer: **My Business\n"
+"     Account**, a **web access code**, or **Represent a Client**. With\n"
+"     My Business Account, enter your 9-digit business number or a\n"
+"     15-character program account as the **transmitter** account. With a\n"
+"     web access code, the file carries the 15-character account you sign\n"
+"     in with (the return's RP or RZ account unless you enter another). A\n"
+"     representative enters their **RepID** and, if they like, the firm's\n"
+"     name as **transmitter name**; the RepID goes in the file only with\n"
+"     Represent a Client;\n"
+"   - the **filing contact**, a person with a 10-digit phone number and\n"
+"     an email address of at most 60 characters;\n"
+"   - the **T5018 reporting period**: calendar year or fiscal year. Once\n"
+"     you file for a period, CRA expects the same period every year\n"
+"     unless it authorizes a change in writing;\n"
+"   - whether to report the **whole mixed bill** on T5018 (the default)\n"
+"     or the services lines only, and which **T5018 threshold** to apply\n"
+"     (see the setting's help).\n"
+"\n"
+"   File T5018 only if more than half of your business income comes from\n"
+"   construction. Other payers report construction subcontractors in T4A\n"
+"   box 048. Slip amounts must be in Canadian dollars, so the company's\n"
+"   currency must be CAD.\n"
+"\n"
+"2. On each contractor's contact, in the *Invoicing* tab, set **Canadian\n"
+"   slip** to T4A or T5018 and choose the **slip recipient type**:\n"
+"   individual or sole proprietor, corporation, or partnership. A return\n"
+"   will not finalize until it is set on every contractor. Enter the SIN\n"
+"   for individuals while working in the main company. Each main company\n"
+"   keeps the SIN it collected, visible to its own accounting\n"
+"   administrators only. The surname and given name come from the contact\n"
+"   name; type them on the contact when the name has more than two words\n"
+"   or is written surname first. The return lists each slip's surname and\n"
+"   given name, so check them before finalizing. Businesses use the\n"
+"   standard **Tax ID** field for their 15-character business number.\n"
+"   Tick **Slips by email** only when the recipient has agreed, in\n"
+"   writing or electronically, to receive slips by email, and keep that\n"
+"   consent with your records. Consent covers only the company it was\n"
+"   given to, so a recipient paid by two of your businesses consents to\n"
+"   each separately. Tick **Wants paper slips** for anyone who asked for\n"
+"   paper. The other recipient details (name, address, recipient type)\n"
+"   belong to the contact, so every company that can open the contact\n"
+"   sees them. Where businesses in one database should not see each\n"
+"   other's contractors, set the contact's **Company** field to the main\n"
+"   company that pays them. Avoid setting it to a branch: head-office\n"
+"   users without that branch could not open the contact. Merging a\n"
+"   contractor's contact with another moves its SIN, consent, slip type\n"
+"   and slips, filed ones included, to the kept contact, whose portal\n"
+"   login can then open them. So only an accounting administrator who\n"
+"   works in every main company that pays the contractor can merge it.\n"
+"   Duplicate rules set to merge automatically in Odoo Enterprise's Data\n"
+"   Cleaning run as the system and skip that check, so leave contractors\n"
+"   to manual merging. Each vendor bill records the contact's slip type\n"
+"   when it is posted, in the **Canadian slip** field under *Other Info*.\n"
+"   A contractor who moves from T4A to T5018 mid-year keeps the earlier\n"
+"   bills on T4A. Bills posted before you flagged a contact follow the\n"
+"   contact. An accounting administrator can set a bill to **Not\n"
+"   reported** to leave it out.\n"
+"\n"
+"3. Tag the expense accounts you pay contractors from with **T4A box 048:\n"
+"   fees for services** or **T5018: construction services**. Bill lines\n"
+"   on those accounts count for contacts set to the slip, and the return\n"
+"   names any other vendor paid on them. For T4A, lines with a service\n"
+"   product count too. Lines with a goods product never count. If you\n"
+"   hold back part of each subcontractor bill, tag the holdback account\n"
+"   with the T5018 tag as well, so holdbacks count when they are paid.\n"
+"   Payments booked from bank, cash and credit card journals straight to\n"
+"   a tagged account count as well. T4A payers who hold back part of a\n"
+"   contractor's fees tag the holdback account with the T4A tag. Release\n"
+"   a holdback with a vendor bill on the holdback account, or pay it\n"
+"   straight from that account; a payment that settles a journal entry is\n"
+"   flagged and left out, because the entry does not say what it paid\n"
+"   for. The same goes for opening balances: in your first year on Odoo,\n"
+"   enter unpaid contractor bills as vendor bills on a tagged account so\n"
+"   their payments count.\n"
+"\n"
+"   Odoo copies the tags of the account whose code sorts just before a\n"
+"   new account's code. After you tag an account, check the tags on any\n"
+"   account you create next to it, and review which accounts carry each\n"
+"   tag before every filing season.\n"
+"\n"
+"   CRA asks for box 048 on payments between businesses, including\n"
+"   corporations, in every industry. It currently assesses penalties for\n"
+"   leaving box 048 out only where its administrative policy for trucking\n"
+"   applies: from 2025, businesses in the trucking industry paying\n"
+"   Canadian-controlled private corporations in that industry. That\n"
+"   policy concerns completing box 048; penalties for filing an\n"
+"   information return late are a separate matter. Flag service\n"
+"   contractors unless your accountant advises otherwise.\n"
+"\n"
+"4. The CRA schemas download automatically the first time you finalize a\n"
+"   return. To fetch them ahead of time, use **Download CRA schemas** in\n"
+"   the same settings block. A server without internet access can point\n"
+"   the system parameter ``l10n_ca_contractor_slips.cra_schema_url`` at a\n"
+"   copy of CRA's schema package on an internal web server.\n"
+"\n"
+"5. Print slips at actual size, with any \"fit to page\" or scaling option\n"
+"   in the print dialog turned off: CRA's rules for slips you print\n"
+"   yourself set their size and text size.\n"
+"\n"
+"Usage\n"
+"-----\n"
+"\n"
+"1. Go to **Accounting > Reporting > Contractor Slips (T4A, T5018)**\n"
+"   (**Invoicing** on Odoo Community) and create a return on the main\n"
+"   company: choose the slip type and the year. A T4A return covers the\n"
+"   calendar year. For T5018 on a fiscal year, the year is the one in\n"
+"   which the period ends. The return shows its due date and notes a\n"
+"   period that has not ended yet, or a gap since the last T5018 period.\n"
+"2. Click **Calculate slips**. Each slip shows the amount calculated from\n"
+"   payments, the payments behind it, and any warning: a missing SIN or\n"
+"   business number, an incomplete address, a name split from the\n"
+"   contact, characters CRA will not keep, a payment not matched to a\n"
+"   posted bill, or a payment that settles a journal entry. The return\n"
+"   also names vendors paid on tagged accounts whose contact is not set\n"
+"   to this slip, and contractors whose slip for the period was cancelled\n"
+"   in an amendment; the notes are kept in the return's messages when you\n"
+"   finalize. Contacts with an address outside Canada are left out and\n"
+"   listed on the return; confirm each one is a non-resident before\n"
+"   filing.\n"
+"3. Correct the contacts and source records and click **Recalculate**, or\n"
+"   enter an adjustment with its reason. Adjustments survive\n"
+"   recalculation. The recipient details on a slip come from the contact,\n"
+"   so correct them there. Payments made outside Odoo belong in Odoo too,\n"
+"   for example as a bank entry to a tagged account: the $500 test uses\n"
+"   the calculated amount, so an adjustment cannot create a slip for\n"
+"   someone below it.\n"
+"4. Click **Finalize**. The module refuses to finalize if bills, payments\n"
+"   or contacts changed since the last calculation, checks the settings\n"
+"   and every slip, builds the XML file and validates it against CRA's\n"
+"   schemas. Download the file and upload it through CRA's Internet File\n"
+"   Transfer, then click **Mark as filed** and record the confirmation\n"
+"   number.\n"
+"5. Deliver the slips by the due date:\n"
+"\n"
+"   - **Email slips** queues an email for each recipient who consented,\n"
+"     sent within a few minutes by a scheduled job, and never sends the\n"
+"     same slip twice. Each slip shows whether its email is queued, sent\n"
+"     or failed, with the reason for a failure, and the return's messages\n"
+"     name each recipient whose email failed so you can print their slip\n"
+"     or email it again. Sent means your outgoing mail server accepted\n"
+"     the email. A message that bounces after that shows only in the\n"
+"     sender's mailbox, so give a paper copy to anyone who says the email\n"
+"     did not arrive.\n"
+"   - Recipients with a portal login they have used find their slips\n"
+"     under *Tax slips* on their portal home page.\n"
+"   - **Print slips** prints two copies of each slip on one sheet for\n"
+"     everyone else, including recipients who asked for paper, whose\n"
+"     email address is not valid, or whose portal login was revoked or\n"
+"     never used; the summary after emailing names them. **Print\n"
+"     duplicates** prints replacement copies marked DUPLICATE. Giving\n"
+"     T5018 slips to subcontractors is optional.\n"
+"\n"
+"6. To correct a filed return, open the latest filed version and click\n"
+"   **Amend**. Change the slips that are wrong and explain the change in\n"
+"   the amendment note, naming each recipient (up to 1,309 characters),\n"
+"   then finalize. Only changed slips go in the file; a change of address\n"
+"   alone does not amend a slip. To cancel slips, tick **Cancel this\n"
+"   slip** in a separate amendment, because CRA takes amended and\n"
+"   cancelled slips in separate submissions. Recipients of a cancelled\n"
+"   slip get a copy marked cancelled by email, on the portal and in\n"
+"   print. Contractors missed on the original go in a new original return\n"
+"   for the same year, which picks up only the contractors the filed\n"
+"   return does not have.\n"
+"7. Keep a record of when and how you asked each individual for their\n"
+"   SIN, of each recipient's email consent, and of how each slip reached\n"
+"   its recipient.\n"
+"\n"
+"Known issues / Roadmap\n"
+"----------------------\n"
+"\n"
+"- Quebec RL-1 slips (box O, code RD) are not produced. Revenu Québec\n"
+"  requires software certification for RL-1 XML.\n"
+"- No T4A box 022. If you withheld income tax from a contractor, which is\n"
+"  rare, CRA needs a slip for them whatever the amount: set their bills\n"
+"  to **Not reported** so this return leaves them out, and file their\n"
+"  slip separately, for example with CRA's Web Forms.\n"
+"- Each amended submission totals and counts only the slips in it, as\n"
+"  CRA's corrections page describes. Confirm with your accountant before\n"
+"  filing your first amendment.\n"
+"- To correct a SIN or business number already filed, cancel the slip in\n"
+"  an amendment and file it again in a new original return. CRA's pages\n"
+"  do not say how an amended slip with a different identifier is matched\n"
+"  to the original; the module warns when an amended slip carries a new\n"
+"  one.\n"
+"- The federal identity signature on printed slips is drawn from the\n"
+"  public-domain flag beside the agency's name. CRA's own artwork is the\n"
+"  exact reference.\n"
+"- A contact counts as a non-resident when its address is outside Canada.\n"
+"  CRA asks for T5018 slips for resident subcontractors wherever the work\n"
+"  was done, so a resident with a foreign address must have its address\n"
+"  corrected. A dedicated non-resident flag is planned.\n"
+"- Fees paid to non-residents for services in Canada belong on the\n"
+"  T4A-NR, which this module does not produce.\n"
+"- Slips show the full SIN to accounting administrators and to the\n"
+"  recipient signed in to the portal. Anyone opening a shared link, and\n"
+"  read-only accountants, see the last three digits. The CRA file and the\n"
+"  emailed PDFs are restricted to accounting administrators.\n"
+"- A credit note applied to a bill counts on the day the two are matched,\n"
+"  in the time zone set on the company's contact (UTC when none is set).\n"
+"  Matching a credit note in a later year moves its effect into that\n"
+"  year, so match credit notes before filing.\n"
+"- With Odoo Enterprise, a payment recorded without a journal entry that\n"
+"  covers both bills and credit notes is split across them by amount,\n"
+"  which can be off when their mixes differ. Check those slips' payment\n"
+"  lists before filing.\n"
+"- No tool yet removes SINs from final or filed returns once the six-year\n"
+"  record period ends. Clearing a SIN from the contact leaves the copies\n"
+"  on slips and in the stored CRA files.\n"
+"- The $500 test looks at box 048 alone. CRA adds up all T4A boxes, so a\n"
+"  recipient who gets other T4A amounts from you elsewhere may need a box\n"
+"  048 slip below $500. Do not tag commission accounts: commissions go in\n"
+"  box 020.\n"
+"- With early payment discounts set to *Never* on the company, the\n"
+"  discount is spread across the bill's tax as well, so box 048 can be a\n"
+"  few cents above the fees paid. The Canadian default, *On early\n"
+"  payment*, is exact.\n"
+"- A T5018 period that ends on the last day of a month is due on the last\n"
+"  day of the sixth month after it, following CRA's rule for corporation\n"
+"  returns.\n"
+"- Returns always belong to the main company and file under its RP or RZ\n"
+"  account. A branch that files under a program account of its own cannot\n"
+"  have its own return yet.\n"
+"\n"
+"Contributors\n"
+"------------\n"
+"\n"
+"- Solvync Inc.\n"
+"\n"
+"Maintainers\n"
+"-----------\n"
+"\n"
+"This module is maintained by Solvync Inc.\n"
+msgstr ""
+
+#. module: l10n_ca_contractor_slips
+#. odoo-python
+#: code:addons/l10n_ca_contractor_slips/models/l10n_ca_slip_return.py:0
+msgid "A T4A return covers the calendar year in which the amounts were paid."
+msgstr ""
+
+#. module: l10n_ca_contractor_slips
+#. odoo-python
+#: code:addons/l10n_ca_contractor_slips/models/l10n_ca_slip_return.py:0
+msgid "A T5018 return's period ends in its year."
+msgstr ""
+
+#. module: l10n_ca_contractor_slips
+#. odoo-python
+#: code:addons/l10n_ca_contractor_slips/models/l10n_ca_slip_return.py:0
+msgid "A final or filed return cannot be changed. Amend it instead."
+msgstr ""
+
+#. module: l10n_ca_contractor_slips
+#. odoo-python
+#: code:addons/l10n_ca_contractor_slips/models/l10n_ca_slip.py:0
+msgid "A payment line belongs to its slip's company."
+msgstr ""
+
+#. module: l10n_ca_contractor_slips
+#: model:ir.model.constraint,message:l10n_ca_contractor_slips.constraint_l10n_ca_slip_partner_return_uniq
+msgid "A recipient can only have one slip per return."
+msgstr ""
+
+#. module: l10n_ca_contractor_slips
+#. odoo-python
+#: code:addons/l10n_ca_contractor_slips/models/l10n_ca_slip_return.py:0
+msgid "A reporting period cannot be longer than a year."
+msgstr ""
+
+#. module: l10n_ca_contractor_slips
+#: model_terms:ir.ui.view,arch_db:l10n_ca_contractor_slips.report_l10n_ca_slip_document
+msgid "AMENDED"
+msgstr ""
+
+#. module: l10n_ca_contractor_slips
+#: model:ir.model.fields,field_description:l10n_ca_contractor_slips.field_l10n_ca_slip__access_warning
+msgid "Access warning"
+msgstr ""
+
+#. module: l10n_ca_contractor_slips
+#: model_terms:ir.ui.view,arch_db:l10n_ca_contractor_slips.report_l10n_ca_slip_document
+msgid "Account number"
+msgstr ""
+
+#. module: l10n_ca_contractor_slips
+#: model:ir.model.fields,field_description:l10n_ca_contractor_slips.field_l10n_ca_slip__message_needaction
+#: model:ir.model.fields,field_description:l10n_ca_contractor_slips.field_l10n_ca_slip_return__message_needaction
+msgid "Action Needed"
+msgstr ""
+
+#. module: l10n_ca_contractor_slips
+#: model:ir.model.fields,field_description:l10n_ca_contractor_slips.field_l10n_ca_slip_return__activity_ids
+msgid "Activities"
+msgstr ""
+
+#. module: l10n_ca_contractor_slips
+#: model:ir.model.fields,field_description:l10n_ca_contractor_slips.field_l10n_ca_slip_return__activity_exception_decoration
+msgid "Activity Exception Decoration"
+msgstr ""
+
+#. module: l10n_ca_contractor_slips
+#: model:ir.model.fields,field_description:l10n_ca_contractor_slips.field_l10n_ca_slip_return__activity_plans_ids
+msgid "Activity Plans"
+msgstr ""
+
+#. module: l10n_ca_contractor_slips
+#: model:ir.model.fields,field_description:l10n_ca_contractor_slips.field_l10n_ca_slip_return__activity_state
+msgid "Activity State"
+msgstr ""
+
+#. module: l10n_ca_contractor_slips
+#: model:ir.model.fields,field_description:l10n_ca_contractor_slips.field_l10n_ca_slip_return__activity_type_icon
+msgid "Activity Type Icon"
+msgstr ""
+
+#. module: l10n_ca_contractor_slips
+#: model_terms:ir.ui.view,arch_db:l10n_ca_contractor_slips.view_l10n_ca_slip_search
+msgid "Adjusted"
+msgstr ""
+
+#. module: l10n_ca_contractor_slips
+#: model:ir.model.fields,field_description:l10n_ca_contractor_slips.field_l10n_ca_slip__adjustment_reason
+msgid "Adjustment Reason"
+msgstr ""
+
+#. module: l10n_ca_contractor_slips
+#: model:ir.model.fields,field_description:l10n_ca_contractor_slips.field_l10n_ca_slip__adjustment_base
+msgid "Adjustment before tax"
+msgstr ""
+
+#. module: l10n_ca_contractor_slips
+#. odoo-python
+#: code:addons/l10n_ca_contractor_slips/models/l10n_ca_slip.py:0
+msgid "Adjustment changed by %(user)s. Reason: %(reason)s"
+msgstr ""
+
+#. module: l10n_ca_contractor_slips
+#: model:ir.model.fields,field_description:l10n_ca_contractor_slips.field_l10n_ca_slip__adjustment_incl
+msgid "Adjustment with tax"
+msgstr ""
+
+#. module: l10n_ca_contractor_slips
+#: model_terms:ir.ui.view,arch_db:l10n_ca_contractor_slips.view_l10n_ca_slip_return_form
+msgid "Amend"
+msgstr ""
+
+#. module: l10n_ca_contractor_slips
+#: model:ir.model.fields.selection,name:l10n_ca_contractor_slips.selection__l10n_ca_slip__rpt_tcd__a
+#: model:ir.model.fields.selection,name:l10n_ca_contractor_slips.selection__l10n_ca_slip_return__report_type__a
+#: model_terms:ir.ui.view,arch_db:l10n_ca_contractor_slips.portal_my_slips
+msgid "Amended"
+msgstr ""
+
+#. module: l10n_ca_contractor_slips
+#: model:ir.model.fields,field_description:l10n_ca_contractor_slips.field_l10n_ca_slip_return__amendment_note
+msgid "Amendment Note"
+msgstr ""
+
+#. module: l10n_ca_contractor_slips
+#: model:ir.model.fields,field_description:l10n_ca_contractor_slips.field_l10n_ca_slip_return__amendment_ids
+#: model_terms:ir.ui.view,arch_db:l10n_ca_contractor_slips.view_l10n_ca_slip_return_form
+msgid "Amendments"
+msgstr ""
+
+#. module: l10n_ca_contractor_slips
+#: model:ir.model.fields,field_description:l10n_ca_contractor_slips.field_l10n_ca_slip_return__origin_id
+msgid "Amends"
+msgstr ""
+
+#. module: l10n_ca_contractor_slips
+#: model:ir.model.fields,field_description:l10n_ca_contractor_slips.field_l10n_ca_slip__origin_slip_id
+msgid "Amends slip"
+msgstr ""
+
+#. module: l10n_ca_contractor_slips
+#: model_terms:ir.ui.view,arch_db:l10n_ca_contractor_slips.portal_my_slips
+msgid "Amount"
+msgstr ""
+
+#. module: l10n_ca_contractor_slips
+#: model:ir.model.fields,field_description:l10n_ca_contractor_slips.field_l10n_ca_slip__amount_reported
+msgid "Amount Reported"
+msgstr ""
+
+#. module: l10n_ca_contractor_slips
+#: model:ir.model.fields,help:l10n_ca_contractor_slips.field_l10n_ca_slip_line__cash
+msgid "Amount paid in company currency at the payment date."
+msgstr ""
+
+#. module: l10n_ca_contractor_slips
+#: model_terms:ir.ui.view,arch_db:l10n_ca_contractor_slips.view_l10n_ca_slip_form
+msgid "Amounts"
+msgstr ""
+
+#. module: l10n_ca_contractor_slips
+#. odoo-python
+#: code:addons/l10n_ca_contractor_slips/models/l10n_ca_slip_return.py:0
+msgid "An amendment keeps the slip type and period of the return it amends."
+msgstr ""
+
+#. module: l10n_ca_contractor_slips
+#: model:ir.model,name:l10n_ca_contractor_slips.model_ir_attachment
+msgid "Attachment"
+msgstr ""
+
+#. module: l10n_ca_contractor_slips
+#: model:ir.model.fields,field_description:l10n_ca_contractor_slips.field_l10n_ca_slip__message_attachment_count
+#: model:ir.model.fields,field_description:l10n_ca_contractor_slips.field_l10n_ca_slip_return__message_attachment_count
+msgid "Attachment Count"
+msgstr ""
+
+#. module: l10n_ca_contractor_slips
+#: model_terms:ir.ui.view,arch_db:l10n_ca_contractor_slips.view_l10n_ca_slip_return_form
+msgid "Back to draft"
+msgstr ""
+
+#. module: l10n_ca_contractor_slips
+#: model:ir.model.fields.selection,name:l10n_ca_contractor_slips.selection__res_company__l10n_ca_t5018_threshold_basis__base_over_500
+msgid "Before tax, more than $500 (CRA T5018 slip page)"
+msgstr ""
+
+#. module: l10n_ca_contractor_slips
+#: model:ir.model.fields,field_description:l10n_ca_contractor_slips.field_l10n_ca_slip_line__move_id
+msgid "Bill"
+msgstr ""
+
+#. module: l10n_ca_contractor_slips
+#: model:ir.model.fields,field_description:l10n_ca_contractor_slips.field_l10n_ca_slip_line__move_ref
+msgid "Bill number"
+msgstr ""
+
+#. module: l10n_ca_contractor_slips
+#. odoo-python
+#: code:addons/l10n_ca_contractor_slips/models/l10n_ca_slip_return.py:0
+msgid "Bills from the archived branch %s are included."
+msgstr ""
+
+#. module: l10n_ca_contractor_slips
+#: model:ir.model.fields,help:l10n_ca_contractor_slips.field_l10n_ca_slip_return__total_reported
+msgid ""
+"Box 048 total for T4A, box 22 total for T5018, over the slips in the file."
+msgstr ""
+
+#. module: l10n_ca_contractor_slips
+#: model_terms:ir.ui.view,arch_db:l10n_ca_contractor_slips.report_l10n_ca_slip_document
+msgid ""
+"Box 048, Fees for services: Report this amount as business or professional "
+"income."
+msgstr ""
+
+#. module: l10n_ca_contractor_slips
+#: model_terms:ir.ui.view,arch_db:l10n_ca_contractor_slips.portal_slip_page
+msgid "Box 048, fees for services:"
+msgstr ""
+
+#. module: l10n_ca_contractor_slips
+#: model_terms:ir.ui.view,arch_db:l10n_ca_contractor_slips.report_l10n_ca_slip_document
+msgid ""
+"Box 20, For the period ending: The last day of the payer's reporting period "
+"for this return."
+msgstr ""
+
+#. module: l10n_ca_contractor_slips
+#: model_terms:ir.ui.view,arch_db:l10n_ca_contractor_slips.report_l10n_ca_slip_document
+msgid ""
+"Box 22, Construction subcontractor payments: The total amount of payments "
+"made by the payer to the recipient in the reporting period. This total may "
+"include goods and services tax/harmonized sales tax and provincial or "
+"territorial sales tax, if applicable."
+msgstr ""
+
+#. module: l10n_ca_contractor_slips
+#: model_terms:ir.ui.view,arch_db:l10n_ca_contractor_slips.portal_slip_page
+msgid "Box 22, construction subcontractor payments:"
+msgstr ""
+
+#. module: l10n_ca_contractor_slips
+#: model_terms:ir.ui.view,arch_db:l10n_ca_contractor_slips.report_l10n_ca_slip_document
+msgid ""
+"Box 24, Recipient's program account number (account number or SIN): Enter "
+"the recipient's 15-character program account number (which consists of the "
+"nine-digit business number, a two-letter program identifier, and a four-"
+"digit reference number) or the social insurance number. You can go to "
+"canada.ca/gst-hst-registry to verify if the subcontractor is registered for "
+"GST/HST, or call 1-800-959-5525 if you are unable to use the registry."
+msgstr ""
+
+#. module: l10n_ca_contractor_slips
+#: model:ir.model.fields,field_description:l10n_ca_contractor_slips.field_l10n_ca_slip__corp_name
+msgid "Business name"
+msgstr ""
+
+#. module: l10n_ca_contractor_slips
+#: model_terms:ir.ui.view,arch_db:l10n_ca_contractor_slips.report_l10n_ca_slip_document
+msgid "CANCELLED"
+msgstr ""
+
+#. module: l10n_ca_contractor_slips
+#: model_terms:ir.ui.view,arch_db:l10n_ca_contractor_slips.res_config_settings_view_form
+msgid "CRA accounts"
+msgstr ""
+
+#. module: l10n_ca_contractor_slips
+#: model_terms:ir.ui.view,arch_db:l10n_ca_contractor_slips.res_config_settings_view_form
+msgid ""
+"CRA calls this person about the return. T5018 can follow the calendar year "
+"or your fiscal year."
+msgstr ""
+
+#. module: l10n_ca_contractor_slips
+#: model:ir.model.fields,field_description:l10n_ca_contractor_slips.field_l10n_ca_slip_return__cra_confirmation
+msgid "CRA confirmation number"
+msgstr ""
+
+#. module: l10n_ca_contractor_slips
+#. odoo-python
+#: code:addons/l10n_ca_contractor_slips/models/l10n_ca_slip_return.py:0
+msgid "CRA does not take returns for a year that has not started."
+msgstr ""
+
+#. module: l10n_ca_contractor_slips
+#: model:ir.model.fields,field_description:l10n_ca_contractor_slips.field_l10n_ca_slip_return__xml_file
+msgid "CRA file"
+msgstr ""
+
+#. module: l10n_ca_contractor_slips
+#. odoo-python
+#: code:addons/l10n_ca_contractor_slips/models/l10n_ca_slip.py:0
+msgid "CRA receives \"%(sent)s\" for the %(label)s \"%(typed)s\"."
+msgstr ""
+
+#. module: l10n_ca_contractor_slips
+#. odoo-python
+#: code:addons/l10n_ca_contractor_slips/models/l10n_ca_slip.py:0
+msgid "CRA receives \"%(sent)s\" for the business name \"%(typed)s\"."
+msgstr ""
+
+#. module: l10n_ca_contractor_slips
+#: model:ir.model.fields,field_description:l10n_ca_contractor_slips.field_res_company__l10n_ca_slip_signin
+#: model:ir.model.fields,field_description:l10n_ca_contractor_slips.field_res_config_settings__l10n_ca_slip_signin
+msgid "CRA sign-in"
+msgstr ""
+
+#. module: l10n_ca_contractor_slips
+#. odoo-python
+#: code:addons/l10n_ca_contractor_slips/models/l10n_ca_slip_return.py:0
+msgid ""
+"CRA takes amended slips and cancelled slips in separate submissions. Untick "
+"the cancellations here, file this amendment, then cancel those slips in a "
+"further amendment."
+msgstr ""
+
+#. module: l10n_ca_contractor_slips
+#. odoo-python
+#: code:addons/l10n_ca_contractor_slips/models/l10n_ca_slip_return.py:0
+msgid ""
+"CRA takes slip amounts in Canadian dollars, and this company keeps its books"
+" in %s."
+msgstr ""
+
+#. module: l10n_ca_contractor_slips
+#. odoo-python
+#: code:addons/l10n_ca_contractor_slips/models/res_config_settings.py:0
+msgid "CRA's schemas are loaded."
+msgstr ""
+
+#. module: l10n_ca_contractor_slips
+#. odoo-python
+#: code:addons/l10n_ca_contractor_slips/models/res_config_settings.py:0
+msgid ""
+"CRA's schemas could not be downloaded. Check the server's internet access, "
+"or set the system parameter l10n_ca_contractor_slips.cra_schema_url to a "
+"copy of the package."
+msgstr ""
+
+#. module: l10n_ca_contractor_slips
+#: model:ir.model.fields,help:l10n_ca_contractor_slips.field_res_company__l10n_ca_t5018_threshold_basis
+#: model:ir.model.fields,help:l10n_ca_contractor_slips.field_res_config_settings__l10n_ca_t5018_threshold_basis
+msgid ""
+"CRA's two publications word the T5018 threshold differently. The default "
+"issues a slip in every case either wording requires."
+msgstr ""
+
+#. module: l10n_ca_contractor_slips
+#: model_terms:ir.ui.view,arch_db:l10n_ca_contractor_slips.view_l10n_ca_slip_return_form
+msgid "Calculate slips"
+msgstr ""
+
+#. module: l10n_ca_contractor_slips
+#: model:ir.model.fields,field_description:l10n_ca_contractor_slips.field_l10n_ca_slip__computed_base
+msgid "Calculated before tax"
+msgstr ""
+
+#. module: l10n_ca_contractor_slips
+#: model:ir.model.fields,field_description:l10n_ca_contractor_slips.field_l10n_ca_slip__computed_incl
+msgid "Calculated with tax"
+msgstr ""
+
+#. module: l10n_ca_contractor_slips
+#: model:ir.model.fields.selection,name:l10n_ca_contractor_slips.selection__res_company__l10n_ca_t5018_period__calendar
+msgid "Calendar year"
+msgstr ""
+
+#. module: l10n_ca_contractor_slips
+#: model_terms:ir.ui.view,arch_db:l10n_ca_contractor_slips.res_config_settings_view_form
+msgid "Canadian Contractor Slips"
+msgstr ""
+
+#. module: l10n_ca_contractor_slips
+#: model_terms:ir.ui.view,arch_db:l10n_ca_contractor_slips.view_partner_property_form_l10n_ca_slips
+msgid "Canadian Tax Slips"
+msgstr ""
+
+#. module: l10n_ca_contractor_slips
+#: model:ir.model,name:l10n_ca_contractor_slips.model_report_l10n_ca_contractor_slips_report_l10n_ca_slip
+#: model:ir.model,name:l10n_ca_contractor_slips.model_l10n_ca_slip
+msgid "Canadian contractor slip"
+msgstr ""
+
+#. module: l10n_ca_contractor_slips
+#: model:ir.model,name:l10n_ca_contractor_slips.model_l10n_ca_slip_engine
+msgid "Canadian contractor slip engine"
+msgstr ""
+
+#. module: l10n_ca_contractor_slips
+#: model:ir.model,name:l10n_ca_contractor_slips.model_l10n_ca_slip_return
+msgid "Canadian contractor slip return"
+msgstr ""
+
+#. module: l10n_ca_contractor_slips
+#: model:ir.model.fields,field_description:l10n_ca_contractor_slips.field_account_bank_statement_line__l10n_ca_slip_type
+#: model:ir.model.fields,field_description:l10n_ca_contractor_slips.field_account_move__l10n_ca_slip_type
+#: model:ir.model.fields,field_description:l10n_ca_contractor_slips.field_res_partner__l10n_ca_slip_type
+#: model:ir.model.fields,field_description:l10n_ca_contractor_slips.field_res_users__l10n_ca_slip_type
+msgid "Canadian slip"
+msgstr ""
+
+#. module: l10n_ca_contractor_slips
+#: model:ir.actions.server,name:l10n_ca_contractor_slips.ir_cron_send_slips_ir_actions_server
+msgid "Canadian slips: email queued slips"
+msgstr ""
+
+#. module: l10n_ca_contractor_slips
+#: model:mail.template,name:l10n_ca_contractor_slips.mail_template_l10n_ca_slip
+msgid "Canadian tax slip: send to recipient"
+msgstr ""
+
+#. module: l10n_ca_contractor_slips
+#: model:ir.model.fields,field_description:l10n_ca_contractor_slips.field_l10n_ca_slip__is_cancelled
+msgid "Cancel this slip"
+msgstr ""
+
+#. module: l10n_ca_contractor_slips
+#: model:ir.model.fields.selection,name:l10n_ca_contractor_slips.selection__l10n_ca_slip__email_state__cancel
+#: model:ir.model.fields.selection,name:l10n_ca_contractor_slips.selection__l10n_ca_slip__rpt_tcd__c
+#: model_terms:ir.ui.view,arch_db:l10n_ca_contractor_slips.portal_my_slips
+msgid "Cancelled"
+msgstr ""
+
+#. module: l10n_ca_contractor_slips
+#: model:ir.model.fields,field_description:l10n_ca_contractor_slips.field_l10n_ca_slip_line__cash
+msgid "Cash"
+msgstr ""
+
+#. module: l10n_ca_contractor_slips
+#. odoo-python
+#: code:addons/l10n_ca_contractor_slips/models/l10n_ca_slip_return.py:0
+msgid "Choose a filing contact in Accounting settings."
+msgstr ""
+
+#. module: l10n_ca_contractor_slips
+#: model:ir.model.fields,field_description:l10n_ca_contractor_slips.field_l10n_ca_slip__city
+msgid "City"
+msgstr ""
+
+#. module: l10n_ca_contractor_slips
+#: model:ir.model,name:l10n_ca_contractor_slips.model_res_company
+#: model:ir.model.fields,field_description:l10n_ca_contractor_slips.field_l10n_ca_slip__company_id
+#: model:ir.model.fields,field_description:l10n_ca_contractor_slips.field_l10n_ca_slip_line__company_id
+#: model:ir.model.fields,field_description:l10n_ca_contractor_slips.field_l10n_ca_slip_return__company_id
+msgid "Company"
+msgstr ""
+
+#. module: l10n_ca_contractor_slips
+#: model:ir.model,name:l10n_ca_contractor_slips.model_res_config_settings
+msgid "Config Settings"
+msgstr ""
+
+#. module: l10n_ca_contractor_slips
+#: model:ir.model.fields,field_description:l10n_ca_contractor_slips.field_res_partner__l10n_ca_slip_consent_company_id
+#: model:ir.model.fields,field_description:l10n_ca_contractor_slips.field_res_users__l10n_ca_slip_consent_company_id
+msgid "Consent given to"
+msgstr ""
+
+#. module: l10n_ca_contractor_slips
+#: model:ir.model.fields,field_description:l10n_ca_contractor_slips.field_res_partner__l10n_ca_slip_email_consent_date
+#: model:ir.model.fields,field_description:l10n_ca_contractor_slips.field_res_users__l10n_ca_slip_email_consent_date
+msgid "Consent recorded on"
+msgstr ""
+
+#. module: l10n_ca_contractor_slips
+#: model:ir.model,name:l10n_ca_contractor_slips.model_res_partner
+msgid "Contact"
+msgstr ""
+
+#. module: l10n_ca_contractor_slips
+#. odoo-python
+#: code:addons/l10n_ca_contractor_slips/wizard/base_partner_merge.py:0
+msgid ""
+"Contacts merged into %s. Recalculate this return to combine their payments."
+msgstr ""
+
+#. module: l10n_ca_contractor_slips
+#: model:ir.ui.menu,name:l10n_ca_contractor_slips.menu_l10n_ca_slip_return
+msgid "Contractor Slips (T4A, T5018)"
+msgstr ""
+
+#. module: l10n_ca_contractor_slips
+#: model:ir.actions.act_window,name:l10n_ca_contractor_slips.action_l10n_ca_slip_return
+msgid "Contractor slips (T4A, T5018)"
+msgstr ""
+
+#. module: l10n_ca_contractor_slips
+#: model:ir.model.fields.selection,name:l10n_ca_contractor_slips.selection__l10n_ca_slip__recipient_type__3
+#: model:ir.model.fields.selection,name:l10n_ca_contractor_slips.selection__res_partner__l10n_ca_recipient_type__3
+msgid "Corporation"
+msgstr ""
+
+#. module: l10n_ca_contractor_slips
+#: model:ir.model.fields,field_description:l10n_ca_contractor_slips.field_l10n_ca_slip_line__amount_base
+msgid "Counted before tax"
+msgstr ""
+
+#. module: l10n_ca_contractor_slips
+#: model:ir.model.fields,field_description:l10n_ca_contractor_slips.field_l10n_ca_slip_line__amount_incl
+msgid "Counted with tax"
+msgstr ""
+
+#. module: l10n_ca_contractor_slips
+#: model:ir.model.fields,field_description:l10n_ca_contractor_slips.field_l10n_ca_slip__country_code
+msgid "Country"
+msgstr ""
+
+#. module: l10n_ca_contractor_slips
+#: model:ir.model.fields,field_description:l10n_ca_contractor_slips.field_l10n_ca_slip__create_uid
+#: model:ir.model.fields,field_description:l10n_ca_contractor_slips.field_l10n_ca_slip_line__create_uid
+#: model:ir.model.fields,field_description:l10n_ca_contractor_slips.field_l10n_ca_slip_return__create_uid
+msgid "Created by"
+msgstr ""
+
+#. module: l10n_ca_contractor_slips
+#: model:ir.model.fields,field_description:l10n_ca_contractor_slips.field_l10n_ca_slip__create_date
+#: model:ir.model.fields,field_description:l10n_ca_contractor_slips.field_l10n_ca_slip_line__create_date
+#: model:ir.model.fields,field_description:l10n_ca_contractor_slips.field_l10n_ca_slip_return__create_date
+msgid "Created on"
+msgstr ""
+
+#. module: l10n_ca_contractor_slips
+#: model:ir.model.fields.selection,name:l10n_ca_contractor_slips.selection__l10n_ca_slip_line__source__credit_note
+msgid "Credit note applied"
+msgstr ""
+
+#. module: l10n_ca_contractor_slips
+#: model:ir.model.fields,field_description:l10n_ca_contractor_slips.field_l10n_ca_slip__currency_id
+#: model:ir.model.fields,field_description:l10n_ca_contractor_slips.field_l10n_ca_slip_line__currency_id
+#: model:ir.model.fields,field_description:l10n_ca_contractor_slips.field_l10n_ca_slip_return__currency_id
+msgid "Currency"
+msgstr ""
+
+#. module: l10n_ca_contractor_slips
+#: model:ir.model.fields,help:l10n_ca_contractor_slips.field_l10n_ca_slip__access_url
+msgid "Customer Portal URL"
+msgstr ""
+
+#. module: l10n_ca_contractor_slips
+#: model_terms:ir.ui.view,arch_db:l10n_ca_contractor_slips.report_l10n_ca_slip_document
+msgid "DUPLICATE"
+msgstr ""
+
+#. module: l10n_ca_contractor_slips
+#: model:ir.model.fields,field_description:l10n_ca_contractor_slips.field_l10n_ca_slip_return__date_from
+msgid "Date From"
+msgstr ""
+
+#. module: l10n_ca_contractor_slips
+#: model:ir.model.fields,field_description:l10n_ca_contractor_slips.field_l10n_ca_slip_return__date_to
+msgid "Date To"
+msgstr ""
+
+#. module: l10n_ca_contractor_slips
+#: model:ir.model.fields,help:l10n_ca_contractor_slips.field_l10n_ca_slip__email_state
+msgid "Delivery state of the slip email."
+msgstr ""
+
+#. module: l10n_ca_contractor_slips
+#: model:ir.model.fields.selection,name:l10n_ca_contractor_slips.selection__l10n_ca_slip_line__source__bank
+msgid "Direct bank entry"
+msgstr ""
+
+#. module: l10n_ca_contractor_slips
+#: model:ir.model.fields,field_description:l10n_ca_contractor_slips.field_account_move__display_name
+#: model:ir.model.fields,field_description:l10n_ca_contractor_slips.field_base_partner_merge_automatic_wizard__display_name
+#: model:ir.model.fields,field_description:l10n_ca_contractor_slips.field_ir_attachment__display_name
+#: model:ir.model.fields,field_description:l10n_ca_contractor_slips.field_l10n_ca_slip__display_name
+#: model:ir.model.fields,field_description:l10n_ca_contractor_slips.field_l10n_ca_slip_engine__display_name
+#: model:ir.model.fields,field_description:l10n_ca_contractor_slips.field_l10n_ca_slip_line__display_name
+#: model:ir.model.fields,field_description:l10n_ca_contractor_slips.field_l10n_ca_slip_return__display_name
+#: model:ir.model.fields,field_description:l10n_ca_contractor_slips.field_mail_mail__display_name
+#: model:ir.model.fields,field_description:l10n_ca_contractor_slips.field_res_company__display_name
+#: model:ir.model.fields,field_description:l10n_ca_contractor_slips.field_res_config_settings__display_name
+#: model:ir.model.fields,field_description:l10n_ca_contractor_slips.field_res_partner__display_name
+msgid "Display Name"
+msgstr ""
+
+#. module: l10n_ca_contractor_slips
+#: model_terms:ir.ui.view,arch_db:l10n_ca_contractor_slips.report_l10n_ca_slip_document
+msgid ""
+"Do not report the amount on this slip or on the slip it cancels. If the "
+"payer issues you a new slip, report that one."
+msgstr ""
+
+#. module: l10n_ca_contractor_slips
+#: model_terms:ir.ui.view,arch_db:l10n_ca_contractor_slips.portal_my_slips
+msgid "Download"
+msgstr ""
+
+#. module: l10n_ca_contractor_slips
+#: model_terms:ir.ui.view,arch_db:l10n_ca_contractor_slips.view_l10n_ca_slip_return_form
+msgid "Download CRA file"
+msgstr ""
+
+#. module: l10n_ca_contractor_slips
+#: model_terms:ir.ui.view,arch_db:l10n_ca_contractor_slips.res_config_settings_view_form
+msgid "Download CRA schemas"
+msgstr ""
+
+#. module: l10n_ca_contractor_slips
+#: model:ir.model.fields.selection,name:l10n_ca_contractor_slips.selection__l10n_ca_slip_return__state__draft
+#: model_terms:ir.ui.view,arch_db:l10n_ca_contractor_slips.view_l10n_ca_slip_return_search
+#: model_terms:ir.ui.view,arch_db:l10n_ca_contractor_slips.view_l10n_ca_slip_search
+msgid "Draft"
+msgstr ""
+
+#. module: l10n_ca_contractor_slips
+#: model:ir.model.fields,field_description:l10n_ca_contractor_slips.field_l10n_ca_slip_return__due_date
+msgid "Due date"
+msgstr ""
+
+#. module: l10n_ca_contractor_slips
+#: model:ir.model.fields,field_description:l10n_ca_contractor_slips.field_l10n_ca_slip__email_failure
+msgid "Email Failure"
+msgstr ""
+
+#. module: l10n_ca_contractor_slips
+#: model:ir.model.fields,field_description:l10n_ca_contractor_slips.field_l10n_ca_slip__email_state
+msgid "Email State"
+msgstr ""
+
+#. module: l10n_ca_contractor_slips
+#: model_terms:ir.ui.view,arch_db:l10n_ca_contractor_slips.view_l10n_ca_slip_search
+msgid "Email failed"
+msgstr ""
+
+#. module: l10n_ca_contractor_slips
+#: model:ir.model.fields,field_description:l10n_ca_contractor_slips.field_l10n_ca_slip__send_requested_uid
+msgid "Email requested by"
+msgstr ""
+
+#. module: l10n_ca_contractor_slips
+#: model_terms:ir.ui.view,arch_db:l10n_ca_contractor_slips.view_l10n_ca_slip_return_form
+msgid "Email slips"
+msgstr ""
+
+#. module: l10n_ca_contractor_slips
+#: model:ir.model.fields,field_description:l10n_ca_contractor_slips.field_l10n_ca_slip__sent_date
+msgid "Emailed on"
+msgstr ""
+
+#. module: l10n_ca_contractor_slips
+#: model:ir.model.fields,field_description:l10n_ca_contractor_slips.field_l10n_ca_slip__engine_warnings
+msgid "Engine Warnings"
+msgstr ""
+
+#. module: l10n_ca_contractor_slips
+#. odoo-python
+#: code:addons/l10n_ca_contractor_slips/models/l10n_ca_slip_return.py:0
+msgid ""
+"Enter your RepID (up to 7 letters and digits) in Accounting settings: CRA "
+"matches the file to the representative who uploads it."
+msgstr ""
+
+#. module: l10n_ca_contractor_slips
+#. odoo-python
+#: code:addons/l10n_ca_contractor_slips/models/l10n_ca_slip_return.py:0
+msgid "Explain the amendment in the amendment note."
+msgstr ""
+
+#. module: l10n_ca_contractor_slips
+#: model:ir.model.fields,help:l10n_ca_contractor_slips.field_l10n_ca_slip_return__amendment_note
+msgid "Explanation sent to CRA with an amended return."
+msgstr ""
+
+#. module: l10n_ca_contractor_slips
+#: model:ir.model.fields,field_description:l10n_ca_contractor_slips.field_l10n_ca_slip_return__exported_slip_count
+msgid "Exported Slip Count"
+msgstr ""
+
+#. module: l10n_ca_contractor_slips
+#: model:ir.model.fields.selection,name:l10n_ca_contractor_slips.selection__l10n_ca_slip__email_state__exception
+msgid "Failed"
+msgstr ""
+
+#. module: l10n_ca_contractor_slips
+#: model:ir.model.fields.selection,name:l10n_ca_contractor_slips.selection__l10n_ca_slip_return__state__filed
+#: model_terms:ir.ui.view,arch_db:l10n_ca_contractor_slips.view_l10n_ca_slip_return_search
+#: model_terms:ir.ui.view,arch_db:l10n_ca_contractor_slips.view_l10n_ca_slip_search
+msgid "Filed"
+msgstr ""
+
+#. module: l10n_ca_contractor_slips
+#: model:ir.model.fields,field_description:l10n_ca_contractor_slips.field_l10n_ca_slip_return__filed_date
+msgid "Filed Date"
+msgstr ""
+
+#. module: l10n_ca_contractor_slips
+#: model:ir.model.fields,field_description:l10n_ca_contractor_slips.field_l10n_ca_slip_return__filed_settings
+msgid "Filed Settings"
+msgstr ""
+
+#. module: l10n_ca_contractor_slips
+#. odoo-python
+#: code:addons/l10n_ca_contractor_slips/models/l10n_ca_slip.py:0
+msgid ""
+"Files cannot be attached to slip messages because slips hold the recipient's"
+" SIN. Send slips from the return with Email slips."
+msgstr ""
+
+#. module: l10n_ca_contractor_slips
+#. odoo-python
+#: code:addons/l10n_ca_contractor_slips/models/ir_attachment.py:0
+msgid ""
+"Files cannot be attached to slips because slips hold the recipient's SIN. "
+"Send slips from the return with Email slips."
+msgstr ""
+
+#. module: l10n_ca_contractor_slips
+#: model:ir.model.fields,field_description:l10n_ca_contractor_slips.field_res_company__l10n_ca_slip_contact_id
+#: model:ir.model.fields,field_description:l10n_ca_contractor_slips.field_res_config_settings__l10n_ca_slip_contact_id
+msgid "Filing contact"
+msgstr ""
+
+#. module: l10n_ca_contractor_slips
+#: model_terms:ir.ui.view,arch_db:l10n_ca_contractor_slips.res_config_settings_view_form
+msgid "Filing contact and T5018 period"
+msgstr ""
+
+#. module: l10n_ca_contractor_slips
+#: model:ir.model.fields.selection,name:l10n_ca_contractor_slips.selection__l10n_ca_slip_return__state__final
+#: model_terms:ir.ui.view,arch_db:l10n_ca_contractor_slips.view_l10n_ca_slip_return_search
+msgid "Final"
+msgstr ""
+
+#. module: l10n_ca_contractor_slips
+#: model_terms:ir.ui.view,arch_db:l10n_ca_contractor_slips.view_l10n_ca_slip_return_form
+msgid "Finalize"
+msgstr ""
+
+#. module: l10n_ca_contractor_slips
+#. odoo-python
+#: code:addons/l10n_ca_contractor_slips/models/l10n_ca_slip_return.py:0
+msgid "Finalize the return before marking it filed."
+msgstr ""
+
+#. module: l10n_ca_contractor_slips
+#. odoo-python
+#: code:addons/l10n_ca_contractor_slips/models/l10n_ca_slip_return.py:0
+msgid "Finalize the return before printing slips."
+msgstr ""
+
+#. module: l10n_ca_contractor_slips
+#. odoo-python
+#: code:addons/l10n_ca_contractor_slips/models/l10n_ca_slip_return.py:0
+msgid "Finalize the return before sending slips."
+msgstr ""
+
+#. module: l10n_ca_contractor_slips
+#. odoo-python
+#: code:addons/l10n_ca_contractor_slips/models/l10n_ca_slip_return.py:0
+msgid "Finalize the return to create the CRA file."
+msgstr ""
+
+#. module: l10n_ca_contractor_slips
+#. odoo-python
+#: code:addons/l10n_ca_contractor_slips/models/l10n_ca_slip_return.py:0
+msgid "Finalized with these notes:"
+msgstr ""
+
+#. module: l10n_ca_contractor_slips
+#: model_terms:ir.ui.view,arch_db:l10n_ca_contractor_slips.report_l10n_ca_slip_recipient
+msgid "First name"
+msgstr ""
+
+#. module: l10n_ca_contractor_slips
+#: model:ir.model.fields.selection,name:l10n_ca_contractor_slips.selection__res_company__l10n_ca_t5018_period__fiscal
+msgid "Fiscal year"
+msgstr ""
+
+#. module: l10n_ca_contractor_slips
+#. odoo-python
+#: code:addons/l10n_ca_contractor_slips/models/l10n_ca_slip_return.py:0
+msgid ""
+"Fix these before finalizing:\n"
+"%s"
+msgstr ""
+
+#. module: l10n_ca_contractor_slips
+#: model_terms:ir.actions.act_window,help:l10n_ca_contractor_slips.action_l10n_ca_slip_return
+msgid ""
+"Flag contractors on their contact (Invoicing tab), tag the expense accounts you pay them from,\n"
+"               then create a return for the year. Slips are calculated from what you actually paid."
+msgstr ""
+
+#. module: l10n_ca_contractor_slips
+#: model:ir.model.fields,field_description:l10n_ca_contractor_slips.field_l10n_ca_slip__message_follower_ids
+#: model:ir.model.fields,field_description:l10n_ca_contractor_slips.field_l10n_ca_slip_return__message_follower_ids
+msgid "Followers"
+msgstr ""
+
+#. module: l10n_ca_contractor_slips
+#: model:ir.model.fields,field_description:l10n_ca_contractor_slips.field_l10n_ca_slip__message_partner_ids
+#: model:ir.model.fields,field_description:l10n_ca_contractor_slips.field_l10n_ca_slip_return__message_partner_ids
+msgid "Followers (Partners)"
+msgstr ""
+
+#. module: l10n_ca_contractor_slips
+#: model_terms:ir.ui.view,arch_db:l10n_ca_contractor_slips.view_move_form_l10n_ca_slips
+msgid "Follows the vendor"
+msgstr ""
+
+#. module: l10n_ca_contractor_slips
+#: model_terms:ir.ui.view,arch_db:l10n_ca_contractor_slips.view_l10n_ca_slip_return_form
+msgid "For each slip, name the recipient and say what changed and why."
+msgstr ""
+
+#. module: l10n_ca_contractor_slips
+#. odoo-python
+#: code:addons/l10n_ca_contractor_slips/models/l10n_ca_slip.py:0
+msgid "Give a reason for the adjustment on %s."
+msgstr ""
+
+#. module: l10n_ca_contractor_slips
+#. odoo-python
+#: code:addons/l10n_ca_contractor_slips/models/l10n_ca_slip_return.py:0
+msgid ""
+"Give the other %(count)s recipient(s) two paper copies (Print slips): "
+"%(names)s."
+msgstr ""
+
+#. module: l10n_ca_contractor_slips
+#: model:ir.model.fields,field_description:l10n_ca_contractor_slips.field_l10n_ca_slip__given_name
+msgid "Given Name"
+msgstr ""
+
+#. module: l10n_ca_contractor_slips
+#: model:ir.model.fields,field_description:l10n_ca_contractor_slips.field_res_partner__l10n_ca_slip_given_name
+#: model:ir.model.fields,field_description:l10n_ca_contractor_slips.field_res_users__l10n_ca_slip_given_name
+msgid "Given name on slips"
+msgstr ""
+
+#. module: l10n_ca_contractor_slips
+#. odoo-python
+#: code:addons/l10n_ca_contractor_slips/models/l10n_ca_slip_return.py:0
+msgid ""
+"Giving T5018 slips to subcontractors is optional. To give paper copies, "
+"print slips for: %s."
+msgstr ""
+
+#. module: l10n_ca_contractor_slips
+#: model:ir.model.fields,field_description:l10n_ca_contractor_slips.field_l10n_ca_slip__has_message
+#: model:ir.model.fields,field_description:l10n_ca_contractor_slips.field_l10n_ca_slip_return__has_message
+msgid "Has Message"
+msgstr ""
+
+#. module: l10n_ca_contractor_slips
+#: model:ir.model.fields,field_description:l10n_ca_contractor_slips.field_l10n_ca_slip_return__has_xml_file
+msgid "Has Xml File"
+msgstr ""
+
+#. module: l10n_ca_contractor_slips
+#: model:ir.model.fields,help:l10n_ca_contractor_slips.field_l10n_ca_slip_return__xml_file
+msgid "Holds recipients' SINs, so only accounting administrators can open it."
+msgstr ""
+
+#. module: l10n_ca_contractor_slips
+#: model:ir.model.fields,help:l10n_ca_contractor_slips.field_res_partner__l10n_ca_recipient_type
+#: model:ir.model.fields,help:l10n_ca_contractor_slips.field_res_users__l10n_ca_recipient_type
+msgid ""
+"How CRA identifies this recipient: by name and SIN for individuals, by "
+"business name and business number otherwise."
+msgstr ""
+
+#. module: l10n_ca_contractor_slips
+#: model:ir.model.fields,help:l10n_ca_contractor_slips.field_res_company__l10n_ca_slip_signin
+#: model:ir.model.fields,help:l10n_ca_contractor_slips.field_res_config_settings__l10n_ca_slip_signin
+msgid ""
+"How you sign in to CRA's Internet File Transfer to upload the file. CRA "
+"checks the file against that sign-in: with a web access code the file "
+"carries the 15-character account you signed in with, and a representative's "
+"file carries their RepID."
+msgstr ""
+
+#. module: l10n_ca_contractor_slips
+#: model:ir.model.fields,field_description:l10n_ca_contractor_slips.field_account_move__id
+#: model:ir.model.fields,field_description:l10n_ca_contractor_slips.field_base_partner_merge_automatic_wizard__id
+#: model:ir.model.fields,field_description:l10n_ca_contractor_slips.field_ir_attachment__id
+#: model:ir.model.fields,field_description:l10n_ca_contractor_slips.field_l10n_ca_slip__id
+#: model:ir.model.fields,field_description:l10n_ca_contractor_slips.field_l10n_ca_slip_engine__id
+#: model:ir.model.fields,field_description:l10n_ca_contractor_slips.field_l10n_ca_slip_line__id
+#: model:ir.model.fields,field_description:l10n_ca_contractor_slips.field_l10n_ca_slip_return__id
+#: model:ir.model.fields,field_description:l10n_ca_contractor_slips.field_mail_mail__id
+#: model:ir.model.fields,field_description:l10n_ca_contractor_slips.field_res_company__id
+#: model:ir.model.fields,field_description:l10n_ca_contractor_slips.field_res_config_settings__id
+#: model:ir.model.fields,field_description:l10n_ca_contractor_slips.field_res_partner__id
+msgid "ID"
+msgstr ""
+
+#. module: l10n_ca_contractor_slips
+#: model:ir.model.fields,field_description:l10n_ca_contractor_slips.field_l10n_ca_slip_return__activity_exception_icon
+msgid "Icon"
+msgstr ""
+
+#. module: l10n_ca_contractor_slips
+#: model:ir.model.fields,help:l10n_ca_contractor_slips.field_l10n_ca_slip_return__activity_exception_icon
+msgid "Icon to indicate an exception activity."
+msgstr ""
+
+#. module: l10n_ca_contractor_slips
+#: model:ir.model.fields,help:l10n_ca_contractor_slips.field_l10n_ca_slip__message_needaction
+#: model:ir.model.fields,help:l10n_ca_contractor_slips.field_l10n_ca_slip_return__message_needaction
+msgid "If checked, new messages require your attention."
+msgstr ""
+
+#. module: l10n_ca_contractor_slips
+#: model:ir.model.fields,help:l10n_ca_contractor_slips.field_l10n_ca_slip__message_has_error
+#: model:ir.model.fields,help:l10n_ca_contractor_slips.field_l10n_ca_slip__message_has_sms_error
+#: model:ir.model.fields,help:l10n_ca_contractor_slips.field_l10n_ca_slip_return__message_has_error
+#: model:ir.model.fields,help:l10n_ca_contractor_slips.field_l10n_ca_slip_return__message_has_sms_error
+msgid "If checked, some messages have a delivery error."
+msgstr ""
+
+#. module: l10n_ca_contractor_slips
+#: model:ir.model.fields.selection,name:l10n_ca_contractor_slips.selection__l10n_ca_slip__recipient_type__1
+#: model:ir.model.fields.selection,name:l10n_ca_contractor_slips.selection__res_partner__l10n_ca_recipient_type__1
+msgid "Individual or sole proprietor"
+msgstr ""
+
+#. module: l10n_ca_contractor_slips
+#: model:ir.model.fields,field_description:l10n_ca_contractor_slips.field_l10n_ca_slip__initial
+msgid "Initial"
+msgstr ""
+
+#. module: l10n_ca_contractor_slips
+#: model_terms:ir.ui.view,arch_db:l10n_ca_contractor_slips.report_l10n_ca_slip_recipient
+msgid "Initials"
+msgstr ""
+
+#. module: l10n_ca_contractor_slips
+#: model:ir.model.fields,field_description:l10n_ca_contractor_slips.field_l10n_ca_slip__message_is_follower
+#: model:ir.model.fields,field_description:l10n_ca_contractor_slips.field_l10n_ca_slip_return__message_is_follower
+msgid "Is Follower"
+msgstr ""
+
+#. module: l10n_ca_contractor_slips
+#: model_terms:ir.ui.view,arch_db:l10n_ca_contractor_slips.portal_my_slips
+#: model_terms:ir.ui.view,arch_db:l10n_ca_contractor_slips.portal_slip_page
+msgid "Issued by"
+msgstr ""
+
+#. module: l10n_ca_contractor_slips
+#: model:ir.model,name:l10n_ca_contractor_slips.model_account_move
+msgid "Journal Entry"
+msgstr ""
+
+#. module: l10n_ca_contractor_slips
+#: model:ir.model.fields,help:l10n_ca_contractor_slips.field_l10n_ca_slip_line__move_ref
+msgid "Kept on the slip if the bill is later deleted."
+msgstr ""
+
+#. module: l10n_ca_contractor_slips
+#: model:ir.model.fields,help:l10n_ca_contractor_slips.field_l10n_ca_slip_line__payment_ref
+msgid "Kept on the slip if the entry is later deleted."
+msgstr ""
+
+#. module: l10n_ca_contractor_slips
+#: model:ir.model.fields,field_description:l10n_ca_contractor_slips.field_l10n_ca_slip__write_uid
+#: model:ir.model.fields,field_description:l10n_ca_contractor_slips.field_l10n_ca_slip_line__write_uid
+#: model:ir.model.fields,field_description:l10n_ca_contractor_slips.field_l10n_ca_slip_return__write_uid
+msgid "Last Updated by"
+msgstr ""
+
+#. module: l10n_ca_contractor_slips
+#: model:ir.model.fields,field_description:l10n_ca_contractor_slips.field_l10n_ca_slip__write_date
+#: model:ir.model.fields,field_description:l10n_ca_contractor_slips.field_l10n_ca_slip_line__write_date
+#: model:ir.model.fields,field_description:l10n_ca_contractor_slips.field_l10n_ca_slip_return__write_date
+msgid "Last Updated on"
+msgstr ""
+
+#. module: l10n_ca_contractor_slips
+#: model_terms:ir.ui.view,arch_db:l10n_ca_contractor_slips.report_l10n_ca_slip_recipient
+msgid "Last name (print)"
+msgstr ""
+
+#. module: l10n_ca_contractor_slips
+#: model:ir.model.fields,help:l10n_ca_contractor_slips.field_res_partner__l10n_ca_slip_given_name
+#: model:ir.model.fields,help:l10n_ca_contractor_slips.field_res_users__l10n_ca_slip_given_name
+msgid "Leave empty to use the first word of the contact name."
+msgstr ""
+
+#. module: l10n_ca_contractor_slips
+#: model:ir.model.fields,help:l10n_ca_contractor_slips.field_res_partner__l10n_ca_slip_surname
+#: model:ir.model.fields,help:l10n_ca_contractor_slips.field_res_users__l10n_ca_slip_surname
+msgid "Leave empty to use the last word of the contact name."
+msgstr ""
+
+#. module: l10n_ca_contractor_slips
+#: model_terms:ir.ui.view,arch_db:l10n_ca_contractor_slips.report_l10n_ca_slip_document
+msgid "Line 43700"
+msgstr ""
+
+#. module: l10n_ca_contractor_slips
+#: model:ir.model.fields,field_description:l10n_ca_contractor_slips.field_l10n_ca_slip__mail_id
+msgid "Mail"
+msgstr ""
+
+#. module: l10n_ca_contractor_slips
+#: model_terms:ir.ui.view,arch_db:l10n_ca_contractor_slips.view_l10n_ca_slip_return_form
+msgid "Mark as filed"
+msgstr ""
+
+#. module: l10n_ca_contractor_slips
+#: model_terms:ir.ui.view,arch_db:l10n_ca_contractor_slips.view_l10n_ca_slip_return_form
+msgid "Mark this return as filed with CRA? Its slips will be locked."
+msgstr ""
+
+#. module: l10n_ca_contractor_slips
+#: model:ir.model.fields.selection,name:l10n_ca_contractor_slips.selection__l10n_ca_slip_line__source__reconciled
+msgid "Matched payment"
+msgstr ""
+
+#. module: l10n_ca_contractor_slips
+#: model:ir.model.fields,help:l10n_ca_contractor_slips.field_l10n_ca_slip_return__activity_type_icon
+msgid "Material Symbols icon e.g. checklist"
+msgstr ""
+
+#. module: l10n_ca_contractor_slips
+#: model:ir.model,name:l10n_ca_contractor_slips.model_base_partner_merge_automatic_wizard
+msgid "Merge Partner Wizard"
+msgstr ""
+
+#. module: l10n_ca_contractor_slips
+#: model:ir.model.fields,field_description:l10n_ca_contractor_slips.field_l10n_ca_slip__message_has_error
+#: model:ir.model.fields,field_description:l10n_ca_contractor_slips.field_l10n_ca_slip_return__message_has_error
+msgid "Message Delivery error"
+msgstr ""
+
+#. module: l10n_ca_contractor_slips
+#: model:ir.model.fields,field_description:l10n_ca_contractor_slips.field_l10n_ca_slip__message_ids
+#: model:ir.model.fields,field_description:l10n_ca_contractor_slips.field_l10n_ca_slip_return__message_ids
+msgid "Messages"
+msgstr ""
+
+#. module: l10n_ca_contractor_slips
+#: model:ir.model.fields,field_description:l10n_ca_contractor_slips.field_l10n_ca_slip_return__my_activity_date_deadline
+msgid "My Activity Deadline"
+msgstr ""
+
+#. module: l10n_ca_contractor_slips
+#: model:ir.model.fields.selection,name:l10n_ca_contractor_slips.selection__res_company__l10n_ca_slip_signin__myba
+msgid "My Business Account"
+msgstr ""
+
+#. module: l10n_ca_contractor_slips
+#: model:ir.model.fields,field_description:l10n_ca_contractor_slips.field_l10n_ca_slip_return__name
+msgid "Name"
+msgstr ""
+
+#. module: l10n_ca_contractor_slips
+#: model:ir.model.fields,field_description:l10n_ca_contractor_slips.field_l10n_ca_slip__name_guessed
+msgid "Name split from the contact"
+msgstr ""
+
+#. module: l10n_ca_contractor_slips
+#: model:ir.model.fields,field_description:l10n_ca_contractor_slips.field_l10n_ca_slip_return__activity_date_deadline
+msgid "Next Activity Deadline"
+msgstr ""
+
+#. module: l10n_ca_contractor_slips
+#: model:ir.model.fields,field_description:l10n_ca_contractor_slips.field_l10n_ca_slip_return__activity_summary
+msgid "Next Activity Summary"
+msgstr ""
+
+#. module: l10n_ca_contractor_slips
+#: model:ir.model.fields,field_description:l10n_ca_contractor_slips.field_l10n_ca_slip_return__activity_type_id
+msgid "Next Activity Type"
+msgstr ""
+
+#. module: l10n_ca_contractor_slips
+#. odoo-python
+#: code:addons/l10n_ca_contractor_slips/models/l10n_ca_slip.py:0
+msgid ""
+"No 15-character business number on the contact (Tax ID), so the file reports"
+" %s."
+msgstr ""
+
+#. module: l10n_ca_contractor_slips
+#. odoo-python
+#: code:addons/l10n_ca_contractor_slips/models/l10n_ca_slip.py:0
+msgid ""
+"No SIN on the contact. The file reports 000000000, which CRA accepts after a"
+" reasonable effort to get the number."
+msgstr ""
+
+#. module: l10n_ca_contractor_slips
+#. odoo-python
+#: code:addons/l10n_ca_contractor_slips/models/l10n_ca_slip_return.py:0
+msgid ""
+"No slips on this return are current: they were amended or cancelled since."
+msgstr ""
+
+#. module: l10n_ca_contractor_slips
+#: model_terms:ir.ui.view,arch_db:l10n_ca_contractor_slips.portal_my_slips
+msgid "No tax slips have been issued to you yet."
+msgstr ""
+
+#. module: l10n_ca_contractor_slips
+#: model:ir.model.fields.selection,name:l10n_ca_contractor_slips.selection__account_move__l10n_ca_slip_type__none
+msgid "Not reported"
+msgstr ""
+
+#. module: l10n_ca_contractor_slips
+#: model:ir.model.fields,field_description:l10n_ca_contractor_slips.field_l10n_ca_slip__message_needaction_counter
+#: model:ir.model.fields,field_description:l10n_ca_contractor_slips.field_l10n_ca_slip_return__message_needaction_counter
+msgid "Number of Actions"
+msgstr ""
+
+#. module: l10n_ca_contractor_slips
+#: model:ir.model.fields,field_description:l10n_ca_contractor_slips.field_l10n_ca_slip__message_has_error_counter
+#: model:ir.model.fields,field_description:l10n_ca_contractor_slips.field_l10n_ca_slip_return__message_has_error_counter
+msgid "Number of errors"
+msgstr ""
+
+#. module: l10n_ca_contractor_slips
+#: model:ir.model.fields,help:l10n_ca_contractor_slips.field_l10n_ca_slip__message_needaction_counter
+#: model:ir.model.fields,help:l10n_ca_contractor_slips.field_l10n_ca_slip_return__message_needaction_counter
+msgid "Number of messages requiring action"
+msgstr ""
+
+#. module: l10n_ca_contractor_slips
+#: model:ir.model.fields,help:l10n_ca_contractor_slips.field_l10n_ca_slip__message_has_error_counter
+#: model:ir.model.fields,help:l10n_ca_contractor_slips.field_l10n_ca_slip_return__message_has_error_counter
+msgid "Number of messages with delivery error"
+msgstr ""
+
+#. module: l10n_ca_contractor_slips
+#: model:ir.model.fields,help:l10n_ca_contractor_slips.field_l10n_ca_slip__is_cancelled
+msgid ""
+"On an amended return, sends this slip to CRA with report type C to cancel "
+"it."
+msgstr ""
+
+#. module: l10n_ca_contractor_slips
+#: model:ir.model.fields,help:l10n_ca_contractor_slips.field_res_company__l10n_ca_t5018_period
+#: model:ir.model.fields,help:l10n_ca_contractor_slips.field_res_config_settings__l10n_ca_t5018_period
+msgid ""
+"Once you file for a reporting period, CRA expects every later T5018 return "
+"for the same period unless it authorizes a change in writing."
+msgstr ""
+
+#. module: l10n_ca_contractor_slips
+#. odoo-python
+#: code:addons/l10n_ca_contractor_slips/models/res_partner.py:0
+msgid "Only accounting administrators can change Canadian slip settings."
+msgstr ""
+
+#. module: l10n_ca_contractor_slips
+#. odoo-python
+#: code:addons/l10n_ca_contractor_slips/models/account_move.py:0
+msgid "Only accounting administrators can change a bill's Canadian slip."
+msgstr ""
+
+#. module: l10n_ca_contractor_slips
+#. odoo-python
+#: code:addons/l10n_ca_contractor_slips/models/l10n_ca_slip_return.py:0
+msgid "Only draft returns can be deleted."
+msgstr ""
+
+#. module: l10n_ca_contractor_slips
+#. odoo-python
+#: code:addons/l10n_ca_contractor_slips/models/l10n_ca_slip_return.py:0
+msgid "Only draft returns can be finalized."
+msgstr ""
+
+#. module: l10n_ca_contractor_slips
+#. odoo-python
+#: code:addons/l10n_ca_contractor_slips/models/l10n_ca_slip_return.py:0
+msgid "Only draft returns can be recalculated."
+msgstr ""
+
+#. module: l10n_ca_contractor_slips
+#. odoo-python
+#: code:addons/l10n_ca_contractor_slips/models/l10n_ca_slip_return.py:0
+msgid "Only filed returns can be amended."
+msgstr ""
+
+#. module: l10n_ca_contractor_slips
+#. odoo-python
+#: code:addons/l10n_ca_contractor_slips/models/l10n_ca_slip_return.py:0
+msgid "Only final returns can go back to draft. Filed returns are amended."
+msgstr ""
+
+#. module: l10n_ca_contractor_slips
+#: model:ir.model.fields,help:l10n_ca_contractor_slips.field_res_company__l10n_ca_slip_transmitter_repid
+#: model:ir.model.fields,help:l10n_ca_contractor_slips.field_res_config_settings__l10n_ca_slip_transmitter_repid
+msgid "Only for representatives filing through Represent a Client."
+msgstr ""
+
+#. module: l10n_ca_contractor_slips
+#: model_terms:ir.ui.view,arch_db:l10n_ca_contractor_slips.view_l10n_ca_slip_return_form
+msgid "Open slip"
+msgstr ""
+
+#. module: l10n_ca_contractor_slips
+#: model:ir.model.fields.selection,name:l10n_ca_contractor_slips.selection__l10n_ca_slip__rpt_tcd__o
+#: model:ir.model.fields.selection,name:l10n_ca_contractor_slips.selection__l10n_ca_slip_return__report_type__o
+msgid "Original"
+msgstr ""
+
+#. module: l10n_ca_contractor_slips
+#: model:ir.model,name:l10n_ca_contractor_slips.model_mail_mail
+msgid "Outgoing Mail"
+msgstr ""
+
+#. module: l10n_ca_contractor_slips
+#: model_terms:ir.ui.view,arch_db:l10n_ca_contractor_slips.portal_my_slips
+msgid "PDF"
+msgstr ""
+
+#. module: l10n_ca_contractor_slips
+#: model:ir.model.fields,field_description:l10n_ca_contractor_slips.field_l10n_ca_slip_line__date
+msgid "Paid on"
+msgstr ""
+
+#. module: l10n_ca_contractor_slips
+#: model:ir.model.fields.selection,name:l10n_ca_contractor_slips.selection__l10n_ca_slip__recipient_type__4
+#: model:ir.model.fields.selection,name:l10n_ca_contractor_slips.selection__res_partner__l10n_ca_recipient_type__4
+msgid "Partnership"
+msgstr ""
+
+#. module: l10n_ca_contractor_slips
+#: model_terms:ir.ui.view,arch_db:l10n_ca_contractor_slips.res_config_settings_view_form
+msgid ""
+"Payer program accounts and the account used to sign in to CRA when you "
+"upload the file."
+msgstr ""
+
+#. module: l10n_ca_contractor_slips
+#: model_terms:ir.ui.view,arch_db:l10n_ca_contractor_slips.report_l10n_ca_slip_document
+msgid "Payer's name"
+msgstr ""
+
+#. module: l10n_ca_contractor_slips
+#: model_terms:ir.ui.view,arch_db:l10n_ca_contractor_slips.report_l10n_ca_slip_document
+msgid ""
+"Payer's name: The name of the contractor who made payments to "
+"subcontractors. Payer's program account number: Do not enter your business "
+"number on the copies you give to the subcontractors."
+msgstr ""
+
+#. module: l10n_ca_contractor_slips
+#: model_terms:ir.ui.view,arch_db:l10n_ca_contractor_slips.report_l10n_ca_slip_document
+msgid "Payer's program account number"
+msgstr ""
+
+#. module: l10n_ca_contractor_slips
+#: model:ir.model.fields,field_description:l10n_ca_contractor_slips.field_l10n_ca_slip_line__payment_id
+msgid "Payment"
+msgstr ""
+
+#. module: l10n_ca_contractor_slips
+#: model:ir.model,name:l10n_ca_contractor_slips.model_l10n_ca_slip_line
+msgid "Payment counted on a Canadian contractor slip"
+msgstr ""
+
+#. module: l10n_ca_contractor_slips
+#: model:ir.model.fields,field_description:l10n_ca_contractor_slips.field_l10n_ca_slip_line__payment_move_id
+msgid "Payment entry"
+msgstr ""
+
+#. module: l10n_ca_contractor_slips
+#: model:ir.model.fields,field_description:l10n_ca_contractor_slips.field_l10n_ca_slip_line__payment_ref
+msgid "Payment number"
+msgstr ""
+
+#. module: l10n_ca_contractor_slips
+#: model:ir.model.fields.selection,name:l10n_ca_contractor_slips.selection__l10n_ca_slip_line__source__payment
+msgid "Payment without entry"
+msgstr ""
+
+#. module: l10n_ca_contractor_slips
+#: model:ir.model.fields,field_description:l10n_ca_contractor_slips.field_l10n_ca_slip__line_ids
+#: model_terms:ir.ui.view,arch_db:l10n_ca_contractor_slips.view_l10n_ca_slip_form
+msgid "Payments"
+msgstr ""
+
+#. module: l10n_ca_contractor_slips
+#: model_terms:ir.ui.view,arch_db:l10n_ca_contractor_slips.view_l10n_ca_slip_return_form
+msgid "Period"
+msgstr ""
+
+#. module: l10n_ca_contractor_slips
+#: model:ir.model.fields,help:l10n_ca_contractor_slips.field_res_company__l10n_ca_slip_contact_id
+#: model:ir.model.fields,help:l10n_ca_contractor_slips.field_res_config_settings__l10n_ca_slip_contact_id
+msgid ""
+"Person CRA contacts about the return. Needs a 10-digit phone number and an "
+"email."
+msgstr ""
+
+#. module: l10n_ca_contractor_slips
+#: model:ir.model.fields,field_description:l10n_ca_contractor_slips.field_l10n_ca_slip__access_url
+msgid "Portal Access URL"
+msgstr ""
+
+#. module: l10n_ca_contractor_slips
+#: model:ir.model.fields,field_description:l10n_ca_contractor_slips.field_l10n_ca_slip__zip
+msgid "Postal code"
+msgstr ""
+
+#. module: l10n_ca_contractor_slips
+#. odoo-python
+#: code:addons/l10n_ca_contractor_slips/models/l10n_ca_slip_return.py:0
+msgid ""
+"Prepare the return on %(main)s: branches file under their main company's "
+"business number."
+msgstr ""
+
+#. module: l10n_ca_contractor_slips
+#: model_terms:ir.actions.act_window,help:l10n_ca_contractor_slips.action_l10n_ca_slip_return
+msgid "Prepare your T4A or T5018 return"
+msgstr ""
+
+#. module: l10n_ca_contractor_slips
+#: model_terms:ir.ui.view,arch_db:l10n_ca_contractor_slips.view_l10n_ca_slip_return_form
+msgid "Print duplicates"
+msgstr ""
+
+#. module: l10n_ca_contractor_slips
+#: model_terms:ir.ui.view,arch_db:l10n_ca_contractor_slips.view_l10n_ca_slip_return_form
+msgid "Print slips"
+msgstr ""
+
+#. module: l10n_ca_contractor_slips
+#: model_terms:ir.ui.view,arch_db:l10n_ca_contractor_slips.report_l10n_ca_slip_document
+msgid "Protected B when completed"
+msgstr ""
+
+#. module: l10n_ca_contractor_slips
+#: model:ir.model.fields,field_description:l10n_ca_contractor_slips.field_l10n_ca_slip__state_code
+msgid "Province"
+msgstr ""
+
+#. module: l10n_ca_contractor_slips
+#: model:ir.model.fields.selection,name:l10n_ca_contractor_slips.selection__l10n_ca_slip__email_state__outgoing
+msgid "Queued"
+msgstr ""
+
+#. module: l10n_ca_contractor_slips
+#: model:ir.model.fields,field_description:l10n_ca_contractor_slips.field_l10n_ca_slip__send_to_email
+msgid "Queued for"
+msgstr ""
+
+#. module: l10n_ca_contractor_slips
+#: model_terms:ir.ui.view,arch_db:l10n_ca_contractor_slips.view_l10n_ca_slip_return_form
+msgid "Recalculate"
+msgstr ""
+
+#. module: l10n_ca_contractor_slips
+#. odoo-python
+#: code:addons/l10n_ca_contractor_slips/models/l10n_ca_slip_return.py:0
+msgid ""
+"Recalculate first: bills, payments or contacts changed since the last "
+"calculation for %s."
+msgstr ""
+
+#. module: l10n_ca_contractor_slips
+#: model:ir.model.fields.selection,name:l10n_ca_contractor_slips.selection__l10n_ca_slip__email_state__received
+msgid "Received"
+msgstr ""
+
+#. module: l10n_ca_contractor_slips
+#: model:ir.model.fields,field_description:l10n_ca_contractor_slips.field_l10n_ca_slip__partner_id
+msgid "Recipient"
+msgstr ""
+
+#. module: l10n_ca_contractor_slips
+#: model:ir.model.fields,field_description:l10n_ca_contractor_slips.field_l10n_ca_slip__recipient_type
+msgid "Recipient Type"
+msgstr ""
+
+#. module: l10n_ca_contractor_slips
+#: model:ir.model.fields,field_description:l10n_ca_contractor_slips.field_l10n_ca_slip__recipient_bn
+msgid "Recipient business number"
+msgstr ""
+
+#. module: l10n_ca_contractor_slips
+#: model_terms:ir.ui.view,arch_db:l10n_ca_contractor_slips.view_l10n_ca_slip_form
+msgid "Recipient on the slip"
+msgstr ""
+
+#. module: l10n_ca_contractor_slips
+#: model:ir.model.fields,field_description:l10n_ca_contractor_slips.field_l10n_ca_slip__recipient_type_guessed
+msgid "Recipient type assumed"
+msgstr ""
+
+#. module: l10n_ca_contractor_slips
+#: model_terms:ir.ui.view,arch_db:l10n_ca_contractor_slips.report_l10n_ca_slip_document
+msgid "Recipient's business name and address"
+msgstr ""
+
+#. module: l10n_ca_contractor_slips
+#: model_terms:ir.ui.view,arch_db:l10n_ca_contractor_slips.report_l10n_ca_slip_document
+msgid "Recipient's name and address"
+msgstr ""
+
+#. module: l10n_ca_contractor_slips
+#: model:ir.model.fields,help:l10n_ca_contractor_slips.field_l10n_ca_slip__superseded
+msgid "Replaced or cancelled by a slip on a later amended return."
+msgstr ""
+
+#. module: l10n_ca_contractor_slips
+#: model:ir.model.fields,field_description:l10n_ca_contractor_slips.field_l10n_ca_slip__report_type
+#: model:ir.model.fields,field_description:l10n_ca_contractor_slips.field_l10n_ca_slip_return__report_type
+msgid "Report Type"
+msgstr ""
+
+#. module: l10n_ca_contractor_slips
+#. odoo-python
+#: code:addons/l10n_ca_contractor_slips/models/l10n_ca_slip.py:0
+msgid "Report codes and amendment links are set by the return."
+msgstr ""
+
+#. module: l10n_ca_contractor_slips
+#: model_terms:ir.ui.view,arch_db:l10n_ca_contractor_slips.report_l10n_ca_slip_document
+msgid "Report these amounts on your tax return."
+msgstr ""
+
+#. module: l10n_ca_contractor_slips
+#: model:ir.model.fields,field_description:l10n_ca_contractor_slips.field_l10n_ca_slip__rpt_tcd
+msgid "Report type"
+msgstr ""
+
+#. module: l10n_ca_contractor_slips
+#: model:ir.model.fields.selection,name:l10n_ca_contractor_slips.selection__res_company__l10n_ca_slip_signin__rac
+msgid "Represent a Client"
+msgstr ""
+
+#. module: l10n_ca_contractor_slips
+#: model:ir.model.fields,field_description:l10n_ca_contractor_slips.field_l10n_ca_slip_return__activity_user_id
+msgid "Responsible User"
+msgstr ""
+
+#. module: l10n_ca_contractor_slips
+#: model:ir.model.fields,field_description:l10n_ca_contractor_slips.field_l10n_ca_slip__return_id
+msgid "Return"
+msgstr ""
+
+#. module: l10n_ca_contractor_slips
+#. odoo-python
+#: code:addons/l10n_ca_contractor_slips/models/l10n_ca_slip_return.py:0
+msgid ""
+"Returns belong to %s, the main company. Ask an administrator to give you "
+"access to it."
+msgstr ""
+
+#. module: l10n_ca_contractor_slips
+#: model_terms:ir.ui.view,arch_db:l10n_ca_contractor_slips.view_partner_property_form_l10n_ca_slips
+msgid ""
+"Returns read the slip type, the SIN and email consent from the main company."
+" Switch to it to see or change them."
+msgstr ""
+
+#. module: l10n_ca_contractor_slips
+#: model:ir.model.fields,field_description:l10n_ca_contractor_slips.field_l10n_ca_slip__sin
+#: model:ir.model.fields,field_description:l10n_ca_contractor_slips.field_res_partner__l10n_ca_sin
+#: model:ir.model.fields,field_description:l10n_ca_contractor_slips.field_res_users__l10n_ca_sin
+msgid "SIN"
+msgstr ""
+
+#. module: l10n_ca_contractor_slips
+#: model:ir.model.fields,field_description:l10n_ca_contractor_slips.field_l10n_ca_slip__message_has_sms_error
+#: model:ir.model.fields,field_description:l10n_ca_contractor_slips.field_l10n_ca_slip_return__message_has_sms_error
+msgid "SMS Delivery error"
+msgstr ""
+
+#. module: l10n_ca_contractor_slips
+#: model:ir.model.fields,field_description:l10n_ca_contractor_slips.field_res_partner__l10n_ca_slip_initial
+#: model:ir.model.fields,field_description:l10n_ca_contractor_slips.field_res_users__l10n_ca_slip_initial
+msgid "Second initial on slips"
+msgstr ""
+
+#. module: l10n_ca_contractor_slips
+#: model:ir.model.fields,field_description:l10n_ca_contractor_slips.field_l10n_ca_slip__access_token
+msgid "Security Token"
+msgstr ""
+
+#. module: l10n_ca_contractor_slips
+#: model_terms:ir.ui.view,arch_db:l10n_ca_contractor_slips.report_l10n_ca_slip_document
+msgid "See the privacy notice on your return."
+msgstr ""
+
+#. module: l10n_ca_contractor_slips
+#: model:ir.model.fields.selection,name:l10n_ca_contractor_slips.selection__l10n_ca_slip__email_state__sent
+msgid "Sent"
+msgstr ""
+
+#. module: l10n_ca_contractor_slips
+#: model:mail.template,description:l10n_ca_contractor_slips.mail_template_l10n_ca_slip
+msgid "Sent to contractors who agreed to receive tax slips by email"
+msgstr ""
+
+#. module: l10n_ca_contractor_slips
+#: model:ir.model.fields.selection,name:l10n_ca_contractor_slips.selection__res_company__l10n_ca_t5018_threshold_basis__incl_500
+msgid "Service part with tax, $500 or more (Form T5018SUM)"
+msgstr ""
+
+#. module: l10n_ca_contractor_slips
+#. odoo-python
+#: code:addons/l10n_ca_contractor_slips/models/l10n_ca_slip_return.py:0
+msgid "Set the payer's %s account in Accounting settings."
+msgstr ""
+
+#. module: l10n_ca_contractor_slips
+#. odoo-python
+#: code:addons/l10n_ca_contractor_slips/models/l10n_ca_slip_return.py:0
+msgid "Set the transmitter CRA account number in Accounting settings."
+msgstr ""
+
+#. module: l10n_ca_contractor_slips
+#: model:ir.model.fields,help:l10n_ca_contractor_slips.field_res_partner__l10n_ca_slip_email_consent_date
+#: model:ir.model.fields,help:l10n_ca_contractor_slips.field_res_users__l10n_ca_slip_email_consent_date
+msgid ""
+"Set when the consent box is ticked. Keep the recipient's written or "
+"electronic consent with your records."
+msgstr ""
+
+#. module: l10n_ca_contractor_slips
+#: model:ir.model.fields,help:l10n_ca_contractor_slips.field_l10n_ca_slip__rpt_tcd
+msgid ""
+"Set when the return is finalized. Empty on an amended return when the slip "
+"did not change, so it is not sent again."
+msgstr ""
+
+#. module: l10n_ca_contractor_slips
+#: model:ir.model.fields,help:l10n_ca_contractor_slips.field_l10n_ca_slip__send_requested_uid
+msgid "Set while the slip waits for the scheduled job that emails it."
+msgstr ""
+
+#. module: l10n_ca_contractor_slips
+#. odoo-python
+#: code:addons/l10n_ca_contractor_slips/models/l10n_ca_slip_return.py:0
+msgid "Shorten the amendment note to %s characters, CRA's limit."
+msgstr ""
+
+#. module: l10n_ca_contractor_slips
+#: model:ir.model.fields,field_description:l10n_ca_contractor_slips.field_l10n_ca_slip_line__slip_id
+#: model_terms:ir.ui.view,arch_db:l10n_ca_contractor_slips.portal_my_slips
+#: model_terms:ir.ui.view,arch_db:l10n_ca_contractor_slips.view_l10n_ca_slip_form
+msgid "Slip"
+msgstr ""
+
+#. module: l10n_ca_contractor_slips
+#: model:ir.model.fields,field_description:l10n_ca_contractor_slips.field_l10n_ca_slip_return__slip_count
+msgid "Slip Count"
+msgstr ""
+
+#. module: l10n_ca_contractor_slips
+#. odoo-python
+#: code:addons/l10n_ca_contractor_slips/models/res_partner.py:0
+msgid ""
+"Slip email not sent: the email address changed while it waited. Confirm "
+"consent for the new address, then click Email slips again."
+msgstr ""
+
+#. module: l10n_ca_contractor_slips
+#. odoo-python
+#: code:addons/l10n_ca_contractor_slips/models/l10n_ca_slip.py:0
+msgid ""
+"Slip email not sent: the email consent of %s no longer covers the address it"
+" was queued for."
+msgstr ""
+
+#. module: l10n_ca_contractor_slips
+#. odoo-python
+#: code:addons/l10n_ca_contractor_slips/models/l10n_ca_slip.py:0
+msgid ""
+"Slip email to %(address)s failed: %(reason)s. Print the slip for this "
+"recipient, or correct the address and email it again."
+msgstr ""
+
+#. module: l10n_ca_contractor_slips
+#. odoo-python
+#: code:addons/l10n_ca_contractor_slips/models/l10n_ca_slip.py:0
+msgid "Slip queued for email to %s."
+msgstr ""
+
+#. module: l10n_ca_contractor_slips
+#: model:ir.model.fields,field_description:l10n_ca_contractor_slips.field_res_partner__l10n_ca_recipient_type
+#: model:ir.model.fields,field_description:l10n_ca_contractor_slips.field_res_users__l10n_ca_recipient_type
+msgid "Slip recipient type"
+msgstr ""
+
+#. module: l10n_ca_contractor_slips
+#: model_terms:ir.ui.view,arch_db:l10n_ca_contractor_slips.view_l10n_ca_slip_return_form
+msgid "Slip return"
+msgstr ""
+
+#. module: l10n_ca_contractor_slips
+#: model_terms:ir.ui.view,arch_db:l10n_ca_contractor_slips.view_l10n_ca_slip_return_list
+msgid "Slip returns"
+msgstr ""
+
+#. module: l10n_ca_contractor_slips
+#: model:ir.model.fields,field_description:l10n_ca_contractor_slips.field_l10n_ca_slip__slip_type
+#: model:ir.model.fields,field_description:l10n_ca_contractor_slips.field_l10n_ca_slip_return__slip_type
+#: model_terms:ir.ui.view,arch_db:l10n_ca_contractor_slips.view_l10n_ca_slip_search
+msgid "Slip type"
+msgstr ""
+
+#. module: l10n_ca_contractor_slips
+#: model:ir.actions.act_window,name:l10n_ca_contractor_slips.action_l10n_ca_slip
+#: model:ir.model.fields,field_description:l10n_ca_contractor_slips.field_l10n_ca_slip_return__slip_ids
+#: model_terms:ir.ui.view,arch_db:l10n_ca_contractor_slips.view_l10n_ca_slip_list
+#: model_terms:ir.ui.view,arch_db:l10n_ca_contractor_slips.view_l10n_ca_slip_return_form
+msgid "Slips"
+msgstr ""
+
+#. module: l10n_ca_contractor_slips
+#: model:ir.model.fields,field_description:l10n_ca_contractor_slips.field_res_partner__l10n_ca_slip_email_consent
+#: model:ir.model.fields,field_description:l10n_ca_contractor_slips.field_res_users__l10n_ca_slip_email_consent
+msgid "Slips by email"
+msgstr ""
+
+#. module: l10n_ca_contractor_slips
+#. odoo-python
+#: code:addons/l10n_ca_contractor_slips/models/l10n_ca_slip.py:0
+msgid "Slips can only be added to a draft return."
+msgstr ""
+
+#. module: l10n_ca_contractor_slips
+#: model_terms:ir.ui.view,arch_db:l10n_ca_contractor_slips.view_l10n_ca_slip_return_form
+msgid "Slips in the file"
+msgstr ""
+
+#. module: l10n_ca_contractor_slips
+#. odoo-python
+#: code:addons/l10n_ca_contractor_slips/models/l10n_ca_slip.py:0
+msgid ""
+"Slips on a final or filed return cannot be changed. Amend the return "
+"instead."
+msgstr ""
+
+#. module: l10n_ca_contractor_slips
+#. odoo-python
+#: code:addons/l10n_ca_contractor_slips/models/l10n_ca_slip.py:0
+msgid "Slips on a final or filed return cannot be deleted."
+msgstr ""
+
+#. module: l10n_ca_contractor_slips
+#. odoo-python
+#: code:addons/l10n_ca_contractor_slips/models/l10n_ca_slip_return.py:0
+msgid "Slips recalculated: %s slip(s)."
+msgstr ""
+
+#. module: l10n_ca_contractor_slips
+#: model:ir.model.fields,help:l10n_ca_contractor_slips.field_res_partner__l10n_ca_sin
+#: model:ir.model.fields,help:l10n_ca_contractor_slips.field_res_users__l10n_ca_sin
+msgid ""
+"Social Insurance Number, needed for individual recipients. Each main company"
+" keeps the SIN it collected, visible to its own accounting administrators "
+"only."
+msgstr ""
+
+#. module: l10n_ca_contractor_slips
+#: model_terms:ir.ui.view,arch_db:l10n_ca_contractor_slips.report_l10n_ca_slip_document
+msgid "Social insurance number (SIN)"
+msgstr ""
+
+#. module: l10n_ca_contractor_slips
+#: model:ir.model.fields,field_description:l10n_ca_contractor_slips.field_l10n_ca_slip_line__source
+msgid "Source"
+msgstr ""
+
+#. module: l10n_ca_contractor_slips
+#: model:ir.model.fields,field_description:l10n_ca_contractor_slips.field_l10n_ca_slip__state
+#: model:ir.model.fields,field_description:l10n_ca_contractor_slips.field_l10n_ca_slip_return__state
+msgid "State"
+msgstr ""
+
+#. module: l10n_ca_contractor_slips
+#: model_terms:ir.ui.view,arch_db:l10n_ca_contractor_slips.report_l10n_ca_slip_document
+msgid "Statement of Contract Payments"
+msgstr ""
+
+#. module: l10n_ca_contractor_slips
+#: model_terms:ir.ui.view,arch_db:l10n_ca_contractor_slips.report_l10n_ca_slip_document
+msgid "Statement of Pension, Retirement, Annuity, and Other Income"
+msgstr ""
+
+#. module: l10n_ca_contractor_slips
+#: model:ir.model.fields,help:l10n_ca_contractor_slips.field_l10n_ca_slip_return__activity_state
+msgid ""
+"Status based on activities\n"
+"Overdue: Due date is already passed\n"
+"Today: Activity date is today\n"
+"Planned: Future activities."
+msgstr ""
+
+#. module: l10n_ca_contractor_slips
+#: model:ir.model.fields,field_description:l10n_ca_contractor_slips.field_l10n_ca_slip__street
+msgid "Street"
+msgstr ""
+
+#. module: l10n_ca_contractor_slips
+#: model:ir.model.fields,field_description:l10n_ca_contractor_slips.field_l10n_ca_slip__street2
+msgid "Street2"
+msgstr ""
+
+#. module: l10n_ca_contractor_slips
+#: model:ir.model.fields,field_description:l10n_ca_contractor_slips.field_l10n_ca_slip_return__sbmt_ref_id
+msgid "Submission reference"
+msgstr ""
+
+#. module: l10n_ca_contractor_slips
+#: model:ir.model.fields,field_description:l10n_ca_contractor_slips.field_l10n_ca_slip__superseded
+msgid "Superseded"
+msgstr ""
+
+#. module: l10n_ca_contractor_slips
+#: model:ir.model.fields,field_description:l10n_ca_contractor_slips.field_l10n_ca_slip__surname
+msgid "Surname"
+msgstr ""
+
+#. module: l10n_ca_contractor_slips
+#: model:ir.model.fields,field_description:l10n_ca_contractor_slips.field_res_partner__l10n_ca_slip_surname
+#: model:ir.model.fields,field_description:l10n_ca_contractor_slips.field_res_users__l10n_ca_slip_surname
+msgid "Surname on slips"
+msgstr ""
+
+#. module: l10n_ca_contractor_slips
+#: model:ir.model.fields.selection,name:l10n_ca_contractor_slips.selection__account_move__l10n_ca_slip_type__t4a
+#: model_terms:ir.ui.view,arch_db:l10n_ca_contractor_slips.view_l10n_ca_slip_return_search
+#: model_terms:ir.ui.view,arch_db:l10n_ca_contractor_slips.view_l10n_ca_slip_search
+msgid "T4A"
+msgstr ""
+
+#. module: l10n_ca_contractor_slips
+#: model:ir.module.module,shortdesc:base.module_l10n_ca_contractor_slips
+msgid "T4A and T5018 Slips"
+msgstr ""
+
+#. module: l10n_ca_contractor_slips
+#: model:ir.model.fields,help:l10n_ca_contractor_slips.field_l10n_ca_slip__amount_reported
+msgid ""
+"T4A box 048 (fees for services, before GST/HST and PST) or T5018 box 22 "
+"(contract payments, GST/HST and PST included where charged)."
+msgstr ""
+
+#. module: l10n_ca_contractor_slips
+#: model:ir.module.module,summary:base.module_l10n_ca_contractor_slips
+msgid ""
+"T4A box 048 and T5018 slips from vendor payments, with CRA XML, PDF slips "
+"and portal delivery"
+msgstr ""
+
+#. module: l10n_ca_contractor_slips
+#: model:account.account.tag,name:l10n_ca_contractor_slips.account_tag_t4a_fees
+msgid "T4A box 048: fees for services"
+msgstr ""
+
+#. module: l10n_ca_contractor_slips
+#: model_terms:ir.ui.view,arch_db:l10n_ca_contractor_slips.view_res_partner_filter_l10n_ca_slips
+msgid "T4A contractors"
+msgstr ""
+
+#. module: l10n_ca_contractor_slips
+#: model:ir.model.fields,field_description:l10n_ca_contractor_slips.field_res_company__l10n_ca_slip_rp_account
+#: model:ir.model.fields,field_description:l10n_ca_contractor_slips.field_res_config_settings__l10n_ca_slip_rp_account
+msgid "T4A payer account (RP)"
+msgstr ""
+
+#. module: l10n_ca_contractor_slips
+#: model:ir.model.fields.selection,name:l10n_ca_contractor_slips.selection__l10n_ca_slip_return__slip_type__t4a
+msgid "T4A: fees for services"
+msgstr ""
+
+#. module: l10n_ca_contractor_slips
+#: model:ir.model.fields.selection,name:l10n_ca_contractor_slips.selection__res_partner__l10n_ca_slip_type__t4a
+msgid "T4A: fees for services (box 048)"
+msgstr ""
+
+#. module: l10n_ca_contractor_slips
+#: model:ir.model.fields.selection,name:l10n_ca_contractor_slips.selection__account_move__l10n_ca_slip_type__t5018
+#: model_terms:ir.ui.view,arch_db:l10n_ca_contractor_slips.view_l10n_ca_slip_return_search
+#: model_terms:ir.ui.view,arch_db:l10n_ca_contractor_slips.view_l10n_ca_slip_search
+msgid "T5018"
+msgstr ""
+
+#. module: l10n_ca_contractor_slips
+#: model:ir.model.fields,field_description:l10n_ca_contractor_slips.field_res_company__l10n_ca_slip_rz_account
+#: model:ir.model.fields,field_description:l10n_ca_contractor_slips.field_res_config_settings__l10n_ca_slip_rz_account
+msgid "T5018 payer account (RZ)"
+msgstr ""
+
+#. module: l10n_ca_contractor_slips
+#: model:ir.model.fields,field_description:l10n_ca_contractor_slips.field_res_company__l10n_ca_t5018_period
+#: model:ir.model.fields,field_description:l10n_ca_contractor_slips.field_res_config_settings__l10n_ca_t5018_period
+msgid "T5018 reporting period"
+msgstr ""
+
+#. module: l10n_ca_contractor_slips
+#: model:ir.model.fields,field_description:l10n_ca_contractor_slips.field_res_company__l10n_ca_t5018_threshold_basis
+#: model:ir.model.fields,field_description:l10n_ca_contractor_slips.field_res_config_settings__l10n_ca_t5018_threshold_basis
+msgid "T5018 slip threshold"
+msgstr ""
+
+#. module: l10n_ca_contractor_slips
+#: model_terms:ir.ui.view,arch_db:l10n_ca_contractor_slips.view_res_partner_filter_l10n_ca_slips
+msgid "T5018 subcontractors"
+msgstr ""
+
+#. module: l10n_ca_contractor_slips
+#: model:account.account.tag,name:l10n_ca_contractor_slips.account_tag_t5018_construction
+msgid "T5018: construction services"
+msgstr ""
+
+#. module: l10n_ca_contractor_slips
+#: model:ir.model.fields.selection,name:l10n_ca_contractor_slips.selection__res_partner__l10n_ca_slip_type__t5018
+msgid "T5018: construction subcontractor"
+msgstr ""
+
+#. module: l10n_ca_contractor_slips
+#: model:ir.model.fields.selection,name:l10n_ca_contractor_slips.selection__l10n_ca_slip_return__slip_type__t5018
+msgid "T5018: contract payments"
+msgstr ""
+
+#. module: l10n_ca_contractor_slips
+#: model:ir.model.fields,field_description:l10n_ca_contractor_slips.field_res_company__l10n_ca_t5018_include_mixed_goods
+#: model:ir.model.fields,field_description:l10n_ca_contractor_slips.field_res_config_settings__l10n_ca_t5018_include_mixed_goods
+msgid "T5018: report the whole mixed bill"
+msgstr ""
+
+#. module: l10n_ca_contractor_slips
+#: model:ir.actions.report,name:l10n_ca_contractor_slips.action_report_l10n_ca_slip
+msgid "Tax slip"
+msgstr ""
+
+#. module: l10n_ca_contractor_slips
+#: model_terms:ir.ui.view,arch_db:l10n_ca_contractor_slips.portal_my_home_slips
+#: model_terms:ir.ui.view,arch_db:l10n_ca_contractor_slips.portal_breadcrumbs_slips
+#: model_terms:ir.ui.view,arch_db:l10n_ca_contractor_slips.portal_my_slips
+msgid "Tax slips"
+msgstr ""
+
+#. module: l10n_ca_contractor_slips
+#: model:ir.model.fields,help:l10n_ca_contractor_slips.field_l10n_ca_slip__year
+#: model:ir.model.fields,help:l10n_ca_contractor_slips.field_l10n_ca_slip_return__year
+msgid ""
+"Tax year for T4A. For T5018, the year in which the reporting period ends."
+msgstr ""
+
+#. module: l10n_ca_contractor_slips
+#. odoo-python
+#: code:addons/l10n_ca_contractor_slips/models/l10n_ca_slip_return.py:0
+msgid ""
+"The CRA schemas could not be downloaded, so the file cannot be checked. Try "
+"again later, or load them from Accounting settings."
+msgstr ""
+
+#. module: l10n_ca_contractor_slips
+#: model_terms:ir.ui.view,arch_db:l10n_ca_contractor_slips.portal_slip_page
+msgid ""
+"The PDF shows the boxes that apply to you. Keep it for your tax return. If "
+"you would rather have paper copies, ask the payer and they will mail them."
+msgstr ""
+
+#. module: l10n_ca_contractor_slips
+#. odoo-python
+#: code:addons/l10n_ca_contractor_slips/models/l10n_ca_slip.py:0
+msgid ""
+"The SIN or business number differs from the slip filed earlier. CRA's "
+"guidance does not say how an amended slip with a new identifier is matched; "
+"consider cancelling this slip and filing it in a new original return."
+msgstr ""
+
+#. module: l10n_ca_contractor_slips
+#. odoo-python
+#: code:addons/l10n_ca_contractor_slips/models/res_partner.py:0
+msgid "The Social Insurance Number on %s is not valid."
+msgstr ""
+
+#. module: l10n_ca_contractor_slips
+#. odoo-python
+#: code:addons/l10n_ca_contractor_slips/models/l10n_ca_slip.py:0
+msgid "The Social Insurance Number on the slip for %s is not valid."
+msgstr ""
+
+#. module: l10n_ca_contractor_slips
+#. odoo-python
+#: code:addons/l10n_ca_contractor_slips/models/l10n_ca_slip_return.py:0
+msgid ""
+"The T5018 settings for mixed bills or the slip threshold changed since %s "
+"was filed. Amounts here follow today's settings; make sure the change is "
+"intended before filing the amendment."
+msgstr ""
+
+#. module: l10n_ca_contractor_slips
+#: model:ir.model.fields,help:l10n_ca_contractor_slips.field_l10n_ca_slip_return__filed_settings
+msgid "The T5018 settings in force when the return was finalized."
+msgstr ""
+
+#. module: l10n_ca_contractor_slips
+#: model:ir.model.fields,help:l10n_ca_contractor_slips.field_l10n_ca_slip__send_to_email
+msgid "The address the recipient consented to when the email was queued."
+msgstr ""
+
+#. module: l10n_ca_contractor_slips
+#. odoo-python
+#: code:addons/l10n_ca_contractor_slips/models/l10n_ca_slip.py:0
+msgid ""
+"The business number %s has an invalid check digit; check the contact's Tax "
+"ID."
+msgstr ""
+
+#. module: l10n_ca_contractor_slips
+#: model:ir.model.fields,help:l10n_ca_contractor_slips.field_res_company__l10n_ca_slip_transmitter_account
+#: model:ir.model.fields,help:l10n_ca_contractor_slips.field_res_config_settings__l10n_ca_slip_transmitter_account
+msgid ""
+"The business number (9 digits) or program account (15 characters) used to "
+"sign in to CRA when you upload the file. It must match that login."
+msgstr ""
+
+#. module: l10n_ca_contractor_slips
+#. odoo-python
+#: code:addons/l10n_ca_contractor_slips/models/l10n_ca_slip_return.py:0
+msgid "The company needs a name."
+msgstr ""
+
+#. module: l10n_ca_contractor_slips
+#: model:ir.model.fields,help:l10n_ca_contractor_slips.field_res_partner__l10n_ca_slip_consent_company_id
+#: model:ir.model.fields,help:l10n_ca_contractor_slips.field_res_users__l10n_ca_slip_consent_company_id
+msgid "The company whose slips the consent box covers."
+msgstr ""
+
+#. module: l10n_ca_contractor_slips
+#: model:ir.model.fields,help:l10n_ca_contractor_slips.field_l10n_ca_slip__recipient_type_guessed
+msgid "The contact has no recipient type, so the slip assumed one."
+msgstr ""
+
+#. module: l10n_ca_contractor_slips
+#. odoo-python
+#: code:addons/l10n_ca_contractor_slips/models/l10n_ca_slip.py:0
+msgid ""
+"The failed slip email and its PDF were deleted after %(days)s days. Reason: "
+"%(reason)s"
+msgstr ""
+
+#. module: l10n_ca_contractor_slips
+#. odoo-python
+#: code:addons/l10n_ca_contractor_slips/models/l10n_ca_slip_return.py:0
+msgid ""
+"The file does not pass CRA's schema:\n"
+"%s"
+msgstr ""
+
+#. module: l10n_ca_contractor_slips
+#. odoo-python
+#: code:addons/l10n_ca_contractor_slips/models/l10n_ca_slip_return.py:0
+msgid "The filing contact needs a 10-digit phone number."
+msgstr ""
+
+#. module: l10n_ca_contractor_slips
+#. odoo-python
+#: code:addons/l10n_ca_contractor_slips/models/l10n_ca_slip_return.py:0
+msgid "The filing contact needs an email address."
+msgstr ""
+
+#. module: l10n_ca_contractor_slips
+#. odoo-python
+#: code:addons/l10n_ca_contractor_slips/models/l10n_ca_slip_return.py:0
+msgid ""
+"The filing contact's email address is longer than CRA's limit of %s "
+"characters."
+msgstr ""
+
+#. module: l10n_ca_contractor_slips
+#: model_terms:ir.ui.view,arch_db:l10n_ca_contractor_slips.report_l10n_ca_slip_document
+msgid ""
+"The income on this slip must be reported on your tax return. You do not have"
+" to attach this slip to your tax return."
+msgstr ""
+
+#. module: l10n_ca_contractor_slips
+#. odoo-python
+#: code:addons/l10n_ca_contractor_slips/models/l10n_ca_slip_return.py:0
+msgid "The period must start before it ends."
+msgstr ""
+
+#. module: l10n_ca_contractor_slips
+#: model:ir.model.fields,help:l10n_ca_contractor_slips.field_res_company__l10n_ca_slip_transmitter_name
+#: model:ir.model.fields,help:l10n_ca_contractor_slips.field_res_config_settings__l10n_ca_slip_transmitter_name
+msgid ""
+"The person or firm who uploads the file, when it is not the company itself, "
+"such as an accounting firm filing through Represent a Client."
+msgstr ""
+
+#. module: l10n_ca_contractor_slips
+#. odoo-python
+#: code:addons/l10n_ca_contractor_slips/models/l10n_ca_slip_return.py:0
+msgid ""
+"The previous T5018 period ended on %(end)s, so payments from %(start)s to "
+"%(gap)s are on no return."
+msgstr ""
+
+#. module: l10n_ca_contractor_slips
+#: model:ir.model.fields,help:l10n_ca_contractor_slips.field_res_partner__l10n_ca_slip_email_consent
+#: model:ir.model.fields,help:l10n_ca_contractor_slips.field_res_users__l10n_ca_slip_email_consent
+msgid ""
+"The recipient agreed, in writing or electronically, to receive this "
+"company's tax slips by email. CRA requires this consent before slips are "
+"emailed, and it covers only the company it was given to. A T4A slip may be "
+"made available on the portal without this consent, unless the recipient "
+"asked for paper or cannot reasonably be expected to use the portal."
+msgstr ""
+
+#. module: l10n_ca_contractor_slips
+#: model:ir.model.fields,help:l10n_ca_contractor_slips.field_res_partner__l10n_ca_slip_paper
+#: model:ir.model.fields,help:l10n_ca_contractor_slips.field_res_users__l10n_ca_slip_paper
+msgid ""
+"The recipient asked for paper copies. They are listed for printing even when"
+" they have a portal login."
+msgstr ""
+
+#. module: l10n_ca_contractor_slips
+#. odoo-python
+#: code:addons/l10n_ca_contractor_slips/models/l10n_ca_slip.py:0
+msgid "The recipient's address is incomplete."
+msgstr ""
+
+#. module: l10n_ca_contractor_slips
+#. odoo-python
+#: code:addons/l10n_ca_contractor_slips/models/l10n_ca_slip.py:0
+msgid "The slip email could not be prepared: %s"
+msgstr ""
+
+#. module: l10n_ca_contractor_slips
+#: model_terms:ir.ui.view,arch_db:l10n_ca_contractor_slips.view_l10n_ca_slip_form
+msgid "The slip email failed:"
+msgstr ""
+
+#. module: l10n_ca_contractor_slips
+#. odoo-python
+#: code:addons/l10n_ca_contractor_slips/wizard/base_partner_merge.py:0
+msgid ""
+"The slip for %(names)s on %(slip_return)s has an adjustment. Move it to "
+"%(kept)s's slip before merging."
+msgstr ""
+
+#. module: l10n_ca_contractor_slips
+#: model:ir.model.fields,help:l10n_ca_contractor_slips.field_account_bank_statement_line__l10n_ca_slip_type
+#: model:ir.model.fields,help:l10n_ca_contractor_slips.field_account_move__l10n_ca_slip_type
+msgid ""
+"The slip this bill is reported on. Set from the vendor when the bill is "
+"posted, so changing the vendor's slip type later leaves posted bills where "
+"they were. Empty means the bill follows the vendor's current setting."
+msgstr ""
+
+#. module: l10n_ca_contractor_slips
+#. odoo-python
+#: code:addons/l10n_ca_contractor_slips/models/l10n_ca_slip_return.py:0
+msgid ""
+"The state, report type and CRA file of a return are set by its buttons."
+msgstr ""
+
+#. module: l10n_ca_contractor_slips
+#. odoo-python
+#: code:addons/l10n_ca_contractor_slips/models/l10n_ca_slip.py:0
+msgid ""
+"The surname and given name were split from the contact name (%(surname)s, "
+"%(given)s). Enter them on the contact if that split is wrong."
+msgstr ""
+
+#. module: l10n_ca_contractor_slips
+#: model:ir.model.fields,help:l10n_ca_contractor_slips.field_l10n_ca_slip__name_guessed
+msgid "The surname and given name were split from the contact name."
+msgstr ""
+
+#. module: l10n_ca_contractor_slips
+#. odoo-python
+#: code:addons/l10n_ca_contractor_slips/models/l10n_ca_slip.py:0
+msgid ""
+"The surname on the slip (%(surname)s) is not part of the contact name "
+"(%(name)s). If the contact was renamed, check Surname on slips on the "
+"contact."
+msgstr ""
+
+#. module: l10n_ca_contractor_slips
+#: model:ir.model.constraint,message:l10n_ca_contractor_slips.constraint_l10n_ca_slip_return_year_check
+msgid "The year must be between 2000 and 2099."
+msgstr ""
+
+#. module: l10n_ca_contractor_slips
+#. odoo-python
+#: code:addons/l10n_ca_contractor_slips/models/l10n_ca_slip_return.py:0
+msgid "There are no slips to file."
+msgstr ""
+
+#. module: l10n_ca_contractor_slips
+#: model_terms:ir.ui.view,arch_db:l10n_ca_contractor_slips.view_l10n_ca_slip_form
+msgid ""
+"These come from the contact and refresh on each recalculation. Correct the "
+"contact, then recalculate."
+msgstr ""
+
+#. module: l10n_ca_contractor_slips
+#. odoo-python
+#: code:addons/l10n_ca_contractor_slips/wizard/base_partner_merge.py:0
+msgid ""
+"These contacts hold Canadian slip details (a SIN, email consent, slip type, "
+"recipient details or slips), and the merge moves them to the kept contact. "
+"Ask an accounting administrator who works in every company that pays them to"
+" merge the contacts."
+msgstr ""
+
+#. module: l10n_ca_contractor_slips
+#. odoo-python
+#: code:addons/l10n_ca_contractor_slips/models/l10n_ca_slip_return.py:0
+msgid ""
+"This period has not ended. Payments made after you finalize will not be on "
+"the slips; CRA expects an early return only when the business has stopped "
+"operating."
+msgstr ""
+
+#. module: l10n_ca_contractor_slips
+#. odoo-python
+#: code:addons/l10n_ca_contractor_slips/models/l10n_ca_slip_return.py:0
+msgid ""
+"This period is not twelve months. CRA expects the same reporting period "
+"every year unless it authorizes a change in writing; a shorter first period "
+"is normal for a new business."
+msgstr ""
+
+#. module: l10n_ca_contractor_slips
+#. odoo-python
+#: code:addons/l10n_ca_contractor_slips/models/l10n_ca_slip_return.py:0
+msgid ""
+"This return already has an amendment (%s). Amend the most recent filed "
+"version."
+msgstr ""
+
+#. module: l10n_ca_contractor_slips
+#. odoo-python
+#: code:addons/l10n_ca_contractor_slips/models/l10n_ca_slip_return.py:0
+msgid ""
+"This return includes bills from %(branches)s. Ask an administrator for "
+"access to those companies before preparing it."
+msgstr ""
+
+#. module: l10n_ca_contractor_slips
+#: model_terms:ir.ui.view,arch_db:l10n_ca_contractor_slips.report_l10n_ca_slip_document
+msgid ""
+"This slip cancels the slip previously issued to you for this period. Contact "
+"the payer if you need a replacement slip."
+msgstr ""
+
+#. module: l10n_ca_contractor_slips
+#: model_terms:ir.ui.view,arch_db:l10n_ca_contractor_slips.report_l10n_ca_slip_document
+msgid ""
+"This slip is issued to subcontractors in the construction industry. For "
+"information on how to report your business income, including the income "
+"declared on this slip, go to canada.ca/en/services/taxes, see Guide T4002, "
+"Self-employed Business, Professional, Commission, Farming, and Fishing "
+"Income, or call 1-800-959-5525. The payer has sent a copy of this slip to "
+"the Canada Revenue Agency."
+msgstr ""
+
+#. module: l10n_ca_contractor_slips
+#: model_terms:ir.ui.view,arch_db:l10n_ca_contractor_slips.portal_slip_page
+msgid ""
+"This slip was cancelled. Do not use it on your tax return. Contact the payer "
+"if you need a replacement slip."
+msgstr ""
+
+#. module: l10n_ca_contractor_slips
+#: model_terms:ir.ui.view,arch_db:l10n_ca_contractor_slips.view_l10n_ca_slip_form
+#: model_terms:ir.ui.view,arch_db:l10n_ca_contractor_slips.view_l10n_ca_slip_list
+#: model_terms:ir.ui.view,arch_db:l10n_ca_contractor_slips.view_l10n_ca_slip_return_form
+msgid "Total"
+msgstr ""
+
+#. module: l10n_ca_contractor_slips
+#: model:ir.model.fields,field_description:l10n_ca_contractor_slips.field_l10n_ca_slip_return__total_reported
+msgid "Total Reported"
+msgstr ""
+
+#. module: l10n_ca_contractor_slips
+#: model:ir.model.fields,field_description:l10n_ca_contractor_slips.field_l10n_ca_slip__amount_base
+msgid "Total before tax"
+msgstr ""
+
+#. module: l10n_ca_contractor_slips
+#: model:ir.model.fields,field_description:l10n_ca_contractor_slips.field_l10n_ca_slip__amount_incl
+msgid "Total with tax"
+msgstr ""
+
+#. module: l10n_ca_contractor_slips
+#: model:ir.model.fields,field_description:l10n_ca_contractor_slips.field_res_company__l10n_ca_slip_transmitter_account
+#: model:ir.model.fields,field_description:l10n_ca_contractor_slips.field_res_config_settings__l10n_ca_slip_transmitter_account
+msgid "Transmitter CRA account number"
+msgstr ""
+
+#. module: l10n_ca_contractor_slips
+#: model:ir.model.fields,field_description:l10n_ca_contractor_slips.field_res_company__l10n_ca_slip_transmitter_repid
+#: model:ir.model.fields,field_description:l10n_ca_contractor_slips.field_res_config_settings__l10n_ca_slip_transmitter_repid
+msgid "Transmitter RepID"
+msgstr ""
+
+#. module: l10n_ca_contractor_slips
+#: model:ir.model.fields,field_description:l10n_ca_contractor_slips.field_res_company__l10n_ca_slip_transmitter_name
+#: model:ir.model.fields,field_description:l10n_ca_contractor_slips.field_res_config_settings__l10n_ca_slip_transmitter_name
+msgid "Transmitter name"
+msgstr ""
+
+#. module: l10n_ca_contractor_slips
+#: model:ir.model.fields,help:l10n_ca_contractor_slips.field_l10n_ca_slip_return__activity_exception_decoration
+msgid "Type of the exception activity on record."
+msgstr ""
+
+#. module: l10n_ca_contractor_slips
+#: model_terms:ir.ui.view,arch_db:l10n_ca_contractor_slips.portal_my_home_slips
+msgid "View and download the T4A and T5018 slips we issued to you"
+msgstr ""
+
+#. module: l10n_ca_contractor_slips
+#: model:ir.model.fields,field_description:l10n_ca_contractor_slips.field_res_partner__l10n_ca_slip_paper
+#: model:ir.model.fields,field_description:l10n_ca_contractor_slips.field_res_users__l10n_ca_slip_paper
+msgid "Wants paper slips"
+msgstr ""
+
+#. module: l10n_ca_contractor_slips
+#: model:ir.model.fields,field_description:l10n_ca_contractor_slips.field_l10n_ca_slip__warning_message
+#: model:ir.model.fields,field_description:l10n_ca_contractor_slips.field_l10n_ca_slip_return__warning_message
+msgid "Warning Message"
+msgstr ""
+
+#. module: l10n_ca_contractor_slips
+#: model:ir.model.fields.selection,name:l10n_ca_contractor_slips.selection__res_company__l10n_ca_slip_signin__wac
+msgid "Web access code"
+msgstr ""
+
+#. module: l10n_ca_contractor_slips
+#: model:ir.model.fields,help:l10n_ca_contractor_slips.field_l10n_ca_slip_return__due_date
+msgid ""
+"When CRA expects the return and the recipients expect their slips. A due "
+"date on a weekend or public holiday moves to the next business day."
+msgstr ""
+
+#. module: l10n_ca_contractor_slips
+#: model:ir.model.fields,help:l10n_ca_contractor_slips.field_res_company__l10n_ca_t5018_include_mixed_goods
+#: model:ir.model.fields,help:l10n_ca_contractor_slips.field_res_config_settings__l10n_ca_t5018_include_mixed_goods
+msgid ""
+"When a subcontractor bill mixes construction services and goods, report the "
+"whole bill, as Form T5018SUM describes. Untick to report the services lines "
+"only. Goods-only bills are never reported."
+msgstr ""
+
+#. module: l10n_ca_contractor_slips
+#: model:ir.model.fields,help:l10n_ca_contractor_slips.field_res_partner__l10n_ca_slip_type
+#: model:ir.model.fields,help:l10n_ca_contractor_slips.field_res_users__l10n_ca_slip_type
+msgid ""
+"Which CRA slip this vendor's payments are reported on. Set it while working "
+"in the main company: returns read it from there for every branch."
+msgstr ""
+
+#. module: l10n_ca_contractor_slips
+#: model:ir.model.fields,field_description:l10n_ca_contractor_slips.field_res_partner__l10n_ca_slip_on_branch
+#: model:ir.model.fields,field_description:l10n_ca_contractor_slips.field_res_users__l10n_ca_slip_on_branch
+msgid "Working in a branch"
+msgstr ""
+
+#. module: l10n_ca_contractor_slips
+#: model:ir.model.fields,field_description:l10n_ca_contractor_slips.field_l10n_ca_slip_return__xml_filename
+msgid "Xml Filename"
+msgstr ""
+
+#. module: l10n_ca_contractor_slips
+#: model:ir.model.fields,field_description:l10n_ca_contractor_slips.field_l10n_ca_slip__year
+#: model:ir.model.fields,field_description:l10n_ca_contractor_slips.field_l10n_ca_slip_return__year
+#: model_terms:ir.ui.view,arch_db:l10n_ca_contractor_slips.portal_my_slips
+#: model_terms:ir.ui.view,arch_db:l10n_ca_contractor_slips.report_l10n_ca_slip_document
+#: model_terms:ir.ui.view,arch_db:l10n_ca_contractor_slips.view_l10n_ca_slip_return_search
+#: model_terms:ir.ui.view,arch_db:l10n_ca_contractor_slips.view_l10n_ca_slip_search
+msgid "Year"
+msgstr ""
+
+#. module: l10n_ca_contractor_slips
+#: model_terms:ir.ui.view,arch_db:l10n_ca_contractor_slips.report_l10n_ca_slip_document
+msgid "Year Month Day"
+msgstr ""
+
+#. module: l10n_ca_contractor_slips
+#: model:ir.model.fields,help:l10n_ca_contractor_slips.field_res_company__l10n_ca_slip_rp_account
+#: model:ir.model.fields,help:l10n_ca_contractor_slips.field_res_config_settings__l10n_ca_slip_rp_account
+msgid ""
+"Your CRA RP program account, for example 123456789RP0001. Used on T4A slips "
+"and summary."
+msgstr ""
+
+#. module: l10n_ca_contractor_slips
+#: model:ir.model.fields,help:l10n_ca_contractor_slips.field_res_company__l10n_ca_slip_rz_account
+#: model:ir.model.fields,help:l10n_ca_contractor_slips.field_res_config_settings__l10n_ca_slip_rz_account
+msgid ""
+"Your CRA RZ program account, for example 123456789RZ0001. Used on T5018 "
+"slips and summary."
+msgstr ""
+
+#. module: l10n_ca_contractor_slips
+#: model:mail.template,subject:l10n_ca_contractor_slips.mail_template_l10n_ca_slip
+msgid ""
+"Your {{ (object.slip_type or '').upper() }} slip for {{ object.year }} from "
+"{{ object.company_id.name }}"
+msgstr ""
+
+#. module: l10n_ca_contractor_slips
+#. odoo-python
+#: code:addons/l10n_ca_contractor_slips/models/l10n_ca_slip.py:0
+msgid "a business recipient needs a name."
+msgstr ""
+
+#. module: l10n_ca_contractor_slips
+#. odoo-python
+#: code:addons/l10n_ca_contractor_slips/models/l10n_ca_slip.py:0
+msgid "an individual recipient needs a surname."
+msgstr ""
+
+#. module: l10n_ca_contractor_slips
+#. odoo-python
+#: code:addons/l10n_ca_contractor_slips/models/l10n_ca_slip.py:0
+msgid ""
+"choose the slip recipient type on the contact (the slip assumed %s), then "
+"recalculate."
+msgstr ""
+
+#. module: l10n_ca_contractor_slips
+#. odoo-python
+#: code:addons/l10n_ca_contractor_slips/models/l10n_ca_slip.py:0
+msgid "city"
+msgstr ""
+
+#. module: l10n_ca_contractor_slips
+#. odoo-python
+#: code:addons/l10n_ca_contractor_slips/models/l10n_ca_slip.py:0
+msgid "given name"
+msgstr ""
+
+#. module: l10n_ca_contractor_slips
+#. odoo-python
+#: code:addons/l10n_ca_contractor_slips/models/l10n_ca_slip_return.py:0
+msgid "no note"
+msgstr ""
+
+#. module: l10n_ca_contractor_slips
+#: model:ir.actions.report,print_report_name:l10n_ca_contractor_slips.action_report_l10n_ca_slip
+msgid "object._get_report_base_filename()"
+msgstr ""
+
+#. module: l10n_ca_contractor_slips
+#. odoo-python
+#: code:addons/l10n_ca_contractor_slips/models/l10n_ca_slip.py:0
+msgid "street"
+msgstr ""
+
+#. module: l10n_ca_contractor_slips
+#. odoo-python
+#: code:addons/l10n_ca_contractor_slips/models/l10n_ca_slip.py:0
+msgid "street, second line"
+msgstr ""
+
+#. module: l10n_ca_contractor_slips
+#. odoo-python
+#: code:addons/l10n_ca_contractor_slips/models/l10n_ca_slip.py:0
+msgid "surname"
+msgstr ""
+
+#. module: l10n_ca_contractor_slips
+#. odoo-python
+#: code:addons/l10n_ca_contractor_slips/models/l10n_ca_slip.py:0
+msgid "the amount is now zero; tick Cancel this slip to cancel it with CRA."
+msgstr ""
+
+#. module: l10n_ca_contractor_slips
+#. odoo-python
+#: code:addons/l10n_ca_contractor_slips/models/l10n_ca_slip.py:0
+msgid "the amount is too large for the CRA file."
+msgstr ""
+
+#. module: l10n_ca_contractor_slips
+#. odoo-python
+#: code:addons/l10n_ca_contractor_slips/models/l10n_ca_slip.py:0
+msgid "the recipient's address needs a province or state."
+msgstr ""
+
+#. module: l10n_ca_contractor_slips
+#. odoo-python
+#: code:addons/l10n_ca_contractor_slips/models/l10n_ca_slip.py:0
+msgid "the second initial must be a letter."
+msgstr ""
+
+#. module: l10n_ca_contractor_slips
+#. odoo-python
+#: code:addons/l10n_ca_contractor_slips/models/l10n_ca_slip.py:0
+msgid "the slip amount must be above zero."
+msgstr ""
+
+#. module: l10n_ca_contractor_slips
+#. odoo-python
+#: code:addons/l10n_ca_contractor_slips/models/res_partner.py:0
+msgid "this contact"
+msgstr ""

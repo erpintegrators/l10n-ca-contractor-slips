@@ -1,0 +1,46 @@
+<?xml version="1.0" encoding="utf-8"?>
+<odoo>
+    <record id="view_partner_property_form_l10n_ca_slips" model="ir.ui.view">
+        <field name="name">res.partner.form.inherit.l10n_ca_contractor_slips</field>
+        <field name="model">res.partner</field>
+        <field name="inherit_id" ref="account.view_partner_property_form"/>
+        <field name="arch" type="xml">
+            <xpath expr="//page[@name='accounting']/group" position="inside">
+                <group string="Canadian Tax Slips" name="l10n_ca_slips"
+                       invisible="'CA' not in fiscal_country_codes"
+                       groups="account.group_account_manager,account.group_account_readonly">
+                    <field name="l10n_ca_slip_on_branch" invisible="1"/>
+                    <div class="alert alert-info" role="alert" colspan="2" invisible="not l10n_ca_slip_on_branch">
+                        Returns read the slip type, the SIN and email consent from the main company. Switch to it to see or change them.
+                    </div>
+                    <field name="l10n_ca_slip_type" readonly="l10n_ca_slip_on_branch"/>
+                    <field name="l10n_ca_recipient_type" invisible="not l10n_ca_slip_type" required="l10n_ca_slip_type"/>
+                    <field name="l10n_ca_slip_email_consent_date" invisible="not l10n_ca_slip_email_consent or l10n_ca_slip_on_branch"/>
+                    <field name="l10n_ca_sin" invisible="not l10n_ca_slip_type or l10n_ca_recipient_type != '1' or l10n_ca_slip_on_branch"
+                           password="True" groups="account.group_account_manager"/>
+                    <field name="l10n_ca_slip_surname" invisible="not l10n_ca_slip_type or l10n_ca_recipient_type != '1'"/>
+                    <field name="l10n_ca_slip_given_name" invisible="not l10n_ca_slip_type or l10n_ca_recipient_type != '1'"/>
+                    <field name="l10n_ca_slip_initial" invisible="not l10n_ca_slip_type or l10n_ca_recipient_type != '1'"/>
+                    <field name="l10n_ca_slip_email_consent" invisible="not l10n_ca_slip_type or l10n_ca_slip_on_branch"/>
+                    <field name="l10n_ca_slip_consent_company_id"
+                           invisible="not l10n_ca_slip_type or not l10n_ca_slip_email_consent or l10n_ca_slip_on_branch"
+                           options="{'no_open': True}"/>
+                    <field name="l10n_ca_slip_paper" invisible="not l10n_ca_slip_type"/>
+                </group>
+            </xpath>
+        </field>
+    </record>
+
+    <record id="view_res_partner_filter_l10n_ca_slips" model="ir.ui.view">
+        <field name="name">res.partner.search.inherit.l10n_ca_contractor_slips</field>
+        <field name="model">res.partner</field>
+        <field name="inherit_id" ref="base.view_res_partner_filter"/>
+        <field name="arch" type="xml">
+            <filter name="inactive" position="before">
+                <filter string="T4A contractors" name="l10n_ca_t4a" domain="[('l10n_ca_slip_type', '=', 't4a')]"/>
+                <filter string="T5018 subcontractors" name="l10n_ca_t5018" domain="[('l10n_ca_slip_type', '=', 't5018')]"/>
+                <separator/>
+            </filter>
+        </field>
+    </record>
+</odoo>
