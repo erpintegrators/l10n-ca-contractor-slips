@@ -1,6 +1,6 @@
 # Copyright 2026 Solvync Inc.
 # License LGPL-3.0 (https://www.gnu.org/licenses/lgpl-3.0).
-"""Formatting rules for CRA information return files (T619 2027 specification)."""
+"""Common formatting rules for CRA's 2026 and 2027 T619, T4A and T5018 files."""
 import re
 import unicodedata
 

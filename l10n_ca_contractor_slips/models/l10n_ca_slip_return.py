@@ -26,7 +26,11 @@ XSD_PREFIX = "l10n_ca_contractor_slips"
 XSD_URL_PARAM = "l10n_ca_contractor_slips.cra_schema_url"  # optional override
 XSD_LOADED_PARAM = "l10n_ca_contractor_slips.cra_schema_loaded_url"
 AMENDMENT_NOTE_LIMIT = 1309  # CRA's T619 specification
-XSD_DEFAULT_URL = "https://www.canada.ca/content/dam/cra-arc/serv-info/eservices/xmlschm1-27-1.zip"
+XSD_DEFAULT_URL = "https://www.canada.ca/content/dam/cra-arc/serv-info/eservices/xmlschm1-26-3.zip"
+XSD_2027_URL = "https://www.canada.ca/content/dam/cra-arc/serv-info/eservices/xmlschm1-27-1.zip"
+XSD_URLS = {"2026": XSD_DEFAULT_URL, "2027": XSD_2027_URL}
+CRA_2027_START = date(2027, 1, 11)
+CRA_MAINTENANCE_START = date(2026, 12, 22)
 XSD_ENTRY_POINTS = {"t4a": "T619_T4A.xsd", "t5018": "T619_T5018.xsd"}
 THRESHOLD = 500.0
 # Set only by the return's own steps (finalize, file, amend, back to draft).
@@ -99,6 +103,11 @@ class L10nCaSlipReturn(models.Model):
     cra_confirmation = fields.Char(string="CRA confirmation number", copy=False, tracking=True)
     warning_message = fields.Text(readonly=True, copy=False)
     filed_settings = fields.Char(readonly=True, copy=False, help="The T5018 settings in force when the return was finalized.")
+    cra_schema_year = fields.Char(
+        string="Default schema for new XML", compute="_compute_cra_schema_info",
+        help="CRA's default submission format follows the filing service date in Eastern time, independently of the tax year. The 2027 package is selected from 11 January 2027. A custom schema mirror overrides this selection. Existing files are unchanged.",
+    )
+    cra_filing_notice = fields.Text(compute="_compute_cra_schema_info")
     due_date = fields.Date(
         string="Due date",
         compute="_compute_due_date",
@@ -823,8 +832,30 @@ class L10nCaSlipReturn(models.Model):
     # ------------------------------------------------------------------
 
     @api.model
+    def _l10n_ca_filing_date(self):
+        return fields.Date.context_today(self.with_context(tz="America/Toronto"))
+
+    @api.model
+    def _l10n_ca_schema_year(self):
+        # This is the submission edition, independent of the income year on the slips.
+        return "2027" if self._l10n_ca_filing_date() >= CRA_2027_START else "2026"
+
+    def _compute_cra_schema_info(self):
+        today = self._l10n_ca_filing_date()
+        notice = False
+        if CRA_MAINTENANCE_START <= today < CRA_2027_START:
+            notice = self.env._(
+                "CRA's electronic filing service is closed from 22 December 2026 through 10 January 2027. "
+                "You can prepare your records; upload only after the service reopens on 11 January 2027. "
+                "New XML is checked against the 2027 package from that date."
+            )
+        for record in self:
+            record.cra_schema_year = self._l10n_ca_schema_year()
+            record.cra_filing_notice = notice
+
+    @api.model
     def _l10n_ca_schema_url(self):
-        return self.env["ir.config_parameter"].sudo().get_param(XSD_URL_PARAM) or XSD_DEFAULT_URL
+        return self.env["ir.config_parameter"].sudo().get_param(XSD_URL_PARAM) or XSD_URLS[self._l10n_ca_schema_year()]
 
     @api.model
     def _l10n_ca_schemas_current(self):
