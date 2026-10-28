@@ -1,0 +1,36 @@
+<?xml version="1.0" encoding="utf-8"?>
+<odoo noupdate="1">
+    <record id="l10n_ca_slip_return_comp_rule" model="ir.rule">
+        <field name="name">Slip returns: own companies</field>
+        <field name="model_id" ref="model_l10n_ca_slip_return"/>
+        <field name="domain_force">[('company_id', 'in', company_ids)]</field>
+    </record>
+    <record id="l10n_ca_slip_comp_rule" model="ir.rule">
+        <field name="name">Slips: read in own companies, or a portal user's own slips</field>
+        <field name="model_id" ref="model_l10n_ca_slip"/>
+        <field name="domain_force">['|', ('company_id', 'in', company_ids), ('partner_id', '=', user.commercial_partner_id.id if user.share else False)]</field>
+        <field name="perm_write" eval="False"/>
+        <field name="perm_create" eval="False"/>
+        <field name="perm_unlink" eval="False"/>
+    </record>
+    <record id="l10n_ca_slip_comp_rule_write" model="ir.rule">
+        <field name="name">Slips: change in own companies only</field>
+        <field name="model_id" ref="model_l10n_ca_slip"/>
+        <field name="domain_force">[('company_id', 'in', company_ids)]</field>
+        <field name="perm_read" eval="False"/>
+    </record>
+    <record id="l10n_ca_slip_portal_rule" model="ir.rule">
+        <field name="name">Slips: portal user's own final slips</field>
+        <field name="model_id" ref="model_l10n_ca_slip"/>
+        <field name="groups" eval="[(4, ref('base.group_portal'))]"/>
+        <field name="domain_force">[('partner_id', '=', user.commercial_partner_id.id), ('state', 'in', ('final', 'filed')), ('rpt_tcd', 'in', ('O', 'A', 'C')), ('superseded', '=', False)]</field>
+        <field name="perm_write" eval="False"/>
+        <field name="perm_create" eval="False"/>
+        <field name="perm_unlink" eval="False"/>
+    </record>
+    <record id="l10n_ca_slip_line_comp_rule" model="ir.rule">
+        <field name="name">Slip payments: own companies</field>
+        <field name="model_id" ref="model_l10n_ca_slip_line"/>
+        <field name="domain_force">[('company_id', 'in', company_ids)]</field>
+    </record>
+</odoo>

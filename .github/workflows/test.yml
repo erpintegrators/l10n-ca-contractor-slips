@@ -1,0 +1,47 @@
+name: tests
+
+on:
+  pull_request:
+    branches:
+      - "19.0*"
+  push:
+    branches:
+      - "19.0"
+
+permissions:
+  contents: read
+
+concurrency:
+  group: ${{ github.workflow }}-${{ github.ref }}
+  cancel-in-progress: true
+
+jobs:
+  test:
+    runs-on: ubuntu-22.04
+    container: ghcr.io/oca/oca-ci/py3.12-odoo19.0:latest
+    name: test with Odoo
+    services:
+      postgres:
+        image: postgres:16
+        env:
+          POSTGRES_USER: odoo
+          POSTGRES_PASSWORD: odoo
+          POSTGRES_DB: odoo
+        ports:
+          - 5432:5432
+    steps:
+      - uses: actions/checkout@v4
+        with:
+          persist-credentials: false
+      - name: Download CRA schemas used by the tests
+        run: ./dev/fetch_schemas.sh
+      - name: Install addons and dependencies
+        run: oca_install_addons
+      - name: Check licenses
+        run: manifestoo -d . check-licenses
+      - name: Initialize test db
+        run: oca_init_test_database
+      - name: Run tests
+        run: oca_run_tests
+        env:
+          L10N_CA_SLIPS_REQUIRE_SCHEMAS: "1"

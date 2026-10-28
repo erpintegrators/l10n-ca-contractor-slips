@@ -1,0 +1,70 @@
+<?xml version="1.0" encoding="utf-8"?>
+<odoo>
+    <record id="res_config_settings_view_form" model="ir.ui.view">
+        <field name="name">res.config.settings.view.form.inherit.l10n_ca_contractor_slips</field>
+        <field name="model">res.config.settings</field>
+        <field name="inherit_id" ref="account.res_config_settings_view_form"/>
+        <field name="arch" type="xml">
+            <block id="print_vendor_checks_setting_container" position="after">
+                <!-- Returns read these from the main company for every branch. -->
+                <block title="Canadian Contractor Slips" id="l10n_ca_contractor_slips"
+                       invisible="country_code != 'CA' or not is_root_company">
+                    <setting id="l10n_ca_slip_accounts" string="CRA accounts"
+                             help="Payer program accounts and the account used to sign in to CRA when you upload the file.">
+                        <div class="content-group">
+                            <div class="row mt8">
+                                <label for="l10n_ca_slip_rp_account" class="col-lg-5 o_light_label"/>
+                                <field name="l10n_ca_slip_rp_account" placeholder="123456789RP0001"/>
+                            </div>
+                            <div class="row">
+                                <label for="l10n_ca_slip_rz_account" class="col-lg-5 o_light_label"/>
+                                <field name="l10n_ca_slip_rz_account" placeholder="123456789RZ0001"/>
+                            </div>
+                            <div class="row">
+                                <label for="l10n_ca_slip_signin" class="col-lg-5 o_light_label"/>
+                                <field name="l10n_ca_slip_signin"/>
+                            </div>
+                            <div class="row">
+                                <label for="l10n_ca_slip_transmitter_account" class="col-lg-5 o_light_label"/>
+                                <field name="l10n_ca_slip_transmitter_account" placeholder="123456789"/>
+                            </div>
+                            <div class="row" invisible="l10n_ca_slip_signin != 'rac'">
+                                <label for="l10n_ca_slip_transmitter_repid" class="col-lg-5 o_light_label"/>
+                                <field name="l10n_ca_slip_transmitter_repid" required="l10n_ca_slip_signin == 'rac'"/>
+                            </div>
+                            <div class="row" invisible="l10n_ca_slip_signin != 'rac'">
+                                <label for="l10n_ca_slip_transmitter_name" class="col-lg-5 o_light_label"/>
+                                <field name="l10n_ca_slip_transmitter_name"/>
+                            </div>
+                        </div>
+                    </setting>
+                    <setting id="l10n_ca_slip_contact" string="Filing contact and T5018 period"
+                             help="CRA calls this person about the return. T5018 can follow the calendar year or your fiscal year.">
+                        <div class="content-group">
+                            <div class="row mt8">
+                                <label for="l10n_ca_slip_contact_id" class="col-lg-5 o_light_label"/>
+                                <field name="l10n_ca_slip_contact_id"/>
+                            </div>
+                            <div class="row">
+                                <label for="l10n_ca_t5018_period" class="col-lg-5 o_light_label"/>
+                                <field name="l10n_ca_t5018_period"/>
+                            </div>
+                            <div class="row">
+                                <label for="l10n_ca_t5018_include_mixed_goods" class="col-lg-5 o_light_label"/>
+                                <field name="l10n_ca_t5018_include_mixed_goods"/>
+                            </div>
+                            <div class="row">
+                                <label for="l10n_ca_t5018_threshold_basis" class="col-lg-5 o_light_label"/>
+                                <field name="l10n_ca_t5018_threshold_basis"/>
+                            </div>
+                            <div class="mt8">
+                                <button name="action_l10n_ca_slip_reload_schemas" type="object" class="btn-link" icon="fa-arrow-right"
+                                        string="Download CRA schemas"/>
+                            </div>
+                        </div>
+                    </setting>
+                </block>
+            </block>
+        </field>
+    </record>
+</odoo>

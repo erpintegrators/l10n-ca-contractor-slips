@@ -1,0 +1,369 @@
+===================
+T4A and T5018 Slips
+===================
+
+License: LGPL-3
+
+**ERP Integrators** \| by **Solvync Inc.**
+
+Prepare T4A box 048 and T5018 contractor tax slips in Odoo 19, using the
+vendor payments recorded in your accounting. Review each contractor's
+total, trace the bills and payments behind it, and create a CRA XML file
+for your business to review and upload.
+
+The module covers two Canadian contractor reporting workflows:
+
+- **T4A, box 048**: fees for services paid to self-employed people and
+  businesses, before GST/HST and PST, for each recipient paid more than
+  $500 in the calendar year.
+- **T5018**: payments to construction subcontractors, GST/HST and PST
+  included, for the reporting period (calendar or fiscal year). By
+  default a slip is issued when the services part, tax included, reaches
+  $500 (Form T5018SUM); a setting applies the slip page's test of more
+  than $500 before tax instead.
+
+Amounts come from what you actually paid. The module reads posted vendor
+bills and the cash matched to them, so a bill dated in December and paid
+in January counts in January, a refund lowers the total. T4A leaves
+goods out; T5018 follows the selected mixed-bill setting. A credit note
+applied to a bill counts as settling both, each at its own mix of
+services and goods. Foreign-currency bills count the Canadian dollars
+actually paid, and an early payment discount reduces only the bill that
+earned it. Every amount on a slip links back to the bills and payments
+behind it.
+
+From there you can:
+
+- review and adjust slips (each adjustment needs a reason and is
+  logged),
+- finalize the return, which produces the CRA XML file and checks it
+  against CRA's published 2027 schemas before you upload it,
+- print customized slips laid out to follow CRA's rules for slips you
+  print yourself (Information Circular IC97-2R20), two copies per sheet,
+  email them to recipients who agreed to electronic slips, and let
+  recipients download their own slip from the portal,
+- amend a filed return or cancel a slip, with the report codes CRA
+  expects, and give recipients a copy marked amended or cancelled.
+
+It runs on Odoo Community and Enterprise, on Odoo.sh or your own server,
+and uses standard Odoo records throughout: contacts, the Tax ID field,
+account tags, vendor bills, payments and bank reconciliation. Odoo
+Online databases cannot install modules from the app store. The module
+downloads CRA's public XML schemas from canada.ca the first time you
+finalize a return.
+
+Before you file
+---------------
+
+This module helps you prepare T4A and T5018 returns for the Canada
+Revenue Agency (CRA). It gives no tax, accounting or legal advice;
+decide what is reportable with your accountant.
+
+You remain responsible for every slip, the file you upload, deadlines,
+delivery to recipients, and any CRA penalty or interest. This is a beta
+release, so check each slip against your records before filing.
+
+Schema validation checks the file's format only. It cannot tell you
+whether amounts or identifiers are correct, or whether CRA will accept
+the return.
+
+Solvync Inc. has no affiliation with CRA, and CRA has not endorsed this
+module.
+
+This free software is licensed under the GNU Lesser General Public
+License, version 3. To the extent the law allows, it is provided as is,
+without warranty of any kind, including as to accuracy, and Solvync Inc.
+is not liable for any loss arising from its use.
+
+Privacy
+-------
+
+The business using this module is accountable for the personal
+information in it under PIPEDA or its provincial equivalent. Solvync
+receives none of it. The only outside call the module makes downloads
+CRA's public schemas from canada.ca, and it sends no data.
+
+SINs are collected under section 237 of the Income Tax Act and used for
+these slips only. Odoo stores them in the database and its backups
+without encryption, so give accounting administrators two-step login and
+mask SINs in any copy made for support. Each SIN sits on the contact,
+kept for the main company that collected it, on every slip that reported
+it and in the CRA file stored with each return. Clearing it from the
+contact leaves those copies, and the module cannot yet remove SINs from
+final or filed returns, so agree with your accountant how you will
+destroy them once each return's six-year record period ends. CRA
+requires the recipient's consent before slips are emailed, and emailed
+slips carry the full SIN over ordinary email. Odoo deletes the emailed
+copy once it is sent; a failed email keeps its PDF until the slip is
+emailed again, for at most 30 days. Odoo 19 controls dynamic template
+editing through system administration and **Mail Template Editor**
+permissions. Give those rights only to people trusted to see SINs; Odoo
+19 has no separate Restrict Template Rendering setting. An exposed SIN
+will usually meet the real risk of significant harm test, which brings
+duties to report and notify (PIPEDA section 10.1; Alberta PIPA section
+34.1).
+
+Uninstalling the module deletes every return, slip and CRA file it
+holds, any slip email still waiting, and the SINs, slip settings and
+email consents stored on contacts. Download the CRA files, keep the PDFs
+you need and export your consent records first. The T4A and T5018 tags
+are removed from your accounts as well.
+
+**Table of contents**
+
+.. contents::
+   :local:
+
+Configuration
+-------------
+
+Work in the main company for all of the steps below. Returns belong to
+the main company, cover every branch, and read their settings, each
+contact's slip type and each contact's email consent from there. In a
+database with several businesses, each main company files its own
+returns, with its own program accounts, slip types and email consent.
+Odoo shows the settings to administrators only.
+
+On Odoo 19, the module also installs the standard **VAT Number
+Validation** module for Canadian business-number checks. Preparing and
+merging contractor contacts needs Odoo's **Contact Creation** permission
+as well as the accounting administrator role. Grant these through the
+normal user settings.
+
+1. In **Accounting > Configuration > Settings** (**Invoicing** on Odoo
+   Community), under *Canadian Contractor Slips*, enter:
+
+   - the payer's **RP** program account (T4A) and **RZ** program account
+     (T5018), for example 123456789RP0001;
+   - how you sign in to CRA's Internet File Transfer: **My Business
+     Account**, a **web access code**, or **Represent a Client**. With
+     My Business Account, enter your 9-digit business number or a
+     15-character program account as the **transmitter** account. With a
+     web access code, the file carries the 15-character account you sign
+     in with (the return's RP or RZ account unless you enter another). A
+     representative enters their **RepID** and, if they like, the firm's
+     name as **transmitter name**; the RepID goes in the file only with
+     Represent a Client;
+   - the **filing contact**, a person with a 10-digit phone number and
+     an email address of at most 60 characters;
+   - the **T5018 reporting period**: calendar year or fiscal year. Once
+     you file for a period, CRA expects the same period every year
+     unless it authorizes a change in writing;
+   - whether to report the **whole mixed bill** on T5018 (the default)
+     or the services lines only, and which **T5018 threshold** to apply
+     (see the setting's help).
+
+   File T5018 only if more than half of your business income comes from
+   construction. Other payers report construction subcontractors in T4A
+   box 048. Slip amounts must be in Canadian dollars, so the company's
+   currency must be CAD.
+
+2. On each contractor's contact, in the *Invoicing* tab, set **Canadian
+   slip** to T4A or T5018 and choose the **slip recipient type**:
+   individual or sole proprietor, corporation, or partnership. A return
+   will not finalize until it is set on every contractor. Enter the SIN
+   for individuals while working in the main company. Each main company
+   keeps the SIN it collected, visible to its own accounting
+   administrators only. The surname and given name come from the contact
+   name; type them on the contact when the name has more than two words
+   or is written surname first. The return lists each slip's surname and
+   given name, so check them before finalizing. Businesses use the
+   standard **Tax ID** field for their 15-character business number.
+   Tick **Slips by email** only when the recipient has agreed, in
+   writing or electronically, to receive slips by email, and keep that
+   consent with your records. Consent covers only the company it was
+   given to, so a recipient paid by two of your businesses consents to
+   each separately. Tick **Wants paper slips** for anyone who asked for
+   paper. The other recipient details (name, address, recipient type)
+   belong to the contact, so every company that can open the contact
+   sees them. Where businesses in one database should not see each
+   other's contractors, set the contact's **Company** field to the main
+   company that pays them. Avoid setting it to a branch: head-office
+   users without that branch could not open the contact. Merging a
+   contractor's contact with another moves its SIN, consent, slip type
+   and slips, filed ones included, to the kept contact, whose portal
+   login can then open them. So only an accounting administrator who
+   works in every main company that pays the contractor can merge it.
+   Duplicate rules set to merge automatically in Odoo Enterprise's Data
+   Cleaning run as the system and skip that check, so leave contractors
+   to manual merging. Each vendor bill records the contact's slip type
+   when it is posted, in the **Canadian slip** field under *Other Info*.
+   A contractor who moves from T4A to T5018 mid-year keeps the earlier
+   bills on T4A. Bills posted before you flagged a contact follow the
+   contact. An accounting administrator can set a bill to **Not
+   reported** to leave it out.
+
+3. Tag the expense accounts you pay contractors from with **T4A box 048:
+   fees for services** or **T5018: construction services**. Bill lines
+   on those accounts count for contacts set to the slip, and the return
+   names any other vendor paid on them. For T4A, lines with a service
+   product count too. Lines with a goods product never count. If you
+   hold back part of each subcontractor bill, tag the holdback account
+   with the T5018 tag as well, so holdbacks count when they are paid.
+   Payments booked from bank, cash and credit card journals straight to
+   a tagged account count as well. T4A payers who hold back part of a
+   contractor's fees tag the holdback account with the T4A tag. Release
+   a holdback with a vendor bill on the holdback account, or pay it
+   straight from that account; a payment that settles a journal entry is
+   flagged and left out, because the entry does not say what it paid
+   for. The same goes for opening balances: in your first year on Odoo,
+   enter unpaid contractor bills as vendor bills on a tagged account so
+   their payments count.
+
+   Odoo copies the tags of the account whose code sorts just before a
+   new account's code. After you tag an account, check the tags on any
+   account you create next to it, and review which accounts carry each
+   tag before every filing season.
+
+   CRA asks for box 048 on payments between businesses, including
+   corporations, in every industry. It currently assesses penalties for
+   leaving box 048 out only where its administrative policy for trucking
+   applies: from 2025, businesses in the trucking industry paying
+   Canadian-controlled private corporations in that industry. That
+   policy concerns completing box 048; penalties for filing an
+   information return late are a separate matter. Flag service
+   contractors unless your accountant advises otherwise.
+
+4. The CRA schemas download automatically the first time you finalize a
+   return. To fetch them ahead of time, use **Download CRA schemas** in
+   the same settings block. A server without internet access can point
+   the system parameter ``l10n_ca_contractor_slips.cra_schema_url`` at a
+   copy of CRA's schema package on an internal web server.
+
+5. Print slips at actual size, with any "fit to page" or scaling option
+   in the print dialog turned off: CRA's rules for slips you print
+   yourself set their size and text size.
+
+Usage
+-----
+
+1. Go to **Accounting > Reporting > Contractor Slips (T4A, T5018)**
+   (**Invoicing** on Odoo Community) and create a return on the main
+   company: choose the slip type and the year. A T4A return covers the
+   calendar year. For T5018 on a fiscal year, the year is the one in
+   which the period ends. The return shows its due date and notes a
+   period that has not ended yet, or a gap since the last T5018 period.
+2. Click **Calculate slips**. Each slip shows the amount calculated from
+   payments, the payments behind it, and any warning: a missing SIN or
+   business number, an incomplete address, a name split from the
+   contact, characters CRA will not keep, a payment not matched to a
+   posted bill, or a payment that settles a journal entry. The return
+   also names vendors paid on tagged accounts whose contact is not set
+   to this slip, and contractors whose slip for the period was cancelled
+   in an amendment; the notes are kept in the return's messages when you
+   finalize. Contacts with an address outside Canada are left out and
+   listed on the return; confirm each one is a non-resident before
+   filing.
+3. Correct the contacts and source records and click **Recalculate**, or
+   enter an adjustment with its reason. Adjustments survive
+   recalculation. The recipient details on a slip come from the contact,
+   so correct them there. Payments made outside Odoo belong in Odoo too,
+   for example as a bank entry to a tagged account: the $500 test uses
+   the calculated amount, so an adjustment cannot create a slip for
+   someone below it.
+4. Click **Finalize**. The module refuses to finalize if bills, payments
+   or contacts changed since the last calculation, checks the settings
+   and every slip, builds the XML file and validates it against CRA's
+   schemas. Download the file and upload it through CRA's Internet File
+   Transfer, then click **Mark as filed** and record the confirmation
+   number.
+5. Deliver the slips by the due date:
+
+   - **Email slips** queues an email for each recipient who consented,
+     sent within a few minutes by a scheduled job, and never sends the
+     same slip twice. Each slip shows whether its email is queued, sent
+     or failed, with the reason for a failure, and the return's messages
+     name each recipient whose email failed so you can print their slip
+     or email it again. Sent means your outgoing mail server accepted
+     the email. A message that bounces after that shows only in the
+     sender's mailbox, so give a paper copy to anyone who says the email
+     did not arrive.
+   - Recipients with a portal login they have used find their slips
+     under *Tax slips* on their portal home page.
+   - **Print slips** prints two copies of each slip on one sheet for
+     everyone else, including recipients who asked for paper, whose
+     email address is not valid, or whose portal login was revoked or
+     never used; the summary after emailing names them. **Print
+     duplicates** prints replacement copies marked DUPLICATE. Giving
+     T5018 slips to subcontractors is optional.
+
+6. To correct a filed return, open the latest filed version and click
+   **Amend**. Change the slips that are wrong and explain the change in
+   the amendment note, naming each recipient (up to 1,309 characters),
+   then finalize. Only changed slips go in the file; a change of address
+   alone does not amend a slip. To cancel slips, tick **Cancel this
+   slip** in a separate amendment, because CRA takes amended and
+   cancelled slips in separate submissions. Recipients of a cancelled
+   slip get a copy marked cancelled by email, on the portal and in
+   print. Contractors missed on the original go in a new original return
+   for the same year, which picks up only the contractors the filed
+   return does not have.
+7. Keep a record of when and how you asked each individual for their
+   SIN, of each recipient's email consent, and of how each slip reached
+   its recipient.
+
+Known issues / Roadmap
+----------------------
+
+- Quebec RL-1 slips (box O, code RD) are not produced. Revenu Québec
+  requires software certification for RL-1 XML.
+- No T4A box 022. If you withheld income tax from a contractor, which is
+  rare, CRA needs a slip for them whatever the amount: set their bills
+  to **Not reported** so this return leaves them out, and file their
+  slip separately, for example with CRA's Web Forms.
+- Each amended submission totals and counts only the slips in it, as
+  CRA's corrections page describes. Confirm with your accountant before
+  filing your first amendment.
+- To correct a SIN or business number already filed, cancel the slip in
+  an amendment and file it again in a new original return. CRA's pages
+  do not say how an amended slip with a different identifier is matched
+  to the original; the module warns when an amended slip carries a new
+  one.
+- The federal identity signature on printed slips is drawn from the
+  public-domain flag beside the agency's name. CRA's own artwork is the
+  exact reference.
+- A contact counts as a non-resident when its address is outside Canada.
+  CRA asks for T5018 slips for resident subcontractors wherever the work
+  was done, so a resident with a foreign address must have its address
+  corrected. A dedicated non-resident flag is planned.
+- Fees paid to non-residents for services in Canada belong on the
+  T4A-NR, which this module does not produce.
+- Slips show the full SIN to accounting administrators and to the
+  recipient signed in to the portal. Anyone opening a shared link, and
+  read-only accountants, see the last three digits. The CRA file and the
+  emailed PDFs are restricted to accounting administrators.
+- A credit note applied to a bill counts on the day the two are matched,
+  in the time zone set on the company's contact (UTC when none is set).
+  Matching a credit note in a later year moves its effect into that
+  year, so match credit notes before filing.
+- With Odoo Enterprise, a payment recorded without a journal entry that
+  covers both bills and credit notes is split across them by amount,
+  which can be off when their mixes differ. Check those slips' payment
+  lists before filing.
+- No tool yet removes SINs from final or filed returns once the six-year
+  record period ends. Clearing a SIN from the contact leaves the copies
+  on slips and in the stored CRA files.
+- The $500 test looks at box 048 alone. CRA adds up all T4A boxes, so a
+  recipient who gets other T4A amounts from you elsewhere may need a box
+  048 slip below $500. Do not tag commission accounts: commissions go in
+  box 020.
+- With early payment discounts set to *Never* on the company, the
+  discount is spread across the bill's tax as well, so box 048 can be a
+  few cents above the fees paid. The Canadian default, *On early
+  payment*, is exact.
+- A T5018 period that ends on the last day of a month is due on the last
+  day of the sixth month after it, following CRA's rule for corporation
+  returns.
+- Returns always belong to the main company and file under its RP or RZ
+  account. A branch that files under a program account of its own cannot
+  have its own return yet.
+
+Contributors
+------------
+
+- Solvync Inc.
+
+Maintainers
+-----------
+
+This module is maintained by Solvync Inc.
