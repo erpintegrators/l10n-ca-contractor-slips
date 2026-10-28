@@ -11,6 +11,40 @@ from . import wizard
 PREFIX_PATTERN = "l10n\\_ca\\_contractor\\_slips.%"
 
 
+def _correct_email_cancel_notice(env):
+    """Correct the shipped notice while preserving other edits and inactive-language copies."""
+    import re
+    from psycopg2.extras import Json
+
+    template = env.ref("l10n_ca_contractor_slips.mail_template_l10n_ca_slip", raise_if_not_found=False)
+    if not template:
+        return
+    template = template.sudo()
+    translations = template._fields["body_html"]._get_stored_translations(template) or {}
+    corrected = {}
+    for language, body in translations.items():
+        if isinstance(body, str):
+            body = re.sub(
+                r"has been cancelled, and the\s+Canada Revenue Agency has been told\.",
+                "has been cancelled.", body,
+            )
+            body = re.sub(
+                r"a été annulé, et\s+l['’]Agence du revenu du Canada en a été informée\.",
+                "a été annulé.", body,
+            )
+        corrected[language] = body
+    if corrected != translations:
+        # A translated HTML field can retain inactive languages. Preserve all stored values;
+        # the ordinary translation editor accepts active languages only.
+        env.cr.execute("UPDATE mail_template SET body_html = %s WHERE id = %s", (Json(corrected), template.id))
+        template.invalidate_recordset(["body_html"])
+
+
+def post_init_hook(env):
+    env["ir.attachment"]._l10n_ca_secure_existing_files()
+    _correct_email_cancel_notice(env)
+
+
 def uninstall_hook(env):
     """Remove what the module created outside its own tables: the CRA schemas it downloaded, its
     settings, its tags on accounts, and slip emails still waiting or failed, which hold a PDF with

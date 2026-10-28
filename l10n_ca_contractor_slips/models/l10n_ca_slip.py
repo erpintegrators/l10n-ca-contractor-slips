@@ -437,7 +437,7 @@ class L10nCaSlip(models.Model):
         })
         self.env["mail.mail"].sudo().browse(mail_id).attachment_ids.write({
             "l10n_ca_slip_company_id": self.company_id.id,
-            "public": False,
+            "public": False, "access_token": False,
         })
         previous = self.sudo().mail_id
         self.sudo().write({

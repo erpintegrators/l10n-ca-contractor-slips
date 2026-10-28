@@ -75,7 +75,51 @@ class TestSlipCopies(L10nCaSlipsCommon):
         self._send(cancel)
         mail = self._slip_mail(self.contractor_a)
         self.assertIn("has been cancelled", mail.body_html)
+        self.assertEqual(cancel.state, "final")
+        self.assertNotIn("Canada Revenue Agency has been told", mail.body_html)
         self.assertIn("CANCELLED", self._html(slip))
+
+    def test_cancelled_email_in_french_does_not_claim_a_CRA_filing(self):
+        self.env["res.lang"]._activate_lang("fr_CA")
+        self.env["ir.module.module"]._load_module_terms(["l10n_ca_contractor_slips"], ["fr_CA"], overwrite=True)
+        self.contractor_a.write({"email": "alex@example.com", "l10n_ca_slip_email_consent": True, "lang": "fr_CA"})
+        original = self._final()
+        original.action_mark_filed()
+        cancel = self._amend(original)
+        cancel.slip_ids.is_cancelled = True
+        cancel.amendment_note = "Alex Martin was paid through payroll."
+        self._finalize(cancel)
+        self.assertEqual(cancel.state, "final")
+        self._send(cancel)
+        body = self._slip_mail(self.contractor_a).body_html
+        self.assertIn("a été annulé", body)
+        self.assertNotIn("en a été informée", body)
+
+    def test_legacy_cancel_email_upgrade_preserves_custom_edits_and_translations(self):
+        from psycopg2.extras import Json
+        from odoo.addons.l10n_ca_contractor_slips import _correct_email_cancel_notice
+
+        template = self.env.ref("l10n_ca_contractor_slips.mail_template_l10n_ca_slip").sudo()
+        english = str(template.with_context(lang="en_US").body_html).replace(
+            "has been cancelled.", "has been cancelled, and the Canada Revenue Agency has been told."
+        ) + "<p>Custom footer retained.</p>"
+        french = "<p>Le feuillet a été annulé, et l'Agence du revenu du Canada en a été informée. Pied personnalisé.</p>"
+        stored = {"en_US": english, "fr_CA": french}
+        self.env.cr.execute("UPDATE mail_template SET body_html = %s WHERE id = %s", (Json(stored), template.id))
+        template.invalidate_recordset(["body_html"])
+        _correct_email_cancel_notice(self.env)
+        corrected = template._fields["body_html"]._get_stored_translations(template)
+        self.assertNotIn("has been told", corrected["en_US"])
+        self.assertNotIn("en a été informée", corrected["fr_CA"])
+        self.assertIn("Custom footer retained.", corrected["en_US"])
+        self.assertIn("Pied personnalisé.", corrected["fr_CA"])
+        _correct_email_cancel_notice(self.env)
+        self.assertEqual(template._fields["body_html"]._get_stored_translations(template), corrected)
+        custom = {"en_US": "<p>Company-approved notice.</p>", "fr_CA": "<p>Message personnalisé.</p>"}
+        self.env.cr.execute("UPDATE mail_template SET body_html = %s WHERE id = %s", (Json(custom), template.id))
+        template.invalidate_recordset(["body_html"])
+        _correct_email_cancel_notice(self.env)
+        self.assertEqual(template._fields["body_html"]._get_stored_translations(template), custom)
 
     def test_send_message_counts_who_needs_paper(self):
         self.contractor_b.write({"email": "bailey@example.com"})

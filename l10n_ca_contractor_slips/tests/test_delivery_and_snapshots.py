@@ -107,11 +107,49 @@ class TestDeliveryAndSnapshots(L10nCaSlipsCommon):
     def test_private_file_restrictions_cannot_be_removed(self):
         files = self._private_files()
         user = self._user("payer.files", ["base.group_user", "account.group_account_manager"])
-        for values in ({"l10n_ca_slip_company_id": False}, {"public": True}):
+        for values in ({"l10n_ca_slip_company_id": False}, {"public": True}, {"access_token": "direct-assignment"}):
             with self.assertRaises(AccessError):
                 files.with_user(user).write(values)
         with self.assertRaises(UserError):
             files.with_user(user).generate_access_token()
+
+    def test_legacy_public_tokens_never_bypass_private_file_access(self):
+        files = self._private_files()
+        files.sudo().write({"public": True, "access_token": "legacy-slip-token"})
+        other = self.setup_other_company(name="Other private file payer")["company"]
+        foreign = self._user("foreign.legacy", ["base.group_user", "account.group_account_manager"], companies=other)
+        for user in (self.auditor, foreign, self.env.ref("base.public_user")):
+            for attachment in files.with_user(user):
+                for token in (None, "legacy-slip-token"):
+                    with self.assertRaises(AccessError):
+                        attachment.validate_access(token)
+        for attachment in files.with_user(self.env.user):
+            self.assertTrue(attachment.validate_access("legacy-slip-token"))
+
+    def test_upgrade_revokes_links_preserves_xml_and_queued_pdf(self):
+        files = self._private_files()
+        original = {attachment.id: attachment.raw for attachment in files.sudo()}
+        files.sudo().write({"l10n_ca_slip_company_id": False, "public": True, "access_token": "old-link"})
+        self.env["ir.attachment"]._l10n_ca_secure_existing_files()
+        self.assertEqual(files.sudo().mapped("l10n_ca_slip_company_id"), self.company)
+        self.assertFalse(any(files.sudo().mapped("public")))
+        self.assertFalse(any(files.sudo().mapped("access_token")))
+        self.assertEqual({attachment.id: attachment.raw for attachment in files.sudo()}, original)
+        self.env["ir.attachment"]._l10n_ca_secure_existing_files()
+        self.assertEqual({attachment.id: attachment.raw for attachment in files.sudo()}, original)
+
+    def test_unmarked_legacy_xml_refuses_public_shortcuts(self):
+        files = self._private_files()
+        xml = files.filtered(lambda attachment: attachment.res_field == "xml_file")
+        xml.sudo().write({"l10n_ca_slip_company_id": False, "public": True, "access_token": "unmarked-xml"})
+        attachment = xml.with_user(self.env.ref("base.public_user"))
+        with self.assertRaises(AccessError):
+            attachment.validate_access("unmarked-xml")
+
+    def test_unrelated_attachment_public_link_still_works(self):
+        attachment = self.env["ir.attachment"].sudo().create({"name": "Public guide", "raw": b"Public text", "public": True})
+        attachment = attachment.with_user(self.env.ref("base.public_user"))
+        self.assertTrue(attachment.validate_access(None))
 
     # Branches respect the user's companies
 

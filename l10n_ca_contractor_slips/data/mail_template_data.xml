@@ -19,8 +19,8 @@
         <br/><br/>
         <t t-if="object.rpt_tcd == 'C'">
             The <t t-out="(object.slip_type or '').upper()">T4A</t> slip for <t t-out="object.year">2026</t> that
-            <t t-out="object.company_id.name or ''">YourCompany</t> issued to you has been cancelled, and the
-            Canada Revenue Agency has been told. The attached copy is marked cancelled. Do not use the earlier
+            <t t-out="object.company_id.name or ''">YourCompany</t> issued to you has been cancelled.
+            The attached copy is marked cancelled. Do not use the earlier
             slip on your tax return.
         </t>
         <t t-else="">
