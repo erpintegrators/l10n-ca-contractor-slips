@@ -5,7 +5,7 @@
     "summary": "T4A box 048 and T5018 contractor tax slips for Odoo, with payment traces, CRA XML and recipient PDFs",
     "version": "20.0.1",
     "category": "Accounting/Localizations/Reporting",
-    "author": "ERP Integrators (Solvync Inc.)",
+    "author": "ERPintegrators.com (Solvync Inc.)",
     "website": "https://erpintegrators.com",
     "support": "info@erpintegrators.com",
     "license": "LGPL-3",
