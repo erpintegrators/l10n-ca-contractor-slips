@@ -2,9 +2,9 @@
 <h1 itemprop="name" id="t4a-and-t5018-slips">T4A and T5018 Slips</h1>
 <section class="mb-4">
 <h2>Release details</h2>
-<p>Version <span itemprop="softwareVersion">20.0.1.1</span>, free beta.</p>
+<p>Version <span itemprop="softwareVersion">20.0.1.2</span>, stable release.</p>
 <p itemprop="softwareRequirements">Requires Odoo 20 Community or Enterprise, on Odoo.sh or your own server. Odoo Online is not supported.</p>
-<p><span itemprop="offers" itemscope="" itemtype="https://schema.org/Offer">Module price: <span itemprop="price">0</span> (free).</span> Hosting, Odoo subscriptions and separately agreed services are excluded.</p>
+<p><span itemprop="offers" itemscope="" itemtype="https://schema.org/Offer">Module price: US$<span itemprop="price">199</span> <span itemprop="priceCurrency">USD</span>.</span> Hosting, Odoo subscriptions and separately agreed services are excluded.</p>
 <p>Published by ERPintegrators.com, by <span itemprop="publisher" itemscope="" itemtype="https://schema.org/Organization"><span itemprop="name">Solvync Inc.</span></span>. Check every slip against your records before filing.</p>
 </section>
 
@@ -40,7 +40,8 @@ payments behind it.</p>
 <li>review and adjust slips (each adjustment needs a reason and is
 logged),</li>
 <li>finalize the return, which produces the CRA XML file and checks it
-against CRA's published 2027 schemas before you upload it,</li>
+against CRA's published 2026 schemas now, with the 2027 package selected
+from 11 January 2027,</li>
 <li>print customized slips laid out to follow CRA's rules for slips you
 print yourself (Information Circular IC97-2R20), two copies per sheet,
 email them to recipients who agreed to electronic slips, and let
@@ -111,31 +112,34 @@ Online?</h3>
 Odoo Online does not allow installation of this custom Python module.
 The accounting workflow uses Canadian localization and the setup
 described below.</p>
-<h3 id="what-does-the-beta-cost">What does the beta cost?</h3>
-<p>The module is free under LGPL-3. Hosting, Odoo subscriptions and any
-separately agreed implementation or support services are outside that
-price. Check each slip against your records before filing. Your business
-remains responsible for the return and recipient delivery.</p>
+<h3 id="what-does-the-module-cost">What does the module cost?</h3>
+<p>The Odoo Apps price is <strong>US$199</strong> for this Odoo version.
+The LGPL-3 license remains in place, and the source repository is
+public. Hosting and Odoo subscriptions are separate. Bug fixes and
+configuration advice follow the Odoo Apps support terms; installation,
+customization and other services are quoted separately. Check each slip
+against your records before filing. Your business remains responsible
+for the return and recipient delivery.</p>
 <h3 id="who-should-maintain-the-annual-filing-setup">Who should maintain
 the annual filing setup?</h3>
 <p>Assign an owner to check the current CRA schema, form requirements
 and your reporting settings before each filing season. Read the known
-issues and roadmap before choosing a filing workflow. Current CRA
-interpretation questions remain part of the beta review.</p>
+issues and roadmap before choosing a filing workflow. Solvync Inc.
+maintains the module; your filing owner checks the reporting treatment
+and submission requirements for your business.</p>
 <h2 id="before-you-file">Before you file</h2>
 <p>This module helps you prepare T4A and T5018 returns for the Canada
 Revenue Agency (CRA). It gives no tax, accounting or legal advice;
 decide what is reportable with your accountant.</p>
 <p>You remain responsible for every slip, the file you upload,
-deadlines, delivery to recipients, and any CRA penalty or interest. This
-is a beta release, so check each slip against your records before
-filing.</p>
+deadlines, delivery to recipients, and any CRA penalty or interest.
+Check each slip against your records before filing.</p>
 <p>Schema validation checks the file's format only. It cannot tell you
 whether amounts or identifiers are correct, or whether CRA will accept
 the return.</p>
 <p>Solvync Inc. has no affiliation with CRA, and CRA has not endorsed
 this module.</p>
-<p>This free software is licensed under the GNU Lesser General Public
+<p>This software is licensed under the GNU Lesser General Public
 License, version 3. To the extent the law allows, it is provided as is,
 without warranty of any kind, including as to accuracy, and Solvync Inc.
 is not liable for any loss arising from its use.</p>
@@ -272,7 +276,20 @@ finalize a return. To fetch them ahead of time, use <strong>Download CRA
 schemas</strong> in the same settings block. A server without internet
 access can point the system parameter
 <code>l10n_ca_contractor_slips.cra_schema_url</code> at a copy of CRA's
-schema package on an internal web server.</p></li>
+schema package on an internal web server.</p>
+<p>The default is CRA's <strong>2026 submission package</strong> until
+10 January 2027, then the <strong>2027 package from 11 January
+2027</strong>, using Eastern time. The filing service date determines
+the package, independently of the tax year on the return. The draft
+return displays the default package year. CRA's electronic filing
+service closes on 22 December 2026 and reopens on 11 January 2027; the
+module displays a notice during that period. Preparation is possible
+during the closure, but wait for the service to reopen before uploading.
+A custom schema mirror overrides the automatic package selection; its
+administrator must maintain it. Existing final and filed XML files are
+preserved. Check CRA's <a
+href="https://www.canada.ca/en/revenue-agency/services/e-services/filing-information-returns-electronically-t4-t5-other-types-returns-overview/xml-specs.html">current
+XML specifications</a> before submitting.</p></li>
 <li><p>Print slips at actual size, with any "fit to page" or scaling
 option in the print dialog turned off: CRA's rules for slips you print
 yourself set their size and text size.</p></li>

@@ -3,7 +3,7 @@
 {
     "name": "T4A and T5018 Slips",
     "summary": "T4A box 048 and T5018 contractor tax slips for Odoo, with payment traces, CRA XML and recipient PDFs",
-    "version": "20.0.1.1",
+    "version": "20.0.1.2",
     "category": "Accounting/Localizations/Reporting",
     "author": "ERPintegrators.com (Solvync Inc.)",
     "website": "https://erpintegrators.com",
@@ -29,7 +29,9 @@
         "views/l10n_ca_slip_menus.xml",
         "views/portal_templates.xml",
     ],
-    "development_status": "Beta",
+    "development_status": "Production/Stable",
+    "price": 199.0,
+    "currency": "USD",
     "post_init_hook": "post_init_hook",
     "uninstall_hook": "uninstall_hook",
 }

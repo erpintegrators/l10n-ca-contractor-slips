@@ -21,6 +21,7 @@ from . import test_rules_and_security
 from . import test_settlement_edges
 from . import test_settlements
 from . import test_slip_copies
+from . import test_submission_formats
 from . import test_slip_return
 from . import test_t4a_engine
 from . import test_t5018_engine

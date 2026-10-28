@@ -25,7 +25,7 @@ From there you can:
 
 - review and adjust slips (each adjustment needs a reason and is logged),
 - finalize the return, which produces the CRA XML file and checks it against CRA's published
-  2027 schemas before you upload it,
+  2026 schemas now, with the 2027 package selected from 11 January 2027,
 - print customized slips laid out to follow CRA's rules for slips you print yourself (Information
   Circular IC97-2R20), two copies per sheet, email them to recipients who agreed to electronic
   slips, and let recipients download their own slip from the portal,
@@ -43,15 +43,14 @@ This module helps you prepare T4A and T5018 returns for the Canada Revenue Agenc
 no tax, accounting or legal advice; decide what is reportable with your accountant.
 
 You remain responsible for every slip, the file you upload, deadlines, delivery to recipients, and
-any CRA penalty or interest. This is a beta release, so check each slip against your records before
-filing.
+any CRA penalty or interest. Check each slip against your records before filing.
 
 Schema validation checks the file's format only. It cannot tell you whether amounts or identifiers
 are correct, or whether CRA will accept the return.
 
 Solvync Inc. has no affiliation with CRA, and CRA has not endorsed this module.
 
-This free software is licensed under the GNU Lesser General Public License, version 3. To the extent
+This software is licensed under the GNU Lesser General Public License, version 3. To the extent
 the law allows, it is provided as is, without warranty of any kind, including as to accuracy, and
 Solvync Inc. is not liable for any loss arising from its use.
 
