@@ -43,12 +43,11 @@ class BasePartnerMergeAutomaticWizard(models.TransientModel):
             slip_return.message_post(body=self.env._(
                 "%(names)s merged into %(kept)s. Their slips on this return now belong to %(kept)s.",
                 names=names, kept=dst_partner.sudo().display_name,
-            ))
+            ), subtype_xmlid="mail.mt_note")
         return result
 
     def _l10n_ca_consents(self, src_partners, dst_partner):
-        """For each main company: whether the kept contact already had email consent, and the
-        addresses the merged-away contacts had consented with."""
+        """Read each main company's consent and the addresses that consent covers."""
         roots = self.env["res.company"].sudo().with_context(active_test=False).search([("parent_id", "=", False)])
         consents = {}
         for root in roots:
@@ -58,8 +57,7 @@ class BasePartnerMergeAutomaticWizard(models.TransientModel):
         return consents
 
     def _l10n_ca_keep_consent_with_its_address(self, dst_partner, consents):
-        """Odoo's merge copies each company's consent from a merged-away contact. Consent covers
-        the address it was given for, so it stays only when the kept contact has that address."""
+        """Keep inherited email consent only when the destination has the consented address."""
         kept_contact = dst_partner.sudo()
         address = email_normalize(kept_contact.email)
         for root, (had_consent, addresses) in consents.items():
@@ -69,10 +67,7 @@ class BasePartnerMergeAutomaticWizard(models.TransientModel):
                 kept_contact.with_company(root).write(dict.fromkeys(CONSENT_FIELDS, False))
 
     def _l10n_ca_check_rights(self, src_partners, dst_partner):
-        """Odoo's merge moves each company's SIN, consent and slip type to the kept contact, along
-        with the slips, filed ones included, and the portal login, which then opens those slips with
-        the full SIN. Contacts holding any slip detail are merged only by an accounting administrator
-        who works in every main company that holds one."""
+        """Require an administrator of every company whose slip details the merge moves."""
         if self.env.su:
             return
         partners = (src_partners | dst_partner).sudo()
@@ -89,8 +84,7 @@ class BasePartnerMergeAutomaticWizard(models.TransientModel):
         ))
 
     def _l10n_ca_slip_companies(self, partners):
-        """The main companies holding slip details for these contacts: values kept for each company,
-        and slips."""
+        """Find main companies holding company-dependent details or slips for these contacts."""
         companies = self.env["res.company"].sudo().with_context(active_test=False).search([])
         holders = companies.filtered(lambda company: any(
             value for name in COMPANY_FIELDS for value in partners.with_company(company).mapped(name)
@@ -99,9 +93,7 @@ class BasePartnerMergeAutomaticWizard(models.TransientModel):
         return (holders | slips.company_id).root_id
 
     def _l10n_ca_check_same_person(self, src_partners, dst_partner):
-        """Final or filed slips keep the SIN or business number they reported. Merging contacts whose
-        slips name different people would show one person's slip, with their full SIN, on the other's
-        portal."""
+        """Prevent merges that expose filed slips to a different recipient."""
         slips = self.env["l10n.ca.slip"].sudo().search([
             ("partner_id", "in", (src_partners | dst_partner).ids), ("return_id.state", "!=", "draft"),
         ])
@@ -122,9 +114,7 @@ class BasePartnerMergeAutomaticWizard(models.TransientModel):
             ))
 
     def _l10n_ca_resolve_slips(self, src_partners, dst_partner):
-        """Odoo's merge deletes rows that would break a unique constraint. Two contacts with a slip
-        on the same return would lose one slip that way, so a final or filed return blocks the
-        merge, and on a draft return the merged contact's slip is removed for recalculation."""
+        """Reject final-slip collisions; remove unadjusted draft duplicates for recalculation."""
         slips = self.env["l10n.ca.slip"].sudo().search([("partner_id", "in", (src_partners | dst_partner).ids)])
         for slip_return in slips.return_id:
             on_return = slips.filtered(lambda s, r=slip_return: s.return_id == r)
@@ -149,7 +139,7 @@ class BasePartnerMergeAutomaticWizard(models.TransientModel):
             duplicates.unlink()
             slip_return.message_post(body=self.env._(
                 "Contacts merged into %s. Recalculate this return to combine their payments.", dst_partner.display_name
-            ))
+            ), subtype_xmlid="mail.mt_note")
 
     def _l10n_ca_carried_values(self, src_partners, dst_partner):
         values = {}

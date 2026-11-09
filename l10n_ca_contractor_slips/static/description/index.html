@@ -3,7 +3,7 @@
 <h1 itemprop="name" id="t4a-and-t5018-slips">T4A and T5018 Slips</h1>
 <section class="mb-4">
 <h2>Release details</h2>
-<p>Version <span itemprop="softwareVersion">20.0.1.3</span>, stable release.</p>
+<p>Version <span itemprop="softwareVersion">20.0.1.4</span>, stable release.</p>
 <p itemprop="softwareRequirements">Requires Odoo 20 Community or Enterprise, on Odoo.sh or your own server. Odoo Online is not supported.</p>
 <p>See the current Odoo Apps checkout price for this version. Hosting, Odoo subscriptions and separately agreed services are excluded.</p>
 <p>Published by <span itemprop="publisher" itemscope="" itemtype="https://schema.org/Organization"><span itemprop="name">ERP Integrators</span></span>. Check every slip against your records before filing.</p>
@@ -300,6 +300,9 @@ download tokens do not grant access to these files. Upgrading the module
 revokes legacy public links and restores payer restrictions while
 retaining the file bytes. Recipients use their own slip portal, which
 applies the recipient and masking rules.</p>
+<h3 id="pdf-and-email-delivery">PDF and email delivery</h3>
+<p>Use Odoo's standard PDF engine and outgoing mail configuration. Self-hosted servers need the PDF renderer required by their Odoo version. Odoo.sh provides the platform renderer.</p>
+<p>Configure and test the outgoing mail server in Odoo before emailing slips. Email slips uses Odoo's scheduled actions and mail queue, so those services must be running. Check each slip's delivery status after sending.</p>
 <h2 id="usage">Usage</h2>
 <ol type="1">
 <li>Go to <strong>Accounting &gt; Reporting &gt; Contractor Slips (T4A,

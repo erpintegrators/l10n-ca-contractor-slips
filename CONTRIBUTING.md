@@ -7,4 +7,5 @@ commit under the [Developer Certificate of Origin 1.1](https://developercertific
 Never put a real SIN, business number, slip, CRA file or database copy in an issue, a pull request
 or a test. Use made-up values.
 
-Run the tests before opening a pull request; see the Development section of the README.
+Run `ruff check .` with Ruff 0.17.4, then run the tests before opening a pull request.
+See the Development section of the README.

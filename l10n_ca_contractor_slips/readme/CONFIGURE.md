@@ -96,3 +96,12 @@ Stored CRA XML and queued slip PDFs are private to the paying company's accounti
 Public attachment flags and download tokens do not grant access to these files. Upgrading the
 module revokes legacy public links and restores payer restrictions while retaining the file bytes.
 Recipients use their own slip portal, which applies the recipient and masking rules.
+
+## PDF and email delivery
+
+Use Odoo's standard PDF engine and outgoing mail configuration. Self-hosted servers need the
+PDF renderer required by their Odoo version. Odoo.sh provides the platform renderer.
+
+Configure and test the outgoing mail server in Odoo before emailing slips. Email slips uses
+Odoo's scheduled actions and mail queue, so those services must be running. Check each slip's
+delivery status after sending.

@@ -2945,13 +2945,8 @@ msgstr "Code d'accès Web"
 
 #. module: l10n_ca_contractor_slips
 #: model:ir.model.fields,help:l10n_ca_contractor_slips.field_l10n_ca_slip_return__due_date
-msgid ""
-"When CRA expects the return and the recipients expect their slips. A due "
-"date on a weekend or public holiday moves to the next business day."
-msgstr ""
-"La date à laquelle l'ARC attend la déclaration et les bénéficiaires leurs "
-"feuillets. Une échéance qui tombe une fin de semaine ou un jour férié est "
-"reportée au jour ouvrable suivant."
+msgid "Calendar due date. Check CRA's next-business-day rule when it falls on a weekend or public holiday."
+msgstr "Date d'échéance au calendrier. Vérifiez la règle du jour ouvrable suivant de l'ARC si cette date tombe une fin de semaine ou un jour férié."
 
 #. module: l10n_ca_contractor_slips
 #: model:ir.model.fields,help:l10n_ca_contractor_slips.field_res_company__l10n_ca_t5018_include_mixed_goods
@@ -3152,3 +3147,9 @@ msgstr "Le format de transmission par défaut de l'ARC suit la date du service, 
 #: code:addons/l10n_ca_contractor_slips/models/l10n_ca_slip_return.py:0
 msgid "CRA's electronic filing service is closed from 22 December 2026 through 10 January 2027. You can prepare your records; upload only after the service reopens on 11 January 2027. New XML is checked against the 2027 package from that date."
 msgstr "Le service de transmission électronique de l'ARC est fermé du 22 décembre 2026 au 10 janvier 2027 inclusivement. Vous pouvez préparer vos dossiers; transmettez-les après la réouverture du service le 11 janvier 2027. Les nouveaux fichiers XML seront validés selon le schéma de 2027 à compter de cette date."
+
+#. module: l10n_ca_contractor_slips
+#. odoo-python
+#: code:addons/l10n_ca_contractor_slips/models/res_config_settings.py:0
+msgid "Only accounting or system administrators can reload CRA schemas."
+msgstr "Seuls les administrateurs de la comptabilité ou du système peuvent recharger les schémas de l'ARC."
