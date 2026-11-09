@@ -31,7 +31,7 @@ BUSINESS_SUFFIX = re.compile(
 
 
 def guess_recipient_type(partner):
-    """Individual unless the contact has a business number or a business name."""
+    """Infer corporation from the company flag or a business-name suffix."""
     if partner.is_company or BUSINESS_SUFFIX.search((partner.name or "").strip()):
         return "3"
     return "1"

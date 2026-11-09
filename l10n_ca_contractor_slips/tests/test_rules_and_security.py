@@ -2,6 +2,8 @@
 # License LGPL-3.0 (https://www.gnu.org/licenses/lgpl-3.0).
 """T5018 rules, amended returns, SIN security and schema refresh."""
 
+from unittest.mock import patch
+
 from odoo import Command
 from odoo.exceptions import AccessError, UserError
 from odoo.tests import tagged
@@ -216,8 +218,6 @@ class TestRulesAndSecurity(L10nCaSlipsCommon):
         })
         with self.assertRaises(AccessError):
             bill.with_user(clerk).write({"l10n_ca_slip_type": "none"})
-        with self.assertRaises(AccessError):
-            bill.with_user(clerk).write({"l10n_ca_slip_type": "none"})
 
     def test_new_email_needs_new_consent(self):
         self.contractor_a.write({"email": "alex@example.com", "l10n_ca_slip_email_consent": True})
@@ -254,6 +254,28 @@ class TestRulesAndSecurity(L10nCaSlipsCommon):
                 slip.read([name])
 
     # Schemas and slip types per company
+
+    def test_schema_reload_rejects_unauthorized_users(self):
+        portal = self._user("portal.schema", ["base.group_portal"], partner=self.contractor_a)
+        Return = self.env["l10n.ca.slip.return"]
+        with patch.object(type(Return), "_l10n_ca_load_cra_schemas", return_value=True) as load:
+            for user in (self.sales_user, portal):
+                with self.subTest(user=user.login), self.assertRaises(AccessError):
+                    self.env["res.config.settings"].with_user(user).action_l10n_ca_slip_reload_schemas()
+            load.assert_not_called()
+
+    def test_schema_reload_allows_administrators(self):
+        users = [
+            self._user("account.schema", ["base.group_user", "account.group_account_manager"]),
+            self._user("settings.schema", ["base.group_user", "base.group_system"]),
+        ]
+        Return = self.env["l10n.ca.slip.return"]
+        with patch.object(type(Return), "_l10n_ca_load_cra_schemas", return_value=True) as load:
+            for user in users:
+                with self.subTest(user=user.login):
+                    result = self.env["res.config.settings"].with_user(user).action_l10n_ca_slip_reload_schemas()
+                    self.assertEqual(result["params"]["type"], "success")
+            self.assertEqual(load.call_count, len(users))
 
     def test_schemas_reload_when_the_package_changes(self):
         self._load_schemas()

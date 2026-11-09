@@ -7,9 +7,7 @@ class MailMail(models.Model):
     _inherit = "mail.mail"
 
     def _postprocess_sent_message(self, success_pids, success_emails, failure_reason=False, failure_type=None):
-        """Odoo deletes an email sent to an invalid or missing address straight away, and keeps
-        other failures. The slip and its return say why it failed before that happens; deleting
-        the email (see unlink) is what makes the slip read as not emailed."""
+        """Record slip delivery failures before Odoo deletes failed messages."""
         if failure_type:
             for slip in self.env["l10n.ca.slip"].sudo().search([("mail_id", "in", self.ids)]):
                 slip._email_failed(failure_reason or failure_type)
@@ -18,8 +16,7 @@ class MailMail(models.Model):
         )
 
     def unlink(self):
-        """A slip whose email is deleted before it was sent reads as not emailed. Odoo deletes a
-        sent email right after sending it, and the slip stays sent."""
+        """Clear delivery status when an unsent slip email is deleted."""
         unsent = self.filtered(lambda mail: mail.state != "sent")
         if unsent:
             self.env["l10n.ca.slip"].sudo().search([
