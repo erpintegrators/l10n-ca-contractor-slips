@@ -241,3 +241,78 @@ class TestSlipCopies(L10nCaSlipsCommon):
         slip_return = self._return("t5018")
         self._finalize(slip_return)
         self.assertIn("optional", slip_return.action_send_slips()["params"]["message"])
+
+    def test_reverse_instructions_are_optional_and_two_copies(self):
+        record = self._final()
+        action = record.action_print_slips_with_instructions()
+        self.assertEqual(action["data"], {
+            "l10n_ca_copies": 2, "l10n_ca_duplex": True, "ids": record.slip_ids.ids,
+        })
+        html = self._html(record.slip_ids, action["data"])
+        from lxml import html as html_parser
+        pages = html_parser.fromstring(html).xpath('//div[@class="page"]')
+        self.assertEqual(len(pages), 2)
+        front, back = (" ".join(page.itertext()) for page in pages)
+        self.assertNotIn("Recipient instructions", front)
+        self.assertNotIn("Box 048, Fees for services: Report", front)
+        for text in ("Recipient instructions", "Box 012", "Box 013", "Box 022", "Box 048", "Box 061"):
+            self.assertIn(text, back)
+        self.assertEqual(html.count('class="o_l10n_ca_slip"'), 4)
+        self.assertNotIn("Recipient instructions", self._html(record.slip_ids))
+        self.assertNotIn(self.company.l10n_ca_slip_rp_account, html)
+
+    def test_reverse_flag_requires_a_boolean(self):
+        record = self._final()
+        for value in ("true", "False", 1, [True]):
+            html = self._html(record.slip_ids, {"l10n_ca_duplex": value})
+            self.assertNotIn("Recipient instructions", html)
+            self.assertEqual(html.count('class="o_l10n_ca_slip"'), 1)
+
+    def test_reverse_batch_keeps_each_recipients_language_and_pages_together(self):
+        from lxml import html as html_parser
+        self.env["res.lang"]._activate_lang("fr_CA")
+        self.env["ir.module.module"]._load_module_terms(["l10n_ca_contractor_slips"], ["fr_CA"], overwrite=True)
+        self.contractor_a.lang = "en_US"
+        self.contractor_b.lang = "fr_CA"
+        self._pay(self._fee_bill(self.contractor_b, "2026-03-01", 900.0), "2026-03-10")
+        record = self._final()
+        slips = self._slip(record, self.contractor_a) | self._slip(record, self.contractor_b)
+        pages = html_parser.fromstring(self._html(slips, {"l10n_ca_duplex": True})).xpath('//div[@class="page"]')
+        self.assertEqual(len(pages), 4)
+        text = [" ".join(page.itertext()) for page in pages]
+        self.assertIn("Martin", text[0])
+        self.assertIn("Martin", text[1])
+        self.assertIn("Recipient instructions", text[1])
+        self.assertIn("Chen", text[2])
+        self.assertIn("Chen", text[3])
+        self.assertIn("Instructions au bénéficiaire", text[3])
+        self.assertIn("Case 048", text[3])
+        self.assertNotIn("Recipient instructions", text[3])
+        self.assertNotIn("Martin", text[2])
+
+    def test_t5018_reverse_has_only_its_box_instructions(self):
+        record = self._final("t5018")
+        html = self._html(record.slip_ids, record.action_print_slips_with_instructions()["data"])
+        self.assertIn("Box 20, For the period ending", html)
+        self.assertIn("Box 22, Construction subcontractor payments", html)
+        self.assertIn("Box 24, Recipient's program account number", html)
+        self.assertNotIn("Box 048", html)
+        self.assertNotIn("Box 012", html)
+        self.assertNotIn(self.company.l10n_ca_slip_rz_account, html)
+
+    def test_reverse_printing_rejects_draft_returns(self):
+        from odoo.exceptions import UserError
+        with self.assertRaises(UserError):
+            self.env["l10n.ca.slip.return"].create({"year": 2025, "slip_type": "t4a"}).action_print_slips_with_instructions()
+
+    def test_cancelled_reverse_keeps_cancellation_instructions(self):
+        original = self._final()
+        original.action_mark_filed()
+        cancel = self._amend(original)
+        cancel.slip_ids.is_cancelled = True
+        cancel.amendment_note = "Alex Martin: cancelled contractor payment."
+        self._finalize(cancel)
+        html = self._html(cancel.slip_ids, cancel.action_print_slips_with_instructions()["data"])
+        self.assertIn("CANCELLED", html)
+        self.assertIn("Do not report the amount on this slip", html)
+        self.assertNotIn("Report these amounts on your tax return.", html)

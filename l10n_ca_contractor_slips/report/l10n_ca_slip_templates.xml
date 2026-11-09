@@ -73,131 +73,149 @@
                             </tr>
                         </table>
 
-                        <!-- T4A: payer's name, year, boxes 061, 022, 012, 013, 048, recipient -->
-                        <table t-if="is_t4a" style="margin-top: 4px;">
-                            <tr>
-                                <td style="width: 62%;" colspan="2">
-                                    <div class="o_box">
-                                        <div class="o_label">Payer's name</div>
-                                        <div class="o_value" t-out="company.name"/>
-                                    </div>
-                                </td>
-                                <td style="width: 38%;">
-                                    <div class="o_box">
-                                        <div class="o_label">Year</div>
-                                        <div class="o_value" t-out="slip.year"/>
-                                    </div>
-                                </td>
-                            </tr>
-                            <tr>
-                                <td colspan="2">
-                                    <div class="o_box">
-                                        <div class="o_label"><span class="o_no">061</span>Payer's program account number</div>
-                                        <div class="o_value"/>
-                                    </div>
-                                </td>
-                                <td>
-                                    <div class="o_box">
-                                        <div class="o_label"><span class="o_no">022</span>Income tax deducted</div>
-                                        <div class="o_sub">Line 43700</div>
-                                    </div>
-                                </td>
-                            </tr>
-                            <tr>
-                                <td style="width: 31%;">
-                                    <div class="o_box">
-                                        <div class="o_label"><span class="o_no">012</span>Social insurance number</div>
-                                        <div class="o_value" t-out="sin if is_person else ''"/>
-                                    </div>
-                                </td>
-                                <td style="width: 31%;">
-                                    <div class="o_box">
-                                        <div class="o_label"><span class="o_no">013</span>Recipient's program account number</div>
-                                        <div class="o_value" t-out="slip.recipient_bn or ''"/>
-                                    </div>
-                                </td>
-                                <td style="width: 38%;">
-                                    <div class="o_box">
-                                        <div class="o_label"><span class="o_no">048</span>Fees for services</div>
-                                        <div class="o_value o_amount" t-out="slip.amount_reported" t-options="{'widget': 'float', 'precision': 2}"/>
-                                    </div>
-                                </td>
-                            </tr>
-                            <tr>
-                                <td colspan="2">
-                                    <div class="o_box o_box_tall">
-                                        <div class="o_label">Recipient's name and address</div>
-                                        <t t-call="l10n_ca_contractor_slips.report_l10n_ca_slip_recipient"/>
-                                    </div>
-                                </td>
-                            </tr>
-                        </table>
+                        <t t-if="instructions_only">
+                            <div class="o_subtitle">Recipient instructions</div>
+                            <div class="o_sub" style="margin: 6px 0;">
+                                <span t-out="slip.year"/>:
+                                <span t-out="' '.join(filter(None, [slip.given_name, slip.initial, slip.surname])) if is_person else slip.corp_name"/>
+                            </div>
+                        </t>
+                        <t t-if="not instructions_only">
+                            <!-- T4A: payer's name, year, boxes 061, 022, 012, 013, 048, recipient -->
+                            <table t-if="is_t4a" style="margin-top: 4px;">
+                                <tr>
+                                    <td style="width: 62%;" colspan="2">
+                                        <div class="o_box">
+                                            <div class="o_label">Payer's name</div>
+                                            <div class="o_value" t-out="company.name"/>
+                                        </div>
+                                    </td>
+                                    <td style="width: 38%;">
+                                        <div class="o_box">
+                                            <div class="o_label">Year</div>
+                                            <div class="o_value" t-out="slip.year"/>
+                                        </div>
+                                    </td>
+                                </tr>
+                                <tr>
+                                    <td colspan="2">
+                                        <div class="o_box">
+                                            <div class="o_label"><span class="o_no">061</span>Payer's program account number</div>
+                                            <div class="o_value"/>
+                                        </div>
+                                    </td>
+                                    <td>
+                                        <div class="o_box">
+                                            <div class="o_label"><span class="o_no">022</span>Income tax deducted</div>
+                                            <div class="o_sub">Line 43700</div>
+                                        </div>
+                                    </td>
+                                </tr>
+                                <tr>
+                                    <td style="width: 31%;">
+                                        <div class="o_box">
+                                            <div class="o_label"><span class="o_no">012</span>Social insurance number</div>
+                                            <div class="o_value" t-out="sin if is_person else ''"/>
+                                        </div>
+                                    </td>
+                                    <td style="width: 31%;">
+                                        <div class="o_box">
+                                            <div class="o_label"><span class="o_no">013</span>Recipient's program account number</div>
+                                            <div class="o_value" t-out="slip.recipient_bn or ''"/>
+                                        </div>
+                                    </td>
+                                    <td style="width: 38%;">
+                                        <div class="o_box">
+                                            <div class="o_label"><span class="o_no">048</span>Fees for services</div>
+                                            <div class="o_value o_amount" t-out="slip.amount_reported" t-options="{'widget': 'float', 'precision': 2}"/>
+                                        </div>
+                                    </td>
+                                </tr>
+                                <tr>
+                                    <td colspan="2">
+                                        <div class="o_box o_box_tall">
+                                            <div class="o_label">Recipient's name and address</div>
+                                            <t t-call="l10n_ca_contractor_slips.report_l10n_ca_slip_recipient"/>
+                                        </div>
+                                    </td>
+                                </tr>
+                            </table>
 
-                        <!-- T5018: boxes 20, 22, 24, recipient, payer's name, payer's account -->
-                        <table t-else="" style="margin-top: 4px;">
-                            <tr>
-                                <td style="width: 30%;">
-                                    <div class="o_box">
-                                        <div class="o_label"><span class="o_no">20</span>For the period ending</div>
-                                        <div class="o_sub">Year Month Day</div>
-                                        <div class="o_value" t-out="slip.return_id.date_to.strftime('%Y %m %d')"/>
-                                    </div>
-                                </td>
-                                <td style="width: 35%;">
-                                    <div class="o_box">
-                                        <div class="o_label"><span class="o_no">22</span>Construction subcontractor payments</div>
-                                        <div class="o_value o_amount" t-out="slip.amount_reported" t-options="{'widget': 'float', 'precision': 2}"/>
-                                    </div>
-                                </td>
-                                <td style="width: 35%;">
-                                    <div class="o_box">
-                                        <div class="o_label"><span class="o_no">24</span>Recipient's program account number</div>
-                                        <t t-if="slip.recipient_bn">
-                                            <div class="o_sub">Account number</div>
-                                            <div class="o_value" t-out="slip.recipient_bn"/>
-                                        </t>
-                                        <t t-elif="is_person">
-                                            <div class="o_sub">Social insurance number (SIN)</div>
-                                            <div class="o_value" t-out="sin"/>
-                                        </t>
-                                    </div>
-                                </td>
-                            </tr>
-                            <tr>
-                                <td colspan="2">
-                                    <div class="o_box o_box_tall">
-                                        <div class="o_label">Recipient's business name and address</div>
-                                        <t t-call="l10n_ca_contractor_slips.report_l10n_ca_slip_recipient"/>
-                                    </div>
-                                </td>
-                                <td>
-                                    <div class="o_box">
-                                        <div class="o_label">Payer's name</div>
-                                        <div class="o_value" t-out="company.name"/>
-                                    </div>
-                                    <div class="o_box" style="margin-top: 3px;">
-                                        <div class="o_label">Payer's program account number</div>
-                                        <div class="o_value"/>
-                                    </div>
-                                </td>
-                            </tr>
-                        </table>
+                            <!-- T5018: boxes 20, 22, 24, recipient, payer's name, payer's account -->
+                            <table t-else="" style="margin-top: 4px;">
+                                <tr>
+                                    <td style="width: 30%;">
+                                        <div class="o_box">
+                                            <div class="o_label"><span class="o_no">20</span>For the period ending</div>
+                                            <div class="o_sub">Year Month Day</div>
+                                            <div class="o_value" t-out="slip.return_id.date_to.strftime('%Y %m %d')"/>
+                                        </div>
+                                    </td>
+                                    <td style="width: 35%;">
+                                        <div class="o_box">
+                                            <div class="o_label"><span class="o_no">22</span>Construction subcontractor payments</div>
+                                            <div class="o_value o_amount" t-out="slip.amount_reported" t-options="{'widget': 'float', 'precision': 2}"/>
+                                        </div>
+                                    </td>
+                                    <td style="width: 35%;">
+                                        <div class="o_box">
+                                            <div class="o_label"><span class="o_no">24</span>Recipient's program account number</div>
+                                            <t t-if="slip.recipient_bn">
+                                                <div class="o_sub">Account number</div>
+                                                <div class="o_value" t-out="slip.recipient_bn"/>
+                                            </t>
+                                            <t t-elif="is_person">
+                                                <div class="o_sub">Social insurance number (SIN)</div>
+                                                <div class="o_value" t-out="sin"/>
+                                            </t>
+                                        </div>
+                                    </td>
+                                </tr>
+                                <tr>
+                                    <td colspan="2">
+                                        <div class="o_box o_box_tall">
+                                            <div class="o_label">Recipient's business name and address</div>
+                                            <t t-call="l10n_ca_contractor_slips.report_l10n_ca_slip_recipient"/>
+                                        </div>
+                                    </td>
+                                    <td>
+                                        <div class="o_box">
+                                            <div class="o_label">Payer's name</div>
+                                            <div class="o_value" t-out="company.name"/>
+                                        </div>
+                                        <div class="o_box" style="margin-top: 3px;">
+                                            <div class="o_label">Payer's program account number</div>
+                                            <div class="o_value"/>
+                                        </div>
+                                    </td>
+                                </tr>
+                            </table>
 
-                        <div class="o_notes o_notes_t4a" t-if="is_t4a">
-                            <p t-if="cancelled">Do not report the amount on this slip or on the slip it cancels. If the payer issues you a new slip, report that one.</p>
-                            <p t-else="">Report these amounts on your tax return.</p>
-                            <p>Box 048, Fees for services: Report this amount as business or professional income.</p>
-                        </div>
-                        <div class="o_notes o_notes_t5018" t-else="">
-                            <p t-if="cancelled">Do not report the amount on this slip or on the slip it cancels. If the payer issues you a new slip, report that one.</p>
-                            <p t-else="">The income on this slip must be reported on your tax return. You do not have to attach this slip to your tax return.</p>
-                            <p>Box 20, For the period ending: The last day of the payer's reporting period for this return.</p>
-                            <p>Box 22, Construction subcontractor payments: The total amount of payments made by the payer to the recipient in the reporting period. This total may include goods and services tax/harmonized sales tax and provincial or territorial sales tax, if applicable.</p>
-                            <p>Box 24, Recipient's program account number (account number or SIN): Enter the recipient's 15-character program account number (which consists of the nine-digit business number, a two-letter program identifier, and a four-digit reference number) or the social insurance number. You can go to canada.ca/gst-hst-registry to verify if the subcontractor is registered for GST/HST, or call 1-800-959-5525 if you are unable to use the registry.</p>
-                            <p>Payer's name: The name of the contractor who made payments to subcontractors. Payer's program account number: Do not enter your business number on the copies you give to the subcontractors.</p>
-                            <p>This slip is issued to subcontractors in the construction industry. For information on how to report your business income, including the income declared on this slip, go to canada.ca/en/services/taxes, see Guide T4002, Self-employed Business, Professional, Commission, Farming, and Fishing Income, or call 1-800-959-5525. The payer has sent a copy of this slip to the Canada Revenue Agency.</p>
-                        </div>
-                        <p class="o_notes" t-if="cancelled" style="border-top: 0;">This slip cancels the slip previously issued to you for this period. Contact the payer if you need a replacement slip.</p>
+                        </t>
+                        <t t-if="not duplex or instructions_only">
+                            <div class="o_notes o_notes_t4a" t-if="instructions_only and is_t4a">
+                                <p>Box 012, Social insurance number: Your nine-digit social insurance number.</p>
+                                <p>Box 013, Recipient's program account number: Your business program account number, if applicable.</p>
+                                <p>Box 022, Income tax deducted: Report any amount shown on line 43700 of your tax return.</p>
+                                <p>Box 061, Payer's program account number: The payer's account number is omitted from recipient copies.</p>
+                            </div>
+                            <div class="o_notes o_notes_t4a" t-if="is_t4a">
+                                <p t-if="cancelled">Do not report the amount on this slip or on the slip it cancels. If the payer issues you a new slip, report that one.</p>
+                                <p t-else="">Report these amounts on your tax return.</p>
+                                <p>Box 048, Fees for services: Report this amount as business or professional income.</p>
+                            </div>
+                            <div class="o_notes o_notes_t5018" t-else="">
+                                <p t-if="cancelled">Do not report the amount on this slip or on the slip it cancels. If the payer issues you a new slip, report that one.</p>
+                                <p t-else="">The income on this slip must be reported on your tax return. You do not have to attach this slip to your tax return.</p>
+                                <p>Box 20, For the period ending: The last day of the payer's reporting period for this return.</p>
+                                <p>Box 22, Construction subcontractor payments: The total amount of payments made by the payer to the recipient in the reporting period. This total may include goods and services tax/harmonized sales tax and provincial or territorial sales tax, if applicable.</p>
+                                <p>Box 24, Recipient's program account number (account number or SIN): Enter the recipient's 15-character program account number (which consists of the nine-digit business number, a two-letter program identifier, and a four-digit reference number) or the social insurance number. You can go to canada.ca/gst-hst-registry to verify if the subcontractor is registered for GST/HST, or call 1-800-959-5525 if you are unable to use the registry.</p>
+                                <p>Payer's name: The name of the contractor who made payments to subcontractors. Payer's program account number: Do not enter your business number on the copies you give to the subcontractors.</p>
+                                <p>This slip is issued to subcontractors in the construction industry. For information on how to report your business income, including the income declared on this slip, go to canada.ca/en/services/taxes, see Guide T4002, Self-employed Business, Professional, Commission, Farming, and Fishing Income, or call 1-800-959-5525. The payer has sent a copy of this slip to the Canada Revenue Agency.</p>
+                            </div>
+                            <p class="o_notes" t-if="cancelled" style="border-top: 0;">This slip cancels the slip previously issued to you for this period. Contact the payer if you need a replacement slip.</p>
+
+                        </t>
 
                         <table class="o_footer">
                             <tr>
@@ -239,10 +257,16 @@
             <!-- Paper delivery prints the two copies CRA asks for on one sheet; emailed and portal
                  copies carry one. Odoo passes the report data as top-level values, and anyone can set
                  them in a report URL, so only these two values are used. -->
-            <t t-set="copies" t-value="2 if l10n_ca_copies == 2 else 1"/>
+            <t t-set="duplex" t-value="l10n_ca_duplex is True"/>
+            <t t-set="copies" t-value="2 if duplex or l10n_ca_copies == 2 else 1"/>
             <t t-set="duplicate" t-value="l10n_ca_duplicate is True"/>
             <t t-foreach="docs" t-as="slip">
+                <t t-set="instructions_only" t-value="False"/>
                 <t t-call="l10n_ca_contractor_slips.report_l10n_ca_slip_document" t-lang="slip._l10n_ca_slip_lang()"/>
+                <t t-if="duplex">
+                    <t t-set="instructions_only" t-value="True"/>
+                    <t t-call="l10n_ca_contractor_slips.report_l10n_ca_slip_document" t-lang="slip._l10n_ca_slip_lang()"/>
+                </t>
             </t>
         </t>
     </template>

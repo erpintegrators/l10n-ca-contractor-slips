@@ -3153,3 +3153,33 @@ msgstr "Le service de transmission électronique de l'ARC est fermé du 22 déce
 #: code:addons/l10n_ca_contractor_slips/models/res_config_settings.py:0
 msgid "Only accounting or system administrators can reload CRA schemas."
 msgstr "Seuls les administrateurs de la comptabilité ou du système peuvent recharger les schémas de l'ARC."
+
+#. module: l10n_ca_contractor_slips
+#: model_terms:ir.ui.view,arch_db:l10n_ca_contractor_slips.report_l10n_ca_slip_document
+msgid "Recipient instructions"
+msgstr "Instructions au bénéficiaire"
+
+#. module: l10n_ca_contractor_slips
+#: model_terms:ir.ui.view,arch_db:l10n_ca_contractor_slips.report_l10n_ca_slip_document
+msgid "Box 012, Social insurance number: Your nine-digit social insurance number."
+msgstr "Case 012, Numéro d'assurance sociale : Votre numéro d'assurance sociale à neuf chiffres."
+
+#. module: l10n_ca_contractor_slips
+#: model_terms:ir.ui.view,arch_db:l10n_ca_contractor_slips.report_l10n_ca_slip_document
+msgid "Box 013, Recipient's program account number: Your business program account number, if applicable."
+msgstr "Case 013, Numéro de compte de programme du bénéficiaire : Le numéro de compte de programme de votre entreprise, s'il y a lieu."
+
+#. module: l10n_ca_contractor_slips
+#: model_terms:ir.ui.view,arch_db:l10n_ca_contractor_slips.report_l10n_ca_slip_document
+msgid "Box 022, Income tax deducted: Report any amount shown on line 43700 of your tax return."
+msgstr "Case 022, Impôt sur le revenu retenu : Inscrivez le montant indiqué à la ligne 43700 de votre déclaration de revenus."
+
+#. module: l10n_ca_contractor_slips
+#: model_terms:ir.ui.view,arch_db:l10n_ca_contractor_slips.report_l10n_ca_slip_document
+msgid "Box 061, Payer's program account number: The payer's account number is omitted from recipient copies."
+msgstr "Case 061, Numéro de compte de programme du payeur : Le numéro de compte du payeur ne figure pas sur les copies du bénéficiaire."
+
+#. module: l10n_ca_contractor_slips
+#: model_terms:ir.ui.view,arch_db:l10n_ca_contractor_slips.l10n_ca_slip_return_views
+msgid "Print with reverse instructions"
+msgstr "Imprimer avec les instructions au verso"

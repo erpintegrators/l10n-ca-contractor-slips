@@ -1,3 +1,7 @@
+## 19.0.1.5
+
+- Add optional two-sided recipient slips with matching English or French instructions and paired batch pages.
+
 # 19.0.1.4
 
 - Restrict manual CRA schema downloads to accounting and system administrators.
