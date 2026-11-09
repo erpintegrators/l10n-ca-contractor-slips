@@ -61,3 +61,19 @@ class TestPrintActions(L10nCaSlipsCommon, HttpCase):
             response = self._request({**action, "data": {**action["data"], "ids": bad}})
             self.assertEqual(response.status_code, 200, bad)
             self.assertNotIn('class="o_l10n_ca_slip"', response.text, bad)
+
+    def test_reverse_print_button_keeps_all_front_and_back_copies(self):
+        page = self._as_the_client_requests(self.slip_return.action_print_slips_with_instructions())
+        self.assertEqual(page.count('class="o_l10n_ca_slip"'), 8)
+        self.assertEqual(page.count("Recipient instructions"), 4)
+
+    def test_reverse_print_options_preserve_access_rules(self):
+        response = self._request(self.slip_return.action_print_slips_with_instructions(), login="print.staff")
+        self.assertEqual(response.status_code, 403)
+
+    def test_reverse_print_malformed_ids_print_nothing(self):
+        action = self.slip_return.action_print_slips_with_instructions()
+        for bad in (["2"], [-1, 0], [True], [[1]], "1,2", None):
+            response = self._request({**action, "data": {**action["data"], "ids": bad}})
+            self.assertEqual(response.status_code, 200, bad)
+            self.assertNotIn('class="o_l10n_ca_slip"', response.text, bad)

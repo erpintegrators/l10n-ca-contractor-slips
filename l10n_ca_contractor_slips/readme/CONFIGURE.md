@@ -115,3 +115,12 @@ PDF renderer required by their Odoo version. Odoo.sh provides the platform rende
 Configure and test the outgoing mail server in Odoo before emailing slips. Email slips uses
 Odoo's scheduled actions and mail queue, so those services must be running. Check each slip's
 delivery status after sending.
+
+### Printing instructions on the reverse
+
+Use **Print with reverse instructions** on a finalized or filed return for paper delivery.
+Each recipient gets two copies on the front and matching instructions on the following PDF page.
+The language follows the recipient contact. Print on Letter paper at actual size, two-sided with
+long-edge binding, and one PDF page per side. Turn off booklet printing and multiple pages per sheet.
+For a printer with manual duplex, follow its paper-reloading instructions and check one recipient
+before printing a batch. The standard Print slips action keeps its compact layout.

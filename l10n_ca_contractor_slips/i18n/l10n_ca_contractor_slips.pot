@@ -2787,3 +2787,33 @@ msgstr ""
 #: code:addons/l10n_ca_contractor_slips/models/res_config_settings.py:0
 msgid "Only accounting or system administrators can reload CRA schemas."
 msgstr ""
+
+#. module: l10n_ca_contractor_slips
+#: model_terms:ir.ui.view,arch_db:l10n_ca_contractor_slips.report_l10n_ca_slip_document
+msgid "Recipient instructions"
+msgstr ""
+
+#. module: l10n_ca_contractor_slips
+#: model_terms:ir.ui.view,arch_db:l10n_ca_contractor_slips.report_l10n_ca_slip_document
+msgid "Box 012, Social insurance number: Your nine-digit social insurance number."
+msgstr ""
+
+#. module: l10n_ca_contractor_slips
+#: model_terms:ir.ui.view,arch_db:l10n_ca_contractor_slips.report_l10n_ca_slip_document
+msgid "Box 013, Recipient's program account number: Your business program account number, if applicable."
+msgstr ""
+
+#. module: l10n_ca_contractor_slips
+#: model_terms:ir.ui.view,arch_db:l10n_ca_contractor_slips.report_l10n_ca_slip_document
+msgid "Box 022, Income tax deducted: Report any amount shown on line 43700 of your tax return."
+msgstr ""
+
+#. module: l10n_ca_contractor_slips
+#: model_terms:ir.ui.view,arch_db:l10n_ca_contractor_slips.report_l10n_ca_slip_document
+msgid "Box 061, Payer's program account number: The payer's account number is omitted from recipient copies."
+msgstr ""
+
+#. module: l10n_ca_contractor_slips
+#: model_terms:ir.ui.view,arch_db:l10n_ca_contractor_slips.l10n_ca_slip_return_views
+msgid "Print with reverse instructions"
+msgstr ""
