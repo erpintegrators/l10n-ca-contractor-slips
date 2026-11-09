@@ -1,6 +1,7 @@
 # Copyright 2026 Solvync Inc.
 # License LGPL-3.0 (https://www.gnu.org/licenses/lgpl-3.0).
 from odoo import _, fields, models
+from odoo.exceptions import AccessError
 
 
 class ResConfigSettings(models.TransientModel):
@@ -24,6 +25,12 @@ class ResConfigSettings(models.TransientModel):
     )
 
     def action_l10n_ca_slip_reload_schemas(self):
+        if not (
+            self.env.su
+            or self.env.user.has_group("account.group_account_manager")
+            or self.env.user.has_group("base.group_system")
+        ):
+            raise AccessError(_("Only accounting or system administrators can reload CRA schemas."))
         loaded = self.env["l10n.ca.slip.return"]._l10n_ca_load_cra_schemas(force=True)
         return {
             "type": "ir.actions.client",

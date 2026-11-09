@@ -2596,9 +2596,7 @@ msgstr ""
 
 #. module: l10n_ca_contractor_slips
 #: model:ir.model.fields,help:l10n_ca_contractor_slips.field_l10n_ca_slip_return__due_date
-msgid ""
-"When CRA expects the return and the recipients expect their slips. A due "
-"date on a weekend or public holiday moves to the next business day."
+msgid "Calendar due date. Check CRA's next-business-day rule when it falls on a weekend or public holiday."
 msgstr ""
 
 #. module: l10n_ca_contractor_slips
@@ -2782,4 +2780,10 @@ msgstr ""
 #. module: l10n_ca_contractor_slips
 #: code:addons/l10n_ca_contractor_slips/models/l10n_ca_slip_return.py:0
 msgid "CRA's electronic filing service is closed from 22 December 2026 through 10 January 2027. You can prepare your records; upload only after the service reopens on 11 January 2027. New XML is checked against the 2027 package from that date."
+msgstr ""
+
+#. module: l10n_ca_contractor_slips
+#. odoo-python
+#: code:addons/l10n_ca_contractor_slips/models/res_config_settings.py:0
+msgid "Only accounting or system administrators can reload CRA schemas."
 msgstr ""

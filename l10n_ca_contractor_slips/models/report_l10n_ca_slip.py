@@ -4,10 +4,7 @@ from odoo import api, models
 
 
 class ReportL10nCaSlip(models.AbstractModel):
-    """The printed slip. A report action that carries options (two copies, DUPLICATE) reaches the
-    report controller with no record ids in its URL, because Odoo's web client sends the options in
-    their place. The print actions put the slip ids in the options, and the slips are read from
-    there when the URL has none."""
+    """Resolve slip ids from the report URL or validated print options."""
 
     _name = "report.l10n_ca_contractor_slips.report_l10n_ca_slip"
     _description = "Canadian contractor slip"

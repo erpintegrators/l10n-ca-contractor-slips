@@ -2,7 +2,6 @@
 # License LGPL-3.0 (https://www.gnu.org/licenses/lgpl-3.0).
 """Edge cases: prepayments, write-offs, branches, portal visibility and amendment chains."""
 from datetime import date
-from unittest.mock import patch
 
 from odoo import Command
 from odoo.exceptions import AccessError, UserError

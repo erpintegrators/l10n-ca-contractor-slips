@@ -23,7 +23,7 @@ company.write({
     "l10n_ca_slip_transmitter_account": "123026635",
     "l10n_ca_slip_contact_id": contact.id,
 })
-expense = env["account.account"].search([("account_type", "=", "expense"), ("company_ids", "in", company.id)], limit=1)
+expense = env["account.account"].search([("account_type", "=", "expense"), ("company_id", "=", company.id)], limit=1)
 fees = expense.copy({"name": "Professional fees", "code": "511900",
                      "tag_ids": [Command.set(env.ref("l10n_ca_contractor_slips.account_tag_t4a_fees").ids)]})
 subs = expense.copy({"name": "Subcontractors", "code": "511950",

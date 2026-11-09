@@ -1,7 +1,6 @@
 # Copyright 2026 Solvync Inc.
 # License LGPL-3.0 (https://www.gnu.org/licenses/lgpl-3.0).
 import base64
-import logging
 import os
 import re
 import tempfile
@@ -20,7 +19,6 @@ from . import cra_format as fmt
 from .l10n_ca_slip import RECIPIENT_FIELDS
 from .res_company import check_program_account
 
-_logger = logging.getLogger(__name__)
 
 XSD_PREFIX = "l10n_ca_contractor_slips"
 XSD_URL_PARAM = "l10n_ca_contractor_slips.cra_schema_url"  # optional override
@@ -111,8 +109,7 @@ class L10nCaSlipReturn(models.Model):
     due_date = fields.Date(
         string="Due date",
         compute="_compute_due_date",
-        help="When CRA expects the return and the recipients expect their slips. A due date on a weekend "
-        "or public holiday moves to the next business day.",
+        help="Calendar due date. Check CRA's next-business-day rule when it falls on a weekend or public holiday.",
     )
 
     _sql_constraints = [
@@ -132,8 +129,7 @@ class L10nCaSlipReturn(models.Model):
 
     @api.depends("slip_type", "year")
     def _compute_dates(self):
-        """Set from the company's T5018 period when the return is created or its type or year
-        changes. Changing the setting later leaves existing returns alone."""
+        """Set reporting dates from the company setting when the return type or year changes."""
         for record in self:
             if not record.year:
                 record.date_from = record.date_to = False
@@ -288,8 +284,7 @@ class L10nCaSlipReturn(models.Model):
         return True
 
     def _branch_companies(self):
-        """The company and its active branches. A return covers all of them, so the user must have
-        access to each one. Archived branches cannot be given to any user; their bills still count."""
+        """Require access to the company and its active branches; include archived branches' bills."""
         self.ensure_one()
         companies = self.env["res.company"].sudo().search([("id", "child_of", self.company_id.id)])
         missing = companies - self.env.user.company_ids
@@ -446,8 +441,7 @@ class L10nCaSlipReturn(models.Model):
         return f"{bool(company.l10n_ca_t5018_include_mixed_goods)}/{company.l10n_ca_t5018_threshold_basis}"
 
     def _stale_slips(self):
-        """Recipients whose slip no longer matches what a recalculation would give, because a bill,
-        a payment or the contact changed after the last calculation."""
+        """Find recipients whose bills, payments or details changed since calculation."""
         self.ensure_one()
         qualified, _notes = self._slip_targets()
         Slip = self.env["l10n.ca.slip"]
@@ -543,9 +537,7 @@ class L10nCaSlipReturn(models.Model):
         ])
 
     def _currently_reported_slips(self):
-        """Slips CRA currently holds for this period from other returns: original or amended,
-        not replaced or cancelled since. A second original return only picks up contractors
-        missing from these."""
+        """Find slips CRA currently holds, excluding replacements and cancellations."""
         self.ensure_one()
         related = self.env["res.company"].sudo().search([
             "|", ("id", "child_of", self.company_id.id), ("id", "parent_of", self.company_id.id),
@@ -572,8 +564,7 @@ class L10nCaSlipReturn(models.Model):
         return compare(data["svc_incl"], THRESHOLD) >= 0
 
     def _update_amendment_slips(self, qualified, notes):
-        """An amended return keeps the slips it copied from the filed return and refreshes their
-        amounts. Contractors missing from the filed return are listed for a separate original return."""
+        """Refresh copied slips and list new contractors for a separate original return."""
         by_partner = {slip.partner_id.id: slip for slip in self.slip_ids.filtered(lambda s: not s.is_cancelled)}
         cancelled = self.slip_ids.filtered("is_cancelled").partner_id.ids
         for partner_id, (partner, data, above) in qualified.items():
@@ -670,10 +661,13 @@ class L10nCaSlipReturn(models.Model):
             record._workflow_write({"state": "final", "filed_settings": record._settings_key()})
             if record.warning_message:
                 # The notes stay on record with the return, as they stood when it was finalized.
-                record.message_post(body=Markup("<p>%s</p><ul>%s</ul>") % (
-                    _("Finalized with these notes:"),
-                    Markup().join(Markup("<li>%s</li>") % note for note in record.warning_message.split("\n")),
-                ), subtype_xmlid="mail.mt_note")
+                record.message_post(
+                    body=Markup().join(
+                        Markup("<p>%s</p>") % note
+                        for note in [_("Finalized with these notes:"), *record.warning_message.split("\n")]
+                    ),
+                    subtype_xmlid="mail.mt_note",
+                )
             record._mark_superseded_slips(True)
             for slip in record.slip_ids:
                 slip._portal_ensure_token()
@@ -861,8 +855,7 @@ class L10nCaSlipReturn(models.Model):
 
     @api.model
     def _l10n_ca_schemas_current(self):
-        """Schemas are reloaded whenever the package they came from is no longer the one in use,
-        so a release that moves to CRA's next package refreshes existing installs."""
+        """Check whether cached schemas match the current package."""
         loaded_from = self.env["ir.config_parameter"].sudo().get_param(XSD_LOADED_PARAM)
         return bool(self._l10n_ca_schema_attachments()) and loaded_from == self._l10n_ca_schema_url()
 
@@ -1062,8 +1055,7 @@ class L10nCaSlipReturn(models.Model):
         return self.slip_ids.filtered(lambda s: s.rpt_tcd in ("O", "A", "C") and not s.superseded)
 
     def action_send_slips(self):
-        """Queue an email to each consenting recipient with their own slip. A scheduled job renders
-        and sends them in batches, so a large return does not hit the request time limit."""
+        """Queue consenting recipients' slips for batch rendering and delivery."""
         self.ensure_one()
         if self.state == "draft":
             raise UserError(_("Finalize the return before sending slips."))
