@@ -198,8 +198,7 @@ class L10nCaSlip(models.Model):
             slip.warning_message = "\n".join(warnings) or False
 
     def _surname_not_in_contact_name(self):
-        """A surname entered on the contact stays when the contact is renamed. Compare letters only,
-        so accents, hyphens and spacing do not count as a difference."""
+        """Compare surnames using letters only, ignoring accents, hyphens and spaces."""
         self.ensure_one()
 
         def letters(text):
@@ -286,8 +285,7 @@ class L10nCaSlip(models.Model):
         return {"type": "ir.actions.act_window", "res_model": self._name, "res_id": self.id, "view_mode": "form"}
 
     def _l10n_ca_full_sin_allowed(self):
-        """The full SIN prints only for the signed-in recipient and for accounting administrators
-        who can read this slip. Everyone else, including share-link viewers, sees three digits."""
+        """Allow the full SIN for the signed-in recipient or an accounting administrator with slip access."""
         self.ensure_one()
         user = self.env.user
         if user._is_public():
@@ -324,11 +322,7 @@ class L10nCaSlip(models.Model):
 
     @api.model
     def _cron_send_pending(self):
-        """Prepare one bounded batch and report progress to Odoo 18's scheduler.
-
-        The scheduler commits each batch and continues while work remains.
-        Failed emails and their PDFs are deleted after a month.
-        """
+        """Send queued slips in committed batches; delete failed emails and PDFs after a month."""
         self._purge_failed_emails()
         pending = [("send_requested_uid", "!=", False)]
         slips = self.sudo().search(pending, limit=SEND_BATCH)
@@ -374,9 +368,7 @@ class L10nCaSlip(models.Model):
                 slip._abandon_email(self.env._("The slip email could not be prepared: %s", str(error)[:300]))
 
     def _email_failed(self, reason):
-        """The email could not be sent. When Odoo deletes it, the slip reads as not emailed and
-        can be emailed again. When Odoo keeps it, the slip shows the failure, and the failed email
-        and its PDF are deleted after FAILED_EMAIL_DAYS like any other."""
+        """Record the delivery failure on the slip and return."""
         self.ensure_one()
         slip = self.sudo()
         address = slip.mail_id.email_to or slip.partner_id.email_formatted or ""
@@ -392,8 +384,7 @@ class L10nCaSlip(models.Model):
         )
 
     def _abandon_email(self, reason):
-        """Take the slip out of the email queue and say why, on the slip and on its return, so the
-        preparer sees it where they clicked Email slips."""
+        """Withdraw a queued slip email and record the reason."""
         self.ensure_one()
         slip = self.sudo()
         slip.write({"send_requested_uid": False, "send_to_email": False})
@@ -404,11 +395,9 @@ class L10nCaSlip(models.Model):
         )
 
     def _send_email(self):
-        """Email this slip as the user who asked for it. The PDF carries the recipient's full SIN, so
-        the email stands on its own, unlinked from the slip: it never reaches the chatter, where
-        anyone who can read the slip or holds its link could open it. The address is fixed now, so
-        a later change to the contact cannot redirect it. The PDF is deleted with the email once it
-        is sent; a failed email stays, with its reason, on the slip."""
+        """Queue a private recipient PDF as the requesting user, using the consented address.
+
+        Keep the email detached from chatter. Odoo deletes its PDF after sending."""
         self.ensure_one()
         # A contact kept to a branch the requester cannot select is still the slip's recipient.
         partner = self.partner_id.sudo()

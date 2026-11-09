@@ -13,12 +13,9 @@ TAG_XMLIDS = {
 
 
 class L10nCaSlipEngine(models.AbstractModel):
-    """Turns posted vendor bills and the cash paid against them into slip amounts.
+    """Calculate cash-basis slip amounts from posted bills and payments.
 
-    Amounts follow the cash basis: a payment counts in the period of its own date, whatever
-    the bill date. Each payment is split between eligible and ineligible lines in the same
-    proportion as the bill, so a bill that is half goods reports half of every payment.
-    """
+    Allocate each payment across bill lines in proportion to their amounts."""
 
     _name = "l10n.ca.slip.engine"
     _description = "Canadian contractor slip engine"
@@ -33,10 +30,8 @@ class L10nCaSlipEngine(models.AbstractModel):
 
     @api.model
     def _is_eligible_line(self, line, tag, slip_type="t4a"):
-        """A bill line is reportable when it is not goods and its account carries the slip tag.
-        For T4A a service product also qualifies. T5018 needs the tag, since a service product
-        can be freight or bare equipment rental. A holdback account carrying the T5018 tag makes
-        holdbacks count when they are paid."""
+        """Exclude goods. Require a slip-tagged account for T5018; T4A also accepts service products.
+        Tagged holdback accounts count when paid."""
         product = line.product_id
         if product and product.type == "consu":
             return False
@@ -165,12 +160,8 @@ class L10nCaSlipEngine(models.AbstractModel):
 
     @api.model
     def _net_of_discounts(self, move, counterpart, bill_line, cash):
-        """What the entry pays in money for ``cash`` of the document cleared through ``counterpart``.
-
-        Discounts reduce what is paid on the documents being paid (the side opposite the money): each
-        bill first takes its own early payment discount, and whatever discount is left, such as a
-        manual write-off, is spread over the paid documents. Documents cleared on the money's own
-        side, such as a credit note netted in the same transfer, are settled in full."""
+        """Deduct each paid bill's early payment discount, then allocate residual write-offs proportionally.
+        Credit notes on the money side settle in full."""
         _liquidity, settled, _other = self._split_settlement(move)
         sign = self._money_sign(move)
         paid_side = settled.filtered(lambda l_: l_.balance * sign < 0)
@@ -209,12 +200,8 @@ class L10nCaSlipEngine(models.AbstractModel):
 
     @api.model
     def _cash_from_partials(self, bill, date_from, date_to, slip_type, include_mixed_goods=False):
-        """Cash paid or refunded against the bill through reconciliation, in company currency
-        at the payment's own rate.
-
-        When the bill also carries payments recorded without a journal entry, the bank lines
-        later reconciled with it are the same money; those payments are counted at their own
-        date instead, and bank lines up to their total are skipped here."""
+        """Read reconciled cash at the payment date and exchange rate.
+        Skip bank amounts already counted as payments without journal entries."""
         sign = -1 if bill.move_type == "in_refund" else 1
         # Credit notes count on the day they were matched, read in the company's time zone so every
         # user gets the same date.
@@ -319,14 +306,8 @@ class L10nCaSlipEngine(models.AbstractModel):
 
     @api.model
     def _compute_partner_amounts(self, company, slip_type, date_from, date_to, partners=None):
-        """Return {commercial partner id: {"base", "incl", "svc_base", "svc_incl", "lines",
-        "warnings"}} for the period.
-
-        "base" and "incl" are the reported amounts before and including GST/HST and PST: T4A box
-        048 is "base", T5018 box 22 is "incl". "svc_base" and "svc_incl" count the services lines
-        only and drive the T5018 threshold, whatever the mixed-bill setting. Bills from the company
-        and its branches all count; the caller selects those companies (l10n.ca.slip.return._scoped).
-        """
+        """Return each commercial partner's reported base, tax-inclusive amounts, services totals, lines and warnings.
+        Services totals determine the T5018 threshold. The caller selects the company and its branches."""
         # The return has already checked that the user may see every active branch. The engine reads
         # with elevated rights so archived branches, which no user can select any more, still count.
         self = self.sudo().with_context(l10n_ca_split_cache={})  # noqa: PLW0642
