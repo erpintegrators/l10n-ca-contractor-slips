@@ -1028,6 +1028,10 @@ class L10nCaSlipReturn(models.Model):
         """Two copies of each slip on one sheet, as CRA asks for slips delivered on paper."""
         return self._print_slips({"l10n_ca_copies": 2})
 
+    def action_print_slips_with_instructions(self):
+        """Keep each recipient's two-copy front and instruction reverse together."""
+        return self._print_slips({"l10n_ca_copies": 2, "l10n_ca_duplex": True})
+
     def action_print_duplicates(self):
         """Replacement copies for slips already delivered, marked DUPLICATE as CRA asks."""
         return self._print_slips({"l10n_ca_copies": 2, "l10n_ca_duplicate": True})

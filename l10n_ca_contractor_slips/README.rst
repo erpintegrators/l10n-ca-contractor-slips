@@ -401,3 +401,8 @@ Maintainers
 -----------
 
 This module is maintained by Solvync Inc.
+
+Printing instructions on the reverse
+------------------------------------
+
+Use **Print with reverse instructions** on a finalized or filed return. Each recipient gets two copies on the front and matching instructions on the following PDF page. The language follows the recipient contact. Print on Letter paper at actual size, two-sided with long-edge binding, and one PDF page per side. Follow the paper-reloading instructions for manual duplex printers and check one recipient before printing a batch.
