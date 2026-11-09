@@ -44,3 +44,12 @@
    does not have.
 7. Keep a record of when and how you asked each individual for their SIN, of each recipient's email
    consent, and of how each slip reached its recipient.
+
+### Printing instructions on the reverse
+
+Use **Print with reverse instructions** on a finalized or filed return for paper delivery.
+Each recipient gets two copies on the front and matching instructions on the following PDF page.
+The language follows the recipient contact. Print on Letter paper at actual size, two-sided with
+long-edge binding, and one PDF page per side. Turn off booklet printing and multiple pages per sheet.
+For a printer with manual duplex, follow its paper-reloading instructions and check one recipient
+before printing a batch. The standard Print slips action keeps its compact layout.

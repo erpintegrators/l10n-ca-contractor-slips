@@ -42,6 +42,8 @@
                             groups="account.group_account_manager"/>
                     <button name="action_print_slips" type="object" string="Print slips" invisible="state == 'draft'"
                             groups="account.group_account_manager"/>
+                    <button name="action_print_slips_with_instructions" type="object" string="Print with reverse instructions"
+                            invisible="state == 'draft'" groups="account.group_account_manager"/>
                     <button name="action_print_duplicates" type="object" string="Print duplicates" invisible="state == 'draft'"
                             groups="account.group_account_manager"/>
                     <button name="action_send_slips" type="object" string="Email slips" invisible="state == 'draft'"
